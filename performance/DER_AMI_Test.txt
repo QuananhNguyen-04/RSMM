@@ -1,0 +1,102 @@
+Audio duration: 00:29:46
+True Pos, False Neg, False Pos 143018 4941 5737
+Recall=0.9666, FA=0.0386
+Found 4 speakers, GT got 4 speakers
+5035 5859 75770 147708
+DER=0.5867 (Miss=0.0341, FA=0.0397, Conf=0.5130)
+Audio duration: 00:25:05
+True Pos, False Neg, False Pos 83917 14167 4733
+Recall=0.8556, FA=0.0534
+Found 2 speakers, GT got 4 speakers
+14367 4816 15046 97834
+DER=0.3499 (Miss=0.1469, FA=0.0492, Conf=0.1538)
+Audio duration: 00:38:54
+True Pos, False Neg, False Pos 193742 7900 7854
+Recall=0.9608, FA=0.0390
+Found 3 speakers, GT got 4 speakers
+8061 8036 78562 201298
+DER=0.4702 (Miss=0.0400, FA=0.0399, Conf=0.3903)
+Audio duration: 00:39:05
+True Pos, False Neg, False Pos 191666 10093 7277
+Recall=0.9500, FA=0.0366
+Found 4 speakers, GT got 4 speakers
+10236 7416 81703 201454
+DER=0.4932 (Miss=0.0508, FA=0.0368, Conf=0.4056)
+Audio duration: 00:36:50
+True Pos, False Neg, False Pos 162965 11448 12296
+Recall=0.9344, FA=0.0702
+Found 4 speakers, GT got 4 speakers
+11793 12482 20294 173967
+DER=0.2562 (Miss=0.0678, FA=0.0717, Conf=0.1167)
+Audio duration: 00:13:58
+True Pos, False Neg, False Pos 58178 2460 3204
+Recall=0.9594, FA=0.0522
+Found 2 speakers, GT got 4 speakers
+2514 3269 23053 60503
+DER=0.4766 (Miss=0.0416, FA=0.0540, Conf=0.3810)
+Audio duration: 00:32:24
+True Pos, False Neg, False Pos 149665 5542 8250
+Recall=0.9643, FA=0.0522
+Found 4 speakers, GT got 4 speakers
+5648 8430 39889 154824
+DER=0.3486 (Miss=0.0365, FA=0.0544, Conf=0.2576)
+Audio duration: 00:34:12
+True Pos, False Neg, False Pos 174199 3832 4452
+Recall=0.9785, FA=0.0249
+Found 5 speakers, GT got 4 speakers
+3898 4567 41894 177824
+DER=0.2832 (Miss=0.0219, FA=0.0257, Conf=0.2356)
+Audio duration: 00:36:49
+True Pos, False Neg, False Pos 186083 7161 6427
+Recall=0.9629, FA=0.0334
+Found 4 speakers, GT got 4 speakers
+7315 6617 91501 192893
+DER=0.5466 (Miss=0.0379, FA=0.0343, Conf=0.4744)
+Audio duration: 00:42:50
+True Pos, False Neg, False Pos 157078 23581 7590
+Recall=0.8695, FA=0.0461
+Found 3 speakers, GT got 4 speakers
+24064 7755 30832 180213
+DER=0.3476 (Miss=0.1335, FA=0.0430, Conf=0.1711)
+Audio duration: 00:37:02
+True Pos, False Neg, False Pos 161715 10686 10327
+Recall=0.9380, FA=0.0600
+Found 5 speakers, GT got 4 speakers
+10825 10547 47917 171945
+DER=0.4030 (Miss=0.0630, FA=0.0613, Conf=0.2787)
+Audio duration: 00:43:38
+True Pos, False Neg, False Pos 160896 25231 9488
+Recall=0.8644, FA=0.0557
+Found 4 speakers, GT got 4 speakers
+25669 9741 52866 185433
+DER=0.4761 (Miss=0.1384, FA=0.0525, Conf=0.2851)
+Audio duration: 00:17:29
+True Pos, False Neg, False Pos 71916 6991 2599
+Recall=0.9114, FA=0.0349
+Found 5 speakers, GT got 4 speakers
+7037 2649 25527 78749
+DER=0.4472 (Miss=0.0894, FA=0.0336, Conf=0.3242)
+Audio duration: 00:49:32
+True Pos, False Neg, False Pos 249062 11807 7224
+Recall=0.9547, FA=0.0282
+Found 4 speakers, GT got 3 speakers
+12101 7393 88232 260533
+DER=0.4135 (Miss=0.0464, FA=0.0284, Conf=0.3387)
+Audio duration: 00:30:20
+True Pos, False Neg, False Pos 147715 2873 5655
+Recall=0.9809, FA=0.0369
+Found 4 speakers, GT got 4 speakers
+2946 5771 31950 150326
+DER=0.2705 (Miss=0.0196, FA=0.0384, Conf=0.2125)
+Audio duration: 00:35:42
+True Pos, False Neg, False Pos 183511 6388 7995
+Recall=0.9664, FA=0.0417
+Found 3 speakers, GT got 4 speakers
+6556 8202 96578 189523
+DER=0.5875 (Miss=0.0346, FA=0.0433, Conf=0.5096)
+
+
+Missing Speech & False Alarm rate quite low 3-4%
+Confusion rate really high: 20-50%
+
+Avg Error: 0.06264803429824183 0.04415160547258035 0.3161122574441372

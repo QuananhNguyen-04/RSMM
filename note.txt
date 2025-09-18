@@ -7,7 +7,6 @@
 
 asr first the diarize later better
 
-
 Phase2:
 Transcript: metadata / non-meta
 -> chunking (theo metadata/ size)
