@@ -157,3 +157,73 @@ def normalize_speaker_label(lbl):
 def normalize_labels(labels):
     """Normalize a list of speaker labels into integer indices."""
     return [normalize_speaker_label(lbl) for lbl in labels]
+
+def save_transcriptions_json(transcriptions: list, output_path: str = "transcriptions.json"):
+    """
+    Persist a list of transcription objects to disk as formatted JSON.
+
+    Parameters
+    ----------
+    transcriptions : list
+        A Python list of dicts, each containing 'start', 'end', 'speaker', and 'text'.
+    output_path : str
+        Target file path for the JSON output.
+    """
+    if not isinstance(transcriptions, list):
+        raise TypeError("Expected 'transcriptions' to be a list, not a string or other type.")
+
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(transcriptions, f, indent=4, ensure_ascii=False)
+
+    print(f"[INFO] Successfully saved {len(transcriptions)} segments → {output_path}")
+
+    
+def concat_json_arrays(raw_output: str):
+    """
+    Parse a string containing one or multiple JSON arrays (possibly concatenated)
+    and return a single merged Python list.
+
+    Parameters
+    ----------
+    raw_output : str
+        The raw string output from diarization postprocessing (may contain multiple arrays).
+
+    Returns
+    -------
+    list
+        Merged list of all transcription segments.
+    """
+    cleaned = raw_output.strip()
+    cleaned = re.sub(r"^```(?:json)?|```$", "", cleaned, flags=re.MULTILINE).strip()
+
+    # Find all JSON arrays within the text
+    arrays = re.findall(r"\[[\s\S]*?\]", cleaned)
+    if not arrays:
+        raise ValueError("No JSON arrays found in the provided string.")
+
+    merged = []
+    for arr in arrays:
+        try:
+            data = json.loads(arr)
+            if isinstance(data, list):
+                merged.extend(data)
+        except json.JSONDecodeError:
+            # Skip malformed chunks silently or log as needed
+            continue
+
+    cleaned_merged = []
+    for item in merged:
+        if not isinstance(item, dict):
+            continue
+
+        start_ok = bool(item.get("start"))
+        end_ok = bool(item.get("end"))
+        speaker_ok = bool(item.get("speaker"))
+        text_ok = bool(item.get("text"))
+
+        if start_ok and end_ok and speaker_ok and text_ok:
+            cleaned_merged.append(item)
+
+    return cleaned_merged

@@ -1,32 +1,44 @@
 # [markdown]
 # # Information Retrieval and Summarization on Multiple Users Meeting
 
-# from transformers.file_utils import cached_path, hf_bucket_url
-from pathlib import Path
+# Standard Library
+# import os
+# import io
+# import re
+import json
 import random
-from datasets import load_dataset, Audio
-import torch
-import os, json, io, re, requests
-from sklearn.cluster import AgglomerativeClustering, SpectralClustering, KMeans
-from sklearn.decomposition import PCA
-from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
-from scipy.cluster.hierarchy import linkage, fcluster
-from scipy.linalg import eigh
-from scipy.spatial.distance import pdist, squareform
-from sklearn.metrics import silhouette_score, davies_bouldin_score
-from sklearn.metrics.pairwise import cosine_similarity
-from tqdm import tqdm
-from transformers.models.wavlm import WavLMModel
-from whisper.model import Whisper
 import warnings
+from pathlib import Path
+from typing import Tuple, List, Dict
+from importlib.machinery import SourceFileLoader
 
-from transform_mp4 import mp4_to_wav
+# Third-party: Core Scientific / ML
+import numpy as np
+import torch
+import requests
+import dotenv
 
-warnings.filterwarnings("ignore", module="whisper.timing")
-import umap
-import matplotlib.pyplot as plt
-from scipy.optimize import linear_sum_assignment
+# Hugging Face / Datasets / Transformers
+# from datasets import load_dataset, Audio
+from huggingface_hub import hf_hub_download
 
+from transformers import (
+    Wav2Vec2Processor,
+    Wav2Vec2ForCTC,
+    # Wav2Vec2ProcessorWithLM,
+    AutoProcessor,
+    AutoModelForSpeechSeq2Seq,
+    # pipeline,
+)
+from transformers.models.wavlm import WavLMModel
+
+# Speech / Audio Models
+from whisper.model import Whisper
+from speechbrain.utils.fetching import LocalStrategy
+from speechbrain.inference import EncoderClassifier
+from groq import Groq
+
+# Audio Processing
 import soundfile as sf
 from silero_vad import (
     load_silero_vad,
@@ -37,22 +49,36 @@ from silero_vad import (
     collect_chunks,
 )
 
-from huggingface_hub import hf_hub_download
-from importlib.machinery import SourceFileLoader
-
-# from transformers.pipelines import pipeline
-# from transformers.models.auto import AutoProcessor, AutoModelForSpeechSeq2Seq
-from transformers import (
-    Wav2Vec2Processor,
-    Wav2Vec2ForCTC,
-    # Wav2Vec2ProcessorWithLM,
-    AutoProcessor,
-    AutoModelForSpeechSeq2Seq,
+# Clustering / Metrics / Dimensionality Reduction
+from sklearn.cluster import (
+    AgglomerativeClustering,
+    SpectralClustering,
+    KMeans,
 )
-from typing import Tuple, List, Dict
-from speechbrain.utils.fetching import LocalStrategy
-from speechbrain.inference import EncoderClassifier
-import numpy as np
+from sklearn.decomposition import PCA
+from sklearn.metrics import (
+    adjusted_rand_score,
+    normalized_mutual_info_score,
+    silhouette_score,
+    davies_bouldin_score,
+)
+from sklearn.metrics.pairwise import cosine_similarity
+
+from scipy.cluster.hierarchy import linkage, fcluster
+from scipy.linalg import eigh
+from scipy.spatial.distance import pdist, squareform
+from scipy.optimize import linear_sum_assignment
+
+import umap
+
+# Visualization
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from tqdm import tqdm
+
+# Local Project Utilities
+from transform_mp4 import mp4_to_wav
+
 from rsmm_utils import (
     # dump_dataset_paths,
     load_audio,
@@ -64,14 +90,17 @@ from rsmm_utils import (
     group_runs,
     extract_frame_errors,
     normalize_labels,
+    save_transcriptions_json,
+    concat_json_arrays,
 )
+
 from embd_speech_seg import (
     extract_embeddings_from_segments,
     extract_wavlm_embeddings_from_segments,
 )
-import dotenv
-from groq import Groq
 
+# Warnings Configuration
+warnings.filterwarnings("ignore", module="whisper.timing")
 
 def eval_detection(detected, ground_truth, tolerance=0.01):
     """
@@ -625,11 +654,6 @@ def assign_speakers(transcripts, diar_segments, sr, snap_gap_sec=1):
         )
 
     return results
-
-
-# [markdown]
-# ### Diarization
-
 
 def run_vad_segmentation(waveform, vad_model, sample_rate):
     return get_speech_timestamps(
@@ -1474,169 +1498,6 @@ def diarization(
         "pivots": wavlm_pivot_centers,
     }
 
-
-# def diarization(
-#     waveform,
-#     sample_rate,
-#     vad_model,
-#     encoder_large,
-#     encoder_small,
-#     meta=None,
-#     use_cosine_norm=False,
-#     plot=True,
-# ):
-#     """
-#     Full diarization pipeline.
-#       Phase 1: Coarse clustering with ECAPA.
-#       Phase 2: Intra-cluster refinement with WavLM (subsegments, outliers, skipped).
-#       Phase 3: [To be implemented] Cross-cluster relabeling using Phase-2 outliers and skipped.
-#     """
-
-#     # ------------------------------
-#     # Phase 1 — Coarse structure
-#     # ------------------------------
-#     speech_segments = run_vad_segmentation(waveform, vad_model, sample_rate)
-#     valid_segments, skipped_segments = split_segments_by_length(
-#         speech_segments, sample_rate
-#     )
-
-#     embeddings_large = extract_large_embeddings(waveform, encoder_large, valid_segments)
-#     embeddings_large_norm = normalize_if_needed(embeddings_large, use_cosine_norm)
-
-#     speaker_labels, n_speakers, labeled_large_segments = cluster_large_segments(
-#         valid_segments, embeddings_large_norm
-#     )
-#     print(f"Phase 1: Detected {n_speakers} speakers in coarse clustering.")
-#     print(f"Process {len(labeled_large_segments)} valid segments in Phase 1.")
-#     print(f"Skipped {len(skipped_segments)} short segments in Phase 1.")
-#     # --- Phase 2: Refine clusters with WavLM ---
-#     phase2_result = refine_clusters_with_wavlm(
-#         waveform,
-#         encoder_small,
-#         valid_segments=labeled_large_segments,
-#         skipped_segments=skipped_segments,
-#         speaker_labels=speaker_labels,
-#         n_speakers=len(set(speaker_labels)),
-#         use_cosine_norm=use_cosine_norm,
-#     )
-
-#     # return {
-#     #     "refined_clusters": refined_clusters,
-#     #     "refined_segments": refined_segments,
-#     #     "outliers": all_outliers,
-#     #     "outlier_embeddings": all_outlier_embs,
-#     #     "skipped_embeddings": skipped_embs,
-#     #     "skipped_segments": skipped_segments,
-#     #     "all_embeddings": all_embs,
-#     #     "all_labels": all_labels,
-#     # }
-
-#     refined_clusters = phase2_result["refined_clusters"]
-#     refined_segments = phase2_result["refined_segments"]
-#     outlier_embeddings = phase2_result["outlier_embeddings"]
-#     outlier_segments = phase2_result["outliers"]
-#     skipped_embeddings = phase2_result["skipped_embeddings"]
-#     skipped_segments = phase2_result["skipped_segments"]
-
-#     print(
-#         "shape of outlier and skipped embeddings:",
-#         outlier_embeddings.shape,
-#         skipped_embeddings.shape,
-#     )
-#     # --- Phase 3: Relabel skipped and outlier segments ---
-#     relabel_result = relabel_outliers_and_skipped(
-#         refined_clusters=refined_clusters,
-#         skipped_embeddings=skipped_embeddings,
-#         skipped_segments=skipped_segments,
-#         outlier_embeddings=outlier_embeddings,
-#         outlier_segments=outlier_segments,
-#     )
-#     # return {
-#     #     "segments_reassigned": labeled_segments,
-#     #     "assignments": assignments,
-#     #     "n_speakers_total": n_speakers_total,
-#     #     "centroid_keys": centroid_keys,
-#     # }
-
-#     relabeled_segments = relabel_result["segments_reassigned"]
-
-#     # --- Merge all segments coherently ---
-#     merged_segments = merge_segments_consistently(
-#         labeled_large_segments=labeled_large_segments,
-#         refined_segments=refined_segments,
-#         relabeled_segments=relabeled_segments,
-#     )
-#     merged_segments = sorted(merged_segments, key=lambda x: x["start"])
-#     check_parent_splitting(
-#         valid_large_segments=labeled_large_segments,
-#         phase2_result=phase2_result,
-#         merged_segments=merged_segments)
-#     # --- Optional visualization ---
-#     if plot:
-#         small_emb_dim = (
-#             outlier_embeddings.shape[1]
-#             if len(outlier_embeddings)
-#             else (skipped_embeddings.shape[1] if len(skipped_embeddings) else 0)
-#         )
-#         if small_emb_dim == 0:
-#             small_embs = np.empty((0, 0))
-#         else:
-#             small_embs = np.concatenate(
-#                 [
-#                     (
-#                         outlier_embeddings
-#                         if len(outlier_embeddings)
-#                         else np.empty((0, small_emb_dim))
-#                     ),
-#                     (
-#                         skipped_embeddings
-#                         if len(skipped_embeddings)
-#                         else np.empty((0, small_emb_dim))
-#                     ),
-#                 ],
-#                 axis=0,
-#             )
-
-#         # Phase 3 output: re-assigned short/outlier segments
-#         small_labels = [seg["speaker"] for seg in relabeled_segments]
-
-#         visualize_embeddings(
-#             phase2_result["all_embeddings"],
-#             small_embs,
-#             phase2_result["all_labels"],
-#             small_labels,
-#         )
-#     # --- Return final output for benchmark ---
-#     return {
-#         "segments_large": labeled_large_segments,
-#         "segments_refined": refined_segments,
-#         "segments_reassigned": relabeled_segments,
-#         "merged_segments": merged_segments,
-#         "labels": [seg["speaker"] for seg in merged_segments],
-#         "outliers": outlier_segments,
-#     }
-
-#     # if plot:
-#     #     visualize_embeddings(
-#     #         embeddings_large_norm,
-#     #         phase2_result["wavlm_all_embs"],
-#     #         speaker_labels,
-#     #         phase2_result["wavlm_all_labels"],
-#     #     )
-
-#     # return {
-#     #     "segments_large": labeled_large_segments,
-#     #     "merged_segments": merged_segments,
-#     #     "refined_clusters": refined_clusters,
-#     #     "outliers": outliers,
-#     #     "skipped_embeddings": skipped_embs,
-#     #     "labels": [seg["speaker"] for seg in merged_segments],
-#     # }
-
-# [markdown]
-# ### Benchmark
-
-
 def der_benchmark(speech_segments, sample_rate, speaker_labels, meta):
     """
     Benchmark diarization performance with ground-truth metadata.
@@ -1702,9 +1563,6 @@ def der_benchmark(speech_segments, sample_rate, speaker_labels, meta):
     )
 
     return recall, false_alarm
-
-
-import matplotlib.patches as mpatches
 
 
 def map_speakers_by_overlap(gt_data, sys_data):
@@ -2159,82 +2017,6 @@ def correction_asr(text: str) -> dict:
         return {"error": "Invalid JSON returned by LLM", "raw": raw_output}
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}", "raw": raw_output}
-
-
-def save_transcriptions_json(
-    transcriptions: list, output_path: str = "transcriptions.json"
-):
-    """
-    Persist a list of transcription objects to disk as formatted JSON.
-
-    Parameters
-    ----------
-    transcriptions : list
-        A Python list of dicts, each containing 'start', 'end', 'speaker', and 'text'.
-    output_path : str
-        Target file path for the JSON output.
-    """
-    if not isinstance(transcriptions, list):
-        raise TypeError(
-            "Expected 'transcriptions' to be a list, not a string or other type."
-        )
-
-    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(transcriptions, f, indent=4, ensure_ascii=False)
-
-    print(f"[INFO] Successfully saved {len(transcriptions)} segments → {output_path}")
-
-
-def concat_json_arrays(raw_output: str):
-    """
-    Parse a string containing one or multiple JSON arrays (possibly concatenated)
-    and return a single merged Python list.
-
-    Parameters
-    ----------
-    raw_output : str
-        The raw string output from diarization postprocessing (may contain multiple arrays).
-
-    Returns
-    -------
-    list
-        Merged list of all transcription segments.
-    """
-    cleaned = raw_output.strip()
-    cleaned = re.sub(r"^```(?:json)?|```$", "", cleaned, flags=re.MULTILINE).strip()
-
-    # Find all JSON arrays within the text
-    arrays = re.findall(r"\[[\s\S]*?\]", cleaned)
-    if not arrays:
-        raise ValueError("No JSON arrays found in the provided string.")
-
-    merged = []
-    for arr in arrays:
-        try:
-            data = json.loads(arr)
-            if isinstance(data, list):
-                merged.extend(data)
-        except json.JSONDecodeError:
-            # Skip malformed chunks silently or log as needed
-            continue
-
-    cleaned_merged = []
-    for item in merged:
-        if not isinstance(item, dict):
-            continue
-
-        start_ok = bool(item.get("start"))
-        end_ok = bool(item.get("end"))
-        speaker_ok = bool(item.get("speaker"))
-        text_ok = bool(item.get("text"))
-
-        if start_ok and end_ok and speaker_ok and text_ok:
-            cleaned_merged.append(item)
-
-    return cleaned_merged
-
 
 DATASET_DIR = "audio_out"
 
