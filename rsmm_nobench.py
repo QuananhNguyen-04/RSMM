@@ -2102,7 +2102,7 @@ def load_vlsp2020_model_no_lm(device="cuda"):
     Loads Wav2Vec2-base-vi-vlsp2020 WITHOUT LM.
     Windows-compatible (no KenLM).
     """
-    model_name = "nguyenvulebinh/wav2vec2-base-vi-vlsp2020" # large version is too slow
+    model_name = "nguyenvulebinh/wav2vec2-large-vi-vlsp2020" # large version is too slow
 
     py_path = hf_hub_download(repo_id=model_name, filename="model_handling.py")
     module = SourceFileLoader("vlsp2020", py_path).load_module()
@@ -2168,8 +2168,8 @@ def transcribe_chunks_vlsp2020(waveform, sr, chunks, device="cuda"):
         transcripts.append(
             {
                 "chunk_id": i,
-                "start": c["start"],
-                "end": c["end"],
+                "start": convert_seconds_to_hhmmss(c["start"] / sr) ,
+                "end": convert_seconds_to_hhmmss(c["end"] / sr),
                 "text": text,
                 "words": None,
             }
@@ -2363,7 +2363,7 @@ def merge_corrected_spans(spans: list, overlap: int = 6) -> str:
 client = Groq(api_key=dotenv.get_key(dotenv.find_dotenv(), "GROQ_API"))
 
 if __name__ == "__main__":
-    source_path = Path("./audio_out/sample_tv3/audio.wav")  # variable later
+    source_path = Path("./anm_onthi_final.wav")  # variable later
 
     if not source_path.exists():
         # Try MP4 fallback
@@ -2389,22 +2389,22 @@ if __name__ == "__main__":
     print(f"Audio duration: {hours:02d}:{minutes:02d}:{seconds:02d}")
 
     # speech_segments, labeled_segments, speaker_labels = diarization(waveform, sample_rate, vad_model, speaker_encoder, row)
-    diar_map = diarization(
-        waveform,
-        sample_rate,
-        vad_model,
-        speaker_encoder,
-        wavlm_model,
-        use_cosine_norm=True,
-        plot=False,
-    )
-    speech_segments = diar_map["merged_segments"]
-    speaker_labels = diar_map["labels"]
+    # diar_map = diarization(
+    #     waveform,
+    #     sample_rate,
+    #     vad_model,
+    #     speaker_encoder,
+    #     wavlm_model,
+    #     use_cosine_norm=True,
+    #     plot=False,
+    # )
+    # speech_segments = diar_map["merged_segments"]
+    # speaker_labels = diar_map["labels"]
 
-    chunks = chunk_by_silence_and_overlap(
-        speech_segments, sample_rate, max_chunk=60, overlap=2
-    )
-    # chunks = chunk_fixed_only(waveform.shape[1], sample_rate)
+    # chunks = chunk_by_silence_and_overlap(
+    #     speech_segments, sample_rate, max_chunk=60, overlap=2
+    # )
+    chunks = chunk_fixed_only(waveform.shape[1], sample_rate)
     # print(chunks)
 
     # Choose model here:
