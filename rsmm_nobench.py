@@ -2363,7 +2363,7 @@ def merge_corrected_spans(spans: list, overlap: int = 6) -> str:
 client = Groq(api_key=dotenv.get_key(dotenv.find_dotenv(), "GROQ_API"))
 
 if __name__ == "__main__":
-    source_path = Path("./anm_onthi_final.wav")  # variable later
+    source_path = Path("./dợt-báo-cáo_1.wav")  # variable later
 
     if not source_path.exists():
         # Try MP4 fallback
