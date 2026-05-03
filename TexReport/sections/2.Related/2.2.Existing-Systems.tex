@@ -1,0 +1,27 @@
+\subsection{Các hệ thống và nền tảng có sẵn}
+
+Hiện nay đã tồn tại nhiều hệ thống, framework và dịch vụ có khả năng giải quyết toàn bộ hoặc một phần bài toán truy xuất và tổng hợp thông tin từ cuộc họp nhiều người. Các giải pháp này có thể được phân loại theo phạm vi xử lý như sau:
+
+\begin{itemize}
+    \item \textbf{Hệ thống xử lý tiếng nói (Speech Processing)}:
+    \begin{itemize}
+        \item \textit{Whisper} (OpenAI): mô hình ASR end-to-end, hỗ trợ đa ngôn ngữ, có độ ổn định cao trong môi trường hội họp nhưng không tích hợp trực tiếp speaker diarization.
+        \item \textit{pyannote.audio}: framework chuyên sâu cho các tác vụ phân đoạn tiếng nói và định danh người nói, được sử dụng rộng rãi trong nghiên cứu diarization, nhưng yêu cầu tích hợp với ASR và các thành phần phía sau.
+        \item \textit{NVIDIA NeMo}: nền tảng cung cấp các mô hình ASR, diarization và speech processing theo hướng mô-đun, phù hợp cho xây dựng pipeline nhưng đòi hỏi tài nguyên phần cứng lớn.
+        \item \textit{SpeechBrain}: thư viện nghiên cứu hỗ trợ ASR, diarization và embedding tiếng nói, linh hoạt nhưng chưa tối ưu cho triển khai quy mô lớn.
+    \end{itemize}
+
+    \item \textbf{Hệ thống truy xuất và tổng hợp thông tin (Retrieval \& Summarization)}:
+    \begin{itemize}
+        \item \textit{LangChain}: framework xây dựng pipeline RAG, hỗ trợ tích hợp LLM, embedding và vector database, phù hợp cho truy xuất ngữ nghĩa từ văn bản hội thoại.
+        \item \textit{LlamaIndex}: hệ thống tổ chức và truy xuất dữ liệu văn bản quy mô lớn, hỗ trợ nhiều chiến lược indexing và retrieval, nhưng không xử lý trực tiếp dữ liệu âm thanh.
+        \item \textit{Haystack}: framework RAG hướng sản phẩm, hỗ trợ retrieval và question answering, yêu cầu dữ liệu đầu vào đã ở dạng văn bản.
+    \end{itemize}
+
+    \item \textbf{Hệ thống end-to-end thương mại}:
+    \begin{itemize}
+        \item \textit{Otter.ai}, \textit{Fireflies.ai}, \textit{Zoom AI Companion}: cung cấp giải pháp hoàn chỉnh cho ghi âm, nhận dạng, tóm tắt và truy vấn nội dung cuộc họp. Các hệ thống này dễ sử dụng nhưng hạn chế khả năng tùy chỉnh, khó kiểm soát pipeline xử lý và không phù hợp cho phân tích thuật toán chi tiết.
+    \end{itemize}
+\end{itemize}
+
+Mặc dù các hệ thống trên có thể đáp ứng tốt nhu cầu ứng dụng thực tế, chúng hoặc chỉ giải quyết một phần bài toán, hoặc hoạt động như hộp đen ở mức end-to-end. Trong khuôn khổ đồ án, việc xây dựng hệ thống theo pipeline mô-đun dựa trên các framework như Whisper, pyannote hoặc NeMo cho phép kiểm soát chi tiết từng bước xử lý, phân tích lỗi và đánh giá tác động của từng thành phần tới chất lượng truy xuất và tổng hợp thông tin.

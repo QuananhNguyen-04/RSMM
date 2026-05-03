@@ -1,0 +1,131 @@
+\subsection{Đánh giá Định danh người nói}
+Các thí nghiệm đánh giá diarization được thực hiện trên cùng một tập dữ liệu, với cùng cấu hình tiền xử lý và VAD. Mỗi cấu hình chỉ thay đổi một thành phần tại một thời điểm nhằm đảm bảo tính công bằng trong so sánh.
+
+Chất lượng diarization được đánh giá bằng hai chỉ số: Diarization Error Rate (DER) và chất lượng ánh xạ nhãn (label matching quality), trong đó DER phản ánh lỗi tổng thể ở mức thời gian, còn label matching quality phản ánh mức độ ổn định của cụm người nói.
+
+Chỉ số DER tổng hợp phản ánh chất lượng phân đoạn tổng thể, tuy nhiên các thành phần cấu thành như Miss và Confusion có ý nghĩa quan trọng trong bối cảnh hệ thống xử lý tiếng nói nhiều tầng.
+Đặc biệt, lỗi Miss ảnh hưởng trực tiếp đến lượng dữ liệu đầu vào cho ASR, trong khi lỗi Confusion là chỉ số trực tiếp để so sánh độ hiệu quả của các mô hình.
+
+\subsubsection{Kịch bản 1: So sánh giữa ECAPA-TDNN và TitaNet-large}
+Kịch bản này nhằm so sánh hai mô hình trích xuất speaker embedding phổ biến là ECAPA-TDNN và TitaNet trong cùng điều kiện dữ liệu và siêu tham số. Các mô hình được đánh giá trực tiếp thông qua kết quả diarization tổng thể, thay vì hiệu suất embedding riêng lẻ. Mục tiêu là xác định mô hình cho kết quả ổn định hơn và phù hợp hơn với pipeline hiện tại.
+
+\begin{table}[h]
+\centering
+\caption{So sánh ECAPA-TDNN và TitaNet trên các chỉ số diarization}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Mô hình} & \textbf{DER} & \textbf{Miss} & \textbf{Conf} & \textbf{Quality} \\
+\hline
+ECAPA-TDNN (Set 1) & 0.49 & 0.13 & 0.31 & 0.54 \\
+TitaNet-Large (Set 1) & 0.44 & 0.13 & 0.26 & 0.59 \\
+ECAPA-TDNN (Set 2) & 0.54 & 0.08 & 0.38 & 0.53 \\
+TitaNet-Large (Set 2) & 0.53 & 0.08 & 0.37 & 0.54 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Nhận xét}: Kết quả cho thấy hai kiến trúc ECAPA-TDNN và TitaNet-Large không có khác biệt đáng kể về DER và Quality tổng thể. Với cùng các bộ siêu tham số, Miss không thay đổi, Confusion Error của TitaNet-Large cho kết quả thấp hơn. 
+
+Giữa hai tập siêu tham số, Set~2 cho tỷ lệ Miss thấp hơn đáng kể so với Set~1, tuy nhiên lại làm tăng lỗi Confusion, dẫn đến DER tổng thể cao hơn. Kết quả này phản ánh sự đánh đổi giữa việc giảm Miss và khả năng phân cụm chính xác các người nói trong pipeline diarization.
+
+\textbf{Kết luận}: Hai mô hình cho kết quả tương đối gần nhau trong các cấu hình thử nghiệm. Trong bối cảnh pipeline hiện tại, sự khác biệt giữa hai mô hình không mang ý nghĩa thống kê rõ ràng, và việc lựa chọn mô hình phụ thuộc nhiều hơn vào độ ổn định, thời gian xử lý và sự phù hợp với các bước xử lý phía sau như ASR.
+
+\subsubsection{Kịch bản 2: So sánh giữa Spectral Clustering và AHC}
+Kịch bản này đánh giá ảnh hưởng của thuật toán phân cụm đến chất lượng diarization, khi giữ cố định mô hình embedding. Hai phương pháp phân cụm được so sánh là Spectral Clustering và Agglomerative Hierarchical Clustering (AHC), với mục tiêu lựa chọn phương án cho kết quả nhất quán và ít lỗi hơn trong pipeline.
+
+Kết quả thực nghiệm cho thấy Spectral Clustering đạt chất lượng tổng thể cao hơn so với AHC. Cụ thể, giá trị Quality trung bình trên 16 phiên hội họp của Spectral đạt 0.7075, cao hơn so với 0.6913 của AHC. Đồng thời, Spectral Clustering cho thấy tỷ lệ Miss thấp hơn (0.088 so với 0.099), cho thấy khả năng giữ lại nội dung thoại tốt hơn, qua đó giảm nguy cơ mất thông tin quan trọng cho bước nhận dạng tiếng nói. Tỷ lệ Confusion giữa hai phương pháp là tương đương, tuy nhiên Spectral vẫn duy trì lợi thế nhỏ về độ ổn định khi số lượng người nói tăng.
+
+Từ các kết quả trên, Spectral Clustering được lựa chọn làm phương pháp phân cụm mặc định trong pipeline diarization của hệ thống, trong khi AHC được sử dụng như một phương pháp baseline để đối chứng.
+
+\subsubsection{Kịch bản 3: So sánh 1 lớp phân tích và 2 lớp phân tích}
+
+So sánh giữa cấu hình Spectral Clustering một lớp và hai lớp cho thấy cấu hình hai lớp đạt hiệu năng tốt hơn về mặt chất lượng phân cụm, đặc biệt khi xét trên các chỉ số phản ánh trực tiếp độ chính xác của diarization pipeline. Cụ thể, cấu hình một lớp đạt DER xấp xỉ 0.10, với Miss khoảng 0.08 và Confusion quanh mức 0.20, trong khi cấu hình hai lớp đạt DER khoảng 0.097, với Confusion giảm xuống còn khoảng 0.18.
+
+Mặc dù mức cải thiện DER tổng thể là không lớn, sự khác biệt thể hiện rõ hơn ở chỉ số Quality. Cấu hình một lớp đạt Quality trung bình khoảng 0.70, trong khi cấu hình hai lớp đạt khoảng 0.72. Cần lưu ý rằng Quality không phải là thang đo tuyến tính, do đó mức tăng từ 0.70 lên 0.72 phản ánh sự cải thiện đáng kể về độ nhất quán nhãn và mức độ khớp giữa các cụm người nói, đặc biệt trong các vùng ranh giới khó và các đoạn hội thoại có chồng lấn.
+
+Kết quả này cho thấy lớp phân tích bổ sung giúp giảm đáng kể lỗi Confusion, vốn là thành phần lỗi ảnh hưởng trực tiếp đến chất lượng diarization và các bước xử lý phía sau như ASR và truy xuất nội dung. Do đó, dù các phân đoạn ngắn chỉ chiếm tỷ lệ nhỏ trong tổng thời lượng, tác động của cấu hình hai lớp vẫn thể hiện rõ ràng trên các chỉ số chất lượng cốt lõi.
+
+So với các kết quả được báo cáo trong các công trình trước, bao gồm các hệ thống dựa trên \textit{pyannote} và các bộ benchmark tổng hợp như \textit{SDBench}\cite{sdbench}, mức DER đạt được trong kịch bản này nằm trong cùng dải giá trị với các hệ thống diarization hiện đại trong điều kiện dữ liệu tương tự. Điều này cho thấy pipeline đề xuất đạt được hiệu năng cạnh tranh, đồng thời duy trì tính đơn giản và khả năng kiểm soát trong thiết kế.
+
+Từ góc độ hệ thống, cấu hình hai lớp được xem là phương án phù hợp khi mục tiêu ưu tiên giảm Confusion và cải thiện chất lượng nhãn người nói, đặc biệt trong bối cảnh xử lý cuộc họp nhiều người và phục vụ cho các tác vụ truy xuất và tổng hợp thông tin ở giai đoạn sau.
+
+
+
+\subsection{Đánh giá Mô-đun Truy xuất và Tạo sinh (RAG)}
+\label{sec:eval_rag}
+
+Để kiểm chứng hiệu quả thực tế của hệ thống, chúng tôi tiến hành đánh giá trên tập dữ liệu biên bản thực tế liên quan đến các dự án hạ tầng và phát triển đô thị. Quá trình đánh giá tập trung vào khả năng xử lý dữ liệu hội thoại tự nhiên (có nhiễu từ ASR) và độ chính xác trong việc trích xuất thông tin nghiệp vụ.
+
+\subsubsection{Dữ liệu kiểm thử (Evaluation Dataset)}
+Hệ thống được nạp dữ liệu từ 04 bản ghi âm (transcript) thực tế với tổng thời lượng khoảng 30 phút, xoay quanh chủ đề hoạt động của Tổng công ty Nước - Môi trường Bình Dương (BIWASE). Đặc điểm của bộ dữ liệu bao gồm:
+
+\begin{itemize}
+    \item \textbf{Độ phức tạp dữ liệu:} Văn bản đầu vào là kết quả từ mô hình ASR, không có dấu câu, chứa nhiều từ ngữ chuyên ngành (ví dụ: "xã hội hóa", "hợp tác công tư") và các lỗi nhận dạng đặc trưng (ví dụ: "mê ga goát" thay vì MW, "ô đê a" thay vì ODA).
+    \item \textbf{Nội dung:}
+    \begin{itemize}
+        \item \textit{File 1 (Lịch sử doanh nghiệp):} Chứa nhiều mốc thời gian lịch sử (1976, 2016), sự kiện cổ phần hóa và các con số tài chính[cite: 2].
+       \item \textit{File 4 (Dự án Nhà máy nước Dĩ An 2):} Thông tin chi tiết về công suất (50.000 $m^3$/ngày), vốn đầu tư (450 tỷ đồng) và hình thức đầu tư xã hội hóa[cite: 1].
+        \item \textit{File 2 \& 3 (Dự án Điện rác):} Các bản tin ngắn về khởi công nhà máy đốt rác phát điện với các thông số kỹ thuật[cite: 3, 4].
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Kết quả đánh giá theo kịch bản (Case Studies)}
+Chúng tôi thực hiện truy vấn hệ thống với các kịch bản thực tế để đánh giá khả năng vượt qua nhiễu ASR và tổng hợp thông tin.
+
+\paragraph{Kịch bản 1: Truy xuất sự kiện và Số liệu (Fact Retrieval)}
+\textbf{Mục tiêu:} Kiểm tra khả năng "bắt" chính xác các con số và thực thể tên riêng trong văn bản dài.
+
+\begin{itemize}
+    \item \textbf{Câu hỏi:} "Công suất và tổng vốn đầu tư của nhà máy nước Dĩ An 2 là bao nhiêu?"
+    \item \textbf{Ngữ cảnh khó:} Thông tin nằm trong một đoạn văn bản dài không dấu chấm phẩy, các con số viết bằng chữ (bốn trăm năm mươi tỷ đồng).
+    \item \textbf{Kết quả trả về của hệ thống:}
+    \begin{quote}
+        \textit{"Nhà máy nước Dĩ An 2 có công suất \textbf{50.000 $m^3$/ngày đêm} (giai đoạn 2) và tổng vốn đầu tư khoảng \textbf{450 tỷ đồng}."}
+    \end{quote}
+    \item \textbf{Phân tích:} Hệ thống đã định vị chính xác đoạn văn bản trong \texttt{trans\_f4.json} chứa cụm từ "bốn trăm năm mươi tỷ đồng" [cite: 1] và chuẩn hóa lại thành số liệu dễ đọc.
+\end{itemize}
+
+\paragraph{Kịch bản 2: Xử lý nhiễu ASR và Từ đồng nghĩa}
+\textbf{Mục tiêu:} Đánh giá khả năng hiểu ngữ nghĩa khi từ khóa truy vấn khác với văn bản gốc do lỗi ASR.
+
+\begin{itemize}
+    \item \textbf{Câu hỏi:} "Công suất giai đoạn 1 là bao nhiêu?"
+    \item \textbf{Thách thức:} Trong văn bản gốc (File 2), ASR nhận diện sai một số thuật ngữ (ví dụ: "bi guết" thay vì BIWASE, "mời hai mi ga rát" thay vì 12 MW)[cite: 3].
+    \item \textbf{Kết quả trả về của hệ thống:}
+    \begin{quote}
+        \textit{"12 MW."}
+    \end{quote}
+   \item \textbf{Phân tích:} Dù văn bản gốc chứa nhiều lỗi nhận dạng ("mời hai mi ga rát")[cite: 3], cơ chế tìm kiếm Vector (Semantic Search) vẫn tìm được đoạn văn bản liên quan nhờ ngữ cảnh xung quanh , chứng minh tính vượt trội so với tìm kiếm từ khóa truyền thống.
+\end{itemize}
+
+\paragraph{Kịch bản 3: Tổng hợp thông tin đa mốc thời gian}
+\textbf{Mục tiêu:} Kiểm tra khả năng tổng hợp lịch sử phát triển từ văn bản phi cấu trúc.
+
+\begin{itemize}
+    \item \textbf{Câu hỏi:} "Dự án này có những mốc thời gian quan trọng nào?"
+    \item \textbf{Kết quả trả về:}
+    \begin{quote}
+        - Sáng ngày 6 tháng 6: Khởi động dự án.
+        - Năm 2024: Nhà máy điện gió sẽ đi vào vận hành.
+        - Năm 2045: Liên quan đến dự án nhà máy điện gió.
+    \end{quote}
+    \item \textbf{Phân tích:} Hệ thống đã trích xuất thành công chuỗi sự kiện từ \texttt{trans\_f1.json}, bỏ qua các thông tin rườm rà để tóm tắt chính xác các mốc thời gian quan trọng.
+\end{itemize}
+
+\subsection{Thảo luận và Hạn chế}
+Kết quả thực nghiệm trên bộ dữ liệu BIWASE bước đầu cho thấy tiềm năng ứng dụng của hệ thống trong việc hỗ trợ tra cứu thông tin cuộc họp:
+
+\begin{enumerate}
+    \item \textbf{Khả năng chống nhiễu ngữ nghĩa:} Hệ thống RAG hoạt động ổn định ngay cả khi đầu vào ASR sai chính tả hoặc nhận diện sai tên riêng (ví dụ: hiểu được "ô đê a" là ODA, "bi hoa xe" là BIWASE) nhờ cơ chế tìm kiếm Vector (Semantic Search) thay vì so khớp từ khóa cứng nhắc.
+    
+    \item \textbf{Chuẩn hóa thông tin:} LLM đóng vai trò quan trọng trong việc "làm sạch" dữ liệu, chuyển đổi các con số từ dạng chữ sang dạng số và tóm tắt các đoạn văn bản dài dòng thành các ý chính cô đọng.
+    
+    \item \textbf{Hạn chế về Phương pháp Đánh giá (Evaluation Limitations):} Do hạn chế về xây dựng bộ dữ liệu kiểm thử chuẩn (Ground Truth) và đặc thù dữ liệu hội thoại tự nhiên, quá trình đánh giá hiện tại tồn tại các điểm yếu sau:
+    \begin{itemize}
+        \item \textit{Đánh giá định tính (Qualitative only):} Kết quả hiện tại dựa trên việc kiểm tra thủ công các kịch bản (Case Studies). Hệ thống chưa được đánh giá định lượng bằng các chỉ số tiêu chuẩn trong RAG như Context Precision, Context Recall hay Faithfulness score.
+        \item \textit{Chưa phân tách lỗi (Decoupling Issue):} Đánh giá hiện tại tập trung vào kết quả đầu ra cuối cùng (End-to-End). Chưa có cơ chế tách biệt để đo lường xem lỗi xuất phát từ khâu Truy xuất (Retrieval - không tìm thấy thông tin) hay khâu Tạo sinh (Generation - LLM trả lời sai dù có thông tin), gây khó khăn cho việc tối ưu hóa chi tiết.
+    \end{itemize}
+
+    \item \textbf{Rủi ro sai lệch thông tin:} Với các lỗi ASR quá nghiêm trọng làm thay đổi hoàn toàn ngữ nghĩa (ví dụ: "điện gió" thay vì "điện giác"), hệ thống vẫn có nguy cơ trích xuất sai nếu không có cơ chế kiểm chứng chéo từ nhiều nguồn dữ liệu khác nhau.\cite{app14041329}
+\end{enumerate}
+

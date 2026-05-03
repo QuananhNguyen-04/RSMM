@@ -1,0 +1,24 @@
+\subsection{Đánh giá tóm tắt đa tầng}
+
+\textbf{Vai trò:}
+Mô-đun tóm tắt đa tầng đóng vai trò giảm kích thước dữ liệu đầu vào và hỗ trợ truy xuất hiệu quả trên các đoạn hội thoại dài. Việc đánh giá nhằm kiểm tra khả năng giữ lại thông tin quan trọng trong khi vẫn đảm bảo tính cô đọng của văn bản.
+
+\textbf{Tiêu chuẩn đánh giá:}
+\begin{itemize}
+    \item \textbf{Tính đầy đủ (Coverage):} Kết quả tóm tắt phải giữ lại tối thiểu 70\% các điểm thông tin quan trọng.
+    \item \textbf{Độ súc tích (Compression):} Tỷ lệ nén văn bản được kiểm soát trong khoảng hợp lý.
+    \item \textbf{Tính xác thực (Faithfulness):} Không sinh thông tin ngoài ngữ cảnh.
+\end{itemize}
+
+\textbf{Chỉ số đo lường:}
+\begin{itemize}
+    \item Tỷ lệ coverage dựa trên so khớp các điểm thông tin chính.
+    \item Compression ratio giữa văn bản đầu vào và tóm tắt.
+    \item Đánh giá thủ công mức độ hallucination.
+\end{itemize}
+
+\textbf{Kết quả:}
+Kết quả cho thấy coverage đạt khoảng \textit{[điền số]} (>70\%), trong khi compression ratio nằm trong khoảng \textit{[điền số]}. Không ghi nhận hiện tượng sinh thông tin ngoài ngữ cảnh ở mức đáng kể.
+
+\textbf{Nhận xét:}
+Tóm tắt đa tầng giúp giảm đáng kể độ dài văn bản đầu vào cho mô-đun truy xuất, đồng thời vẫn giữ được các thông tin chính. Tuy nhiên, việc nén quá mức có thể làm mất các chi tiết quan trọng, đặc biệt trong các truy vấn yêu cầu số liệu chính xác.

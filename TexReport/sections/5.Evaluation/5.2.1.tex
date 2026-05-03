@@ -1,0 +1,23 @@
+\subsection{Đánh giá tổng quan pipeline chuyển đổi âm thanh thành văn bản}
+
+\textbf{Vai trò:}
+Pipeline chuyển đổi âm thanh thành văn bản là thành phần đầu vào của toàn bộ hệ thống. Chất lượng của bước này ảnh hưởng trực tiếp đến các mô-đun phía sau như truy xuất và tạo sinh. Do đó, việc đánh giá tổng thể pipeline nhằm xác định mức độ bảo toàn thông tin từ tín hiệu âm thanh sang biểu diễn văn bản có cấu trúc.
+
+\textbf{Tiêu chuẩn đánh giá:}
+\begin{itemize}
+    \item \textbf{Tính toàn vẹn nội dung:} Nội dung hội thoại không bị mất trong quá trình xử lý.
+    \item \textbf{Độ chính xác định danh người nói:} Các lượt lời được gán đúng speaker.
+    \item \textbf{Tính nhất quán theo thời gian:} Thứ tự và mốc thời gian của các phát biểu được bảo toàn.
+\end{itemize}
+
+\textbf{Chỉ số đo lường:}
+\begin{itemize}
+    \item \textbf{DER:} tập trung vào hai thành phần Miss và Confusion.
+    \item \textbf{SAC:} đo mức độ bảo toàn nội dung có gắn với đúng speaker.
+\end{itemize}
+
+\textbf{Kết quả:}
+Kết quả thực nghiệm cho thấy pipeline đạt giá trị DER ở mức \textit{[điền số]}, trong đó Miss chiếm \textit{[x\%]} và Confusion chiếm \textit{[y\%]}. Chỉ số SAC đạt \textit{[điền số]}, phản ánh khả năng bảo toàn nội dung gắn với metadata người nói ở mức \textit{[tốt / trung bình]}.
+
+\textbf{Nhận xét:}
+Lỗi Confusion có ảnh hưởng lớn hơn so với Miss trong bối cảnh hệ thống downstream, do việc gán sai speaker có thể làm sai lệch truy vấn và kết quả tổng hợp. Điều này cho thấy yêu cầu tối ưu diarization không chỉ dừng ở giảm DER tổng thể mà cần tập trung vào giảm Confusion.

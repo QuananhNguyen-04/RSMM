@@ -1,0 +1,12 @@
+\section{Phân Cụm Người Nói - Speaker Clustering}
+\subsection{Mục tiêu}
+Trong bài toán phân cụm người nói, mục tiêu của clustering là nhóm đoạn biểu diễn đặc trưng giọng nói, sao cho các đoạn cùng thuộc một người nói được gán vào cùng một cụm trong khi số lượng người nói thường không được biết trước. Do chất lượng phân cụm phụ thuộc vào chất lượng biễu diễn đặc trưng, việc đánh giá trong đồ án này sẽ là một phần thuộc pipeline tổng thể. 
+
+Hai hướng tiếp cận clustering phổ biến được sử dụng trong speaker diarization là Agglomerative Hierarchical Clustering (AHC) và Spectral Clustering. 
+\begin{itemize}
+    \item AHC là phương pháp phân cụm bottom-up, trong đó mỗi đoạn giọng nói ban đầu được xem như một cụm riêng biệt, và các cụm được hợp nhất dần dựa trên độ tương đồng trong không gian embedding. Quá trình hợp nhất tiếp diễn cho tới khi đạt một ngưỡng dừng nhất định, thường được xác định thông qua một ngưỡng khoảng cách hoặc độ tương đồng.
+    \item Spectral Clustering phân cụm thông qua biểu diễn đồ thị, trong đó các đoạn giọng nói được xem như các đỉnh và độ tương đồng giữa các embedding được mã hóa thành các cạnh của đồ thị. Bằng cách chiếu dữ liệu sang không gian riêng (eigenspace) có chiều thấp hơn, spectral clustering cho phép tách các cụm dựa trên cấu trúc toàn cục của dữ liệu thay vì chỉ dựa trên khoảng cách cục bộ.
+
+\end{itemize}
+Trong speaker diarization, spectral clustering thường cho kết quả ổn định hơn trong các trường hợp embedding bị nhiễu hoặc phân bố không đồng đều. Tuy nhiên, phương pháp này yêu cầu xây dựng và xử lý ma trận tương đồng, dẫn đến chi phí tính toán cao hơn và phụ thuộc nhiều vào chất lượng hàm đo độ tương đồng. \\
+Spectral clustering đã được chứng minh hiệu quả trong một số trường hợp cụ thể, chẳng hạn như xử lý overlap speaker hoặc dữ liệu có phân bố phức tạp \cite{Park_2020}. Tuy nhiên, không có bằng chứng rõ ràng rằng spectral clustering luôn cho DER thấp hơn AHC, và hiệu quả của spectral clustering phụ thuộc nhiều vào cách xây dựng ma trận tương đồng và chất lượng embedding đầu vào.

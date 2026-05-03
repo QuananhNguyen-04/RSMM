@@ -1,0 +1,18 @@
+% ---------------------------------------------------------
+% SECTION 3.5: TÌM KIẾM NGỮ NGHĨA (SEMANTIC SEARCH)
+% ---------------------------------------------------------
+
+\section{Tìm kiếm ngữ nghĩa (Semantic Search)}
+\label{sec:semantic_search}
+
+\subsection{Định nghĩa}
+Tìm kiếm ngữ nghĩa (\textit{Semantic Search}) là phương pháp truy xuất thông tin tập trung vào ý định của người dùng và ngữ cảnh của truy vấn, thay vì chỉ dựa trên sự trùng khớp từ khóa (\textit{Lexical Search}) như các công cụ tìm kiếm truyền thống \cite{duhan2024semanticsearchrecommendationalgorithm}. Cơ sở toán học của phương pháp này là Mô hình không gian vector (\textit{Vector Space Model}), trong đó văn bản được chuyển đổi thành các vector số học (\textit{embeddings}) nằm trong một không gian nhiều chiều \cite{salton1975vector}.
+
+Trong không gian này, vị trí của mỗi vector được xác định bởi các đặc trưng ngữ nghĩa của văn bản mà nó đại diện. Nguyên lý cốt lõi là các đoạn văn bản mang ý nghĩa tương đồng sẽ nằm gần nhau về mặt hình học, bất kể chúng có sử dụng chung từ vựng hay không. Quá trình này thường được thực hiện bởi các mô hình học sâu (\textit{Deep Learning}) hoặc các mô hình ngôn ngữ lớn - \textit{ \gls{llm} }, cho phép máy tính ``hiểu'' được ngôn ngữ tự nhiên ở mức độ trừu tượng.
+
+
+\subsection{Vai trò và Tầm quan trọng}
+Trong bối cảnh \gls{nlp} hiện đại, tìm kiếm ngữ nghĩa đóng vai trò then chốt trong việc giải quyết vấn đề ``bất đồng ngôn ngữ'' (\textit{vocabulary mismatch}). Đây là hiện tượng thường gặp khi người dùng sử dụng các từ ngữ khác biệt (từ đồng nghĩa, từ lóng) so với các từ ngữ chính xác được lưu trữ trong tài liệu, khiến các phương pháp truyền thống như BM25 gặp khó khăn \cite{karpukhin2020dense}.
+
+Việc áp dụng tìm kiếm ngữ nghĩa mang lại ảnh hưởng tích cực đáng kể đến hiệu suất của hệ thống truy xuất. Phương pháp này cho phép hệ thống vượt qua rào cản về mặt câu chữ để nắm bắt chính xác nhu cầu tin tức thông qua các biểu diễn vector ngữ cảnh chất lượng cao \cite{reimers2019sentence}. Ví dụ, một truy vấn về ``hạn chót hoàn thành'' có thể tìm thấy kết quả chứa từ ``deadline'' mà không cần khai báo từ điển đồng nghĩa thủ công.
+

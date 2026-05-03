@@ -1,0 +1,76 @@
+% --- FILE: 4.3_rag_pipeline/4.3.3_generation.tex ---
+
+\subsection{Tích hợp Mô hình ngôn ngữ và Tạo sinh (Generation)}
+\label{subsec:generation}
+
+Cơ chế tạo sinh đóng vai trò quan trọng trong việc sản xuất kết quả cuối cùng bằng cách tích hợp thông tin được truy xuất với truy vấn đầu vào. Sau khi thành phần truy xuất lấy kiến thức liên quan từ các nguồn bên ngoài, bộ tạo sinh tổng hợp thông tin này thành các phản hồi mạch lạc và phù hợp với ngữ cảnh. Mô hình Ngôn ngữ Lớn (LLM) đóng vai trò là xương sống của bộ tạo sinh, đảm bảo văn bản được tạo ra trôi chảy, chính xác và phù hợp với truy vấn gốc.
+
+% --- SỬA ĐỔI: Nâng paragraph lên thành subsubsection ---
+\subsubsection{Lựa chọn Mô hình (Model Selection)}
+Hệ thống sử dụng \textit{Google Gemini 2.5 Flash} làm mô hình nền tảng (\textit{Foundation Model}). Quyết định này dựa trên báo cáo kỹ thuật của Google \cite{team2024gemini}, trong đó nhấn mạnh ưu thế vượt trội của kiến trúc này về khả năng xử lý \textit{Cửa sổ ngữ cảnh siêu lớn (Long Context Window)}. Khả năng này cho phép hệ thống nạp đồng thời nhiều đoạn hội thoại dài vào bộ nhớ đệm mà không làm mất mát thông tin, khắc phục hạn chế về độ dài đầu vào của các mô hình Transformer truyền thống.
+
+\subsubsection{Kỹ thuật Viết lại câu hỏi (Query Rewriting)}
+Một thách thức lớn trong hội thoại tự nhiên là sự xuất hiện của các đại từ thay thế (như "nó", "ông ấy") hoặc các câu hỏi tỉnh lược. Để giải quyết vấn đề này, hệ thống áp dụng cơ chế viết lại câu hỏi trước khi thực hiện truy xuất nhằm đảm bảo tính đầy đủ của ngữ nghĩa. Cụ thể, hệ thống sẽ trích xuất lịch sử ba lượt hội thoại gần nhất và gửi đến mô hình ngôn ngữ lớn một yêu cầu chuyển đổi. Mô hình sẽ phân tích ngữ cảnh và thay thế các đại từ hoặc thành phần bị lược bỏ bằng các danh từ cụ thể đã xuất hiện trước đó. Câu hỏi sau khi được viết lại (\textit{Rewritten Query}) mới được sử dụng làm đầu vào cho bước tìm kiếm vector, qua đó nâng cao đáng kể độ chính xác của kết quả truy xuất.
+
+% --- SỬA ĐỔI: Gộp phần Prompting vào chung mục Thiết kế Prompt hoặc để riêng thành subsubsection ---
+\subsubsection{Chiến lược Prompting và Thiết kế Câu lệnh}
+
+% Đưa đoạn text về In-context Learning vào đây làm dẫn nhập
+Thay vì sử dụng phương pháp tinh chỉnh mô hình (\textit{Fine-tuning}) vốn tốn kém tài nguyên, hệ thống áp dụng kỹ thuật \textit{Học theo ngữ cảnh (In-context Learning)}. Theo khảo sát toàn diện của Liu và cộng sự \cite{liu2023pre}, phương pháp này cho phép mô hình thích nghi nhanh với các tác vụ mới bằng cách quan sát các ví dụ hoặc dữ liệu được cung cấp ngay trong câu lệnh (Prompt) mà không cần cập nhật trọng số.
+
+Khuôn mẫu câu lệnh (\textit{Prompt Template}) cho bước tạo sinh cuối cùng được cấu trúc gồm 4 thành phần nhằm kiểm soát chặt chẽ chất lượng đầu ra và duy trì mạch hội thoại:
+\begin{enumerate}
+    \item \textbf{Chỉ thị hệ thống (System Instruction):} Thiết lập vai trò trợ lý ảo và các quy tắc ứng xử (trung thực, ngắn gọn).
+    \item \textbf{Lịch sử trò chuyện (Chat History):} Cung cấp ngữ cảnh ngắn hạn của cuộc hội thoại hiện tại.
+    \item \textbf{Dữ liệu ngữ cảnh (Retrieved Context):} Các đoạn văn bản tìm được từ cơ sở dữ liệu vector, đóng vai trò là "nguồn sự thật" (\textit{Ground Truth}).
+    \item \textbf{Câu hỏi người dùng (User Query):} Câu hỏi gốc của người dùng (hoặc câu đã viết lại).
+\end{enumerate}
+
+\subsubsection{Hiện thực kỹ thuật}
+Module được hiện thực hóa bằng Python thông qua thư viện \texttt{google-generativeai}. Mã nguồn dưới đây minh họa quá trình xây dựng prompt tổng hợp bao gồm cả lịch sử và ngữ cảnh:
+
+\begin{lstlisting}[language=Python, caption={Hàm tạo sinh câu trả lời có ngữ cảnh lịch sử}, label={lst:gemini_gen}]
+def chat(self, user_query):
+    # 1. Xu ly lich su va viet lai cau hoi (Contextualizing)
+    if self.chat_history:
+        rewritten_query = self.rewrite_query(user_query)
+    else:
+        rewritten_query = user_query
+    
+    # 2. Truy xuat thong tin (Retrieval)
+    context_chunks = self.retrieve_context(rewritten_query)
+    final_context_str = "\n---\n".join(context_chunks)
+    
+    # 3. Xay dung Prompt tong hop
+    # Ghep lich su chat 3 luot gan nhat
+    history_str = format_history(self.chat_history[-3:])
+    
+    prompt = f"""
+    Ban la tro ly ao chuyen nghiep.
+    QUY TAC:
+    1. Chi tra loi dua tren [THONG TIN DUOC CUNG CAP].
+    2. Neu thong tin khong du, hay noi "Tai lieu khong de cap".
+    
+    --- LICH SU TRO CHUYEN ---
+    {history_str}
+    
+    --- THONG TIN DUOC CUNG CAP (Context) ---
+    {final_context_str}
+    
+    --- CAU HOI ---
+    User: {user_query}
+    
+    Cau tra loi:
+    """
+    
+    # 4. Goi API Gemini
+    try:
+        response = llm_model.generate_content(prompt)
+        # Luu lich su cho luot sau
+        self.chat_history.append((user_query, response.text))
+        return response.text
+    except Exception as e:
+        return "Loi he thong."
+\end{lstlisting}
+
+Việc đưa trực tiếp lịch sử trò chuyện vào prompt giúp mô hình Gemini hiểu được ngữ cảnh liên tục, tạo ra trải nghiệm người dùng mượt mà và tự nhiên hơn so với các hệ thống hỏi đáp tĩnh (stateless).

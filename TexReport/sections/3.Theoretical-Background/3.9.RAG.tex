@@ -1,0 +1,75 @@
+% =========================================================
+% SECTION 3.9: LIMITATIONS & RAG SUPERIORITY
+% =========================================================
+
+\section{Cơ sở lý thuyết về RAG }
+\label{sec:llm-limitations-rag}
+
+% --- MỤC MỚI THÊM: ĐỊNH NGHĨA LLM ---
+\subsection{Tổng quan về Mô hình Ngôn ngữ Lớn (LLM)}
+\label{subsec:llm_overview}
+
+Mô hình ngôn ngữ lớn (\textit{Large Language Model - LLM}) đại diện cho bước tiến quan trọng nhất trong lĩnh vực Xử lý ngôn ngữ tự nhiên (NLP) hiện đại. Về bản chất, đây là các mô hình học sâu (\textit{Deep Learning}) được xây dựng dựa trên kiến trúc Transformer, đặc trưng bởi cơ chế sự chú ý (\textit{Self-Attention}) giúp mô hình nắm bắt được các mối quan hệ ngữ nghĩa xa và phức tạp trong văn bản \cite{vaswani2017attention}.
+
+Các mô hình này (như GPT-4, Gemini, Llama) được huấn luyện trên hàng tỷ tham số với lượng dữ liệu văn bản khổng lồ (thường là quy mô toàn bộ Internet) \cite{team2024gemini}. Cơ chế hoạt động cốt lõi của LLM là dự đoán từ tiếp theo (\textit{next-token prediction}) dựa trên xác suất thống kê từ chuỗi văn bản đầu vào. Chính nhờ quy mô dữ liệu và kiến trúc này, LLM sở hữu khả năng vượt trội trong việc hiểu ngữ cảnh, tóm tắt văn bản, dịch thuật và lập luận logic, tạo tiền đề cho các ứng dụng AI tạo sinh (\textit{Generative AI}).
+
+% --- MỤC CŨ: HẠN CHẾ ---
+\subsection{Hạn chế của LLM: Vấn đề ảo giác và Tri thức tĩnh}
+Mặc dù sở hữu năng lực xử lý ngôn ngữ mạnh mẽ như đã đề cập, các mô hình LLM vẫn tồn tại những hạn chế cố hữu đã được cộng đồng nghiên cứu và doanh nghiệp ghi nhận. Vấn đề nghiêm trọng nhất là hiện tượng ``ảo giác'' (\textit{hallucinations}) - xu hướng của mô hình trong việc tạo ra các câu trả lời với văn phong tự tin, trôi chảy nhưng lại sai lệch hoàn toàn về mặt thực tế hoặc không liên quan đến truy vấn \cite{ji2023survey}.
+
+Nguyên nhân chính của vấn đề này xuất phát từ bản chất ``học xác suất'' của mô hình: LLM không thực sự ``biết'' sự thật, mà chỉ dự đoán chuỗi từ ngữ hợp lý nhất. Thêm vào đó, LLM phụ thuộc hoàn toàn vào dữ liệu huấn luyện tĩnh (\textit{Static Knowledge}) \cite{team2024gemini}. Khi đối mặt với các câu hỏi đòi hỏi thông tin cập nhật mới nhất hoặc dữ liệu đặc thù của doanh nghiệp (như thông số sản phẩm, chính sách nội bộ), mô hình thường thất bại trong việc đưa ra câu trả lời chính xác do thiếu ngữ cảnh.
+
+% --- GIẢI PHÁP RAG ---
+\subsection{Giải pháp RAG: Neo giữ thông tin và Kiến trúc lai}
+\label{subsec:rag_solution}
+
+% --- PHẦN 1: GIỚI THIỆU & LỢI ÍCH ---
+Kiến trúc \gls{rag} ra đời để giải quyết trực tiếp các hạn chế của LLM bằng cơ chế \textit{neo giữ} (\textit{grounding}) đầu ra của mô hình vào các nguồn tri thức bên ngoài tin cậy. Cách tiếp cận này mang lại hiệu quả vượt trội về độ chính xác. Các báo cáo từ khối doanh nghiệp chỉ ra rằng việc áp dụng RAG có thể nâng độ chính xác của các truy vấn nghiệp vụ lên trên 90\%, biến các mô hình ngôn ngữ tổng quát thành các trợ lý chuyên gia đáng tin cậy.
+
+% --- PHẦN 2: ĐỊNH NGHĨA HÌNH THỨC ---
+\subsubsection{Định nghĩa hình thức và Cơ chế hoạt động}
+Về mặt bản chất kỹ thuật, theo định nghĩa gốc của Lewis và cộng sự \cite{lewis2020retrieval}, RAG là một kiến trúc lai (\textit{hybrid architecture}) kết hợp sức mạnh của hai loại bộ nhớ:
+\begin{enumerate}
+    \item \textbf{Bộ nhớ tham số (Parametric Memory):} Là các trọng số đã được huấn luyện trước của LLM, chứa khả năng ngôn ngữ và tri thức tổng quát.
+    \item \textbf{Bộ nhớ phi tham số (Non-parametric Memory):} Là một chỉ mục vector chứa dữ liệu bên ngoài (biên bản cuộc họp, tài liệu), có thể cập nhật thời gian thực mà không cần huấn luyện lại mô hình \cite{lewis2020retrieval}.
+\end{enumerate}
+
+Dưới góc độ xác suất, với một truy vấn đầu vào $x$, RAG tính toán xác suất của câu trả lời $y$ bằng cách biên duyên hóa (\textit{marginalize}) qua các tài liệu $z$ được tìm thấy \cite{lewis2020retrieval}:
+\begin{equation}
+    p_{RAG}(y|x) \approx \sum_{z \in TopK(x)} p_\eta(z|x) \cdot p_\theta(y|x, z)
+\end{equation}
+
+Trong đó, hệ thống được cấu thành từ hai phân hệ cốt lõi hoạt động tuần tự:
+
+\paragraph{1. Bộ truy xuất (The Retriever - $p_\eta$):} 
+Chịu trách nhiệm ánh xạ câu hỏi $x$ và tài liệu $d$ vào cùng một không gian vector. Độ tương đồng được tính toán (thường bằng tích vô hướng hoặc Cosine) để tìm ra top-k tài liệu liên quan nhất, thường sử dụng kỹ thuật \textit{Dense Passage Retrieval} \cite{karpukhin2020dense}:
+\begin{equation}
+    score(x, d) = Encoder_Q(x)^T \cdot Encoder_D(d)
+\end{equation}
+
+\paragraph{2. Bộ tạo sinh (The Generator - $p_\theta$):} 
+Là mô hình ngôn ngữ nhận đầu vào là sự kết hợp giữa truy vấn gốc và ngữ cảnh vừa tìm được ($Input = x \oplus z$). Nhờ cơ chế Attention và kỹ thuật Prompt Engineering \cite{liu2023pre}, mô hình sẽ sử dụng thông tin trong $z$ làm cơ sở dữ liệu để sinh ra câu trả lời $y$ chính xác và có thể kiểm chứng.
+
+\subsection{Ứng dụng thực tiễn và Bảo mật dữ liệu}
+Tầm quan trọng của RAG còn được thể hiện qua khả năng khai thác an toàn dữ liệu độc quyền (\textit{proprietary data}). 
+
+Nhờ khả năng chuyển đổi LLM từ trạng thái chung chung sang trạng thái ``nhận thức ngữ cảnh'' (\textit{context-aware}), RAG hiện đã trở thành phương pháp tiếp cận tiêu chuẩn của ngành công nghiệp (\textit{industry-standard approach}). 
+
+\begin{table}[h]
+    \centering
+    \caption{So sánh hiệu quả giữa LLM thuần túy và RAG trong doanh nghiệp}
+    \label{tab:rag-vs-llm-business}
+    \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Tiêu chí} & \textbf{LLM Thuần túy} & \textbf{RAG (Đồ án áp dụng)} \\
+        \hline
+        \textbf{Độ chính xác} & Dễ gặp ảo giác \cite{ji2023survey}, thông tin chung chung. & Cao ($>90\%$), được neo giữ bởi dữ liệu thực. \\
+        \hline
+        \textbf{Cập nhật kiến thức} & Bị giới hạn bởi thời điểm huấn luyện (Knowledge Cutoff) \cite{team2024gemini}. & Cập nhật tức thời theo thời gian thực (Real-time). \\
+        \hline
+        \textbf{Chi phí vận hành} & Tốn kém nếu phải Retrain liên tục. & Thấp, chỉ cần cập nhật Vector DB. \\
+        \hline
+        \textbf{Dữ liệu riêng tư} & Rủi ro lộ lọt nếu dùng để huấn luyện. & An toàn, dữ liệu nằm trong hệ thống kiểm soát nội bộ. \\
+        \hline
+    \end{tabular}
+\end{table}

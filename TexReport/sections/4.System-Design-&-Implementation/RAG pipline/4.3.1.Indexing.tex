@@ -1,0 +1,78 @@
+\subsection{Xây dựng và Đánh chỉ mục dữ liệu (Indexing)}
+\label{subsec:indexing}
+
+Giai đoạn đầu tiên của đường ống RAG là chuyển đổi dữ liệu hội thoại thô thành cấu trúc có thể tìm kiếm được. Quá trình này không chỉ đơn thuần là lưu trữ văn bản mà còn bao gồm việc làm sạch dữ liệu, mã hóa ngữ nghĩa (Vectorization) và thiết lập cơ sở dữ liệu vector tối ưu.
+
+\subsubsection{Tiền xử lý và Chuẩn hóa dữ liệu đầu vào}
+Hệ thống tiếp nhận đầu vào là các tệp JSON được sinh ra từ mô-đun ASR. Do đặc thù của dữ liệu hội thoại tự nhiên, thông tin đầu vào thường gặp các vấn đề như thiếu nhãn người nói hoặc định dạng không đồng nhất. Để đảm bảo tính toàn vẹn dữ liệu, quy trình chuẩn hóa (\textit{Data Sanitization}) được áp dụng trong phương thức \texttt{\_load\_memory\_kb} với các tiêu chí sau:
+
+\begin{itemize}
+    \item \textbf{Định danh lượt lời:} Mỗi lượt lời (utterance) được gán một định danh duy nhất (\texttt{utt\_id}) phục vụ truy vết.
+    \item \textbf{Xử lý dữ liệu khuyết thiếu:} Hệ thống kiểm tra các trường bắt buộc (\texttt{speaker}, \texttt{text}). Cơ chế an toàn (\textit{Fail-safe}) sẽ gán giá trị mặc định (ví dụ: "Unknown Speaker") nếu dữ liệu bị thiếu nhằm tránh lỗi thực thi.
+    \item \textbf{Tổng hợp toàn văn:} Song song với xử lý từng câu, hệ thống ghép nối nội dung thành chuỗi văn bản liền mạch (\texttt{full\_text}) phục vụ riêng cho tác vụ tóm tắt.
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption={Logic tiền xử lý dữ liệu hội thoại}, label={lst:preprocessing_logic}]
+    def _load_memory_kb(self):
+        # ... (Code for file reading omitted)
+        for i, utt in enumerate(data):
+            utt_id = f"utt_{i}"
+            
+            # Gan gia tri mac dinh neu thieu (Fail-safe mechanism)
+            speaker = utt.get('speaker', 'Unknown Speaker')
+            text = utt.get('text', '')
+            
+            # Luu tru metadata
+            kb["utterances"][utt_id] = {
+                'speaker': speaker,
+                'text': text,
+                'start': utt.get('start', 0)
+            }
+            full_text_list.append(f"{speaker}: {text}")
+\end{lstlisting}
+
+\subsubsection{Cấu hình Cơ sở dữ liệu Vector (Qdrant)}
+Sau khi dữ liệu được làm sạch, hệ thống sử dụng \textit{Qdrant} để lưu trữ và đánh chỉ mục. Quá trình khởi tạo bao gồm thiết lập thuật toán HNSW và lựa chọn mô hình Embedding phù hợp.
+
+\paragraph{Cấu hình Index (HNSW Configuration):}
+Hệ thống sử dụng thuật toán HNSW để tối ưu hóa tốc độ tìm kiếm. Các tham số cấu hình trong lớp \texttt{HnswConfigDiff} được thiết lập dựa trên khuyến nghị thực nghiệm cho dữ liệu văn bản:
+\begin{itemize}
+    \item \textbf{Độ đo khoảng cách:} Sử dụng \texttt{Distance.COSINE} để đo độ tương đồng ngữ nghĩa.
+    \item \textbf{Tham số $m=16$:} Số lượng liên kết tối đa cho mỗi node, giúp cân bằng giữa tốc độ truy vấn và bộ nhớ.
+    \item \textbf{Tham số $ef\_construct=100$:} Độ sâu tìm kiếm khi xây dựng chỉ mục, đảm bảo độ chính xác cao (Recall) ngay từ đầu.
+\end{itemize}
+
+\paragraph{Mã hóa và Lưu trữ (Vectorization \& Upsert):}
+Dựa trên lý thuyết về Text Embeddings, hệ thống sử dụng mô hình \texttt{BAAI/bge-m3} để chuyển đổi văn bản thành vector. Điểm đặc biệt trong kiến trúc lưu trữ là cơ chế \textit{Payload}:
+\begin{itemize}
+    \item \textbf{Vector:} Chỉ chứa thông tin ngữ nghĩa (\texttt{utt['text']}).
+    \item \textbf{Payload (Siêu dữ liệu):} Lưu trữ bản gốc (\texttt{text\_original}), ID và người nói. Điều này cho phép hệ thống truy xuất ngược lại nội dung gốc ngay lập tức mà không cần tra cứu bảng dữ liệu thô bên ngoài.
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption={Quy trình khởi tạo Collection và nạp dữ liệu}, label={lst:db_build_logic}]
+    # 1. Tao Collection voi cau hinh HNSW
+    self.client.create_collection(
+        collection_name=self.collection_name,
+        vectors_config=VectorParams(size=EMBEDDING_DIM, distance=Distance.COSINE),
+        hnsw_config=HnswConfigDiff(m=16, ef_construct=100)
+    )
+    
+    # 2. Vector hoa va chuan bi Payload
+    embeddings = embed_model.encode(docs, show_progress_bar=True)
+    
+    points = [
+        PointStruct(
+            id=ids[i], 
+            vector=embeddings[i].tolist(), 
+            payload={
+                "text_original": utt['text'],
+                "doc_id": uid,
+                "speaker": utt['speaker']
+            }
+        ) 
+        for i in range(len(ids))
+    ]
+    
+    # 3. Batch Upsert (Nap du lieu theo lo)
+    self.client.upsert(self.collection_name, points[i:i+batch_size])
+\end{lstlisting}

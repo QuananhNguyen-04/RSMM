@@ -1,0 +1,25 @@
+% =========================================================
+% SECTION 3.7: KNOWLEDGE BASE & VECTOR DB
+% =========================================================
+\section{Cơ sở tri thức và Cơ sở dữ liệu Vector}
+\label{sec:kb_vector_db}
+
+\subsection{Cơ sở tri thức (Knowledge Base)}
+Trong các hệ thống trí tuệ nhân tạo hiện đại, Cơ sở tri thức (\textit{Knowledge Base - KB}) đóng vai trò là kho lưu trữ thông tin tập trung, chứa các dữ liệu, sự kiện và quy tắc mà hệ thống sử dụng để thực hiện việc suy luận hoặc ra quyết định. Đối với các bài toán xử lý ngôn ngữ tự nhiên, cơ sở tri thức thường tồn tại dưới dạng dữ liệu phi cấu trúc (\textit{unstructured data}) như văn bản, tài liệu PDF, hoặc biên bản cuộc họp \cite{russell2010artificial}.
+
+Khác với các hệ thống cơ sở dữ liệu quan hệ truyền thống vốn yêu cầu dữ liệu phải được tổ chức chặt chẽ theo hàng và cột, cơ sở tri thức trong các ứng dụng AI chấp nhận sự đa dạng của dữ liệu tự nhiên. Tuy nhiên, thách thức lớn nhất là làm sao để truy xuất thông tin một cách hiệu quả dựa trên ý nghĩa nội dung thay vì chỉ so khớp từ khóa đơn thuần. Đây chính là tiền đề cho sự ra đời của các công nghệ lưu trữ vector.
+
+\subsection{Cơ sở dữ liệu Vector (Vector Database)}
+Để giải quyết bài toán quản lý và truy vấn cơ sở tri thức phi cấu trúc, Cơ sở dữ liệu Vector (\textit{Vector Database}) được sử dụng như một giải pháp chuyên dụng. Hệ thống này được thiết kế tối ưu để lưu trữ dữ liệu dưới dạng các vector nhiều chiều (\textit{embeddings}). Chức năng cốt lõi của nó là thực hiện \textbf{Tìm kiếm tương đồng (Similarity Search)}, tìm kiếm các vector trong không gian lưu trữ có khoảng cách hình học gần nhất với vector truy vấn thay vì tìm kiếm chính xác tuyệt đối \cite{han2023comprehensive}.
+
+Các độ đo khoảng cách phổ biến bao gồm Khoảng cách Ơ-clít (\textit{Euclidean Distance}), Tích vô hướng (\textit{Dot Product}) và đặc biệt là Độ tương đồng Cosine (\textit{Cosine Similarity}) thường được dùng trong xử lý văn bản để đo độ tương đồng về ngữ nghĩa bất kể độ dài văn bản.
+
+% --- MỤC MỚI BỔ SUNG: TEXT EMBEDDINGS ---
+\subsection{Mô hình biểu diễn văn bản (Text Embeddings)}
+Để lưu trữ văn bản vào cơ sở dữ liệu vector, cần có một cơ chế chuyển đổi ngôn ngữ tự nhiên thành các vector số học, gọi là quá trình \textit{Text Embedding}.
+
+Khác với các phương pháp thống kê truyền thống (như TF-IDF hay Bag-of-Words) vốn không nắm bắt được ngữ nghĩa và gặp vấn đề thưa thớt dữ liệu, các mô hình Text Embedding hiện đại thường dựa trên kiến trúc Transformer (như BERT, RoBERTa) \cite{reimers2019sentence}. Các mô hình này, đặc biệt là các kiến trúc \textit{Dense Retrieval} (truy xuất dày đặc), có khả năng ánh xạ các câu văn có ý nghĩa tương đồng vào vị trí gần nhau trong không gian vector nhiều chiều, ngay cả khi chúng không chia sẻ từ vựng chung. Đây là thành phần then chốt quyết định độ chính xác của quá trình tìm kiếm ngữ nghĩa trong hệ thống RAG.
+
+\subsection{Kỹ thuật chỉ mục (Indexing)}
+Để đảm bảo tốc độ truy vấn trên các tập cơ sở tri thức lớn, việc so sánh vector truy vấn với toàn bộ dữ liệu (phương pháp vét cạn) là không khả thi. Do đó, các kỹ thuật chỉ mục \gls{ann} như \gls{hnsw} (\textit{Hierarchical Navigable Small World}) được áp dụng. \Gls{hnsw} tổ chức dữ liệu thành cấu trúc đồ thị phân cấp, cho phép thuật toán nhanh chóng định vị vùng không gian chứa thông tin liên quan với độ phức tạp tính toán thấp (thường là logarit), đảm bảo khả năng phản hồi thời gian thực \cite{malkov2018efficient}.
+

@@ -1,0 +1,29 @@
+\section{Phạm Vi \& Giới Hạn}
+
+\subsection{Phạm vi bài toán}
+
+Trong khuôn khổ đồ án, hệ thống tập trung giải quyết bài toán truy xuất và tổng hợp thông tin từ dữ liệu âm thanh cuộc họp nhiều người, với các phạm vi và ràng buộc sau:
+\begin{itemize}
+    \item \textbf{Dữ liệu đầu vào}: Đầu vào của hệ thống là các bản ghi âm cuộc họp có nhiều người tham gia, độ dài tương đối và có thể tồn tại chồng lấn lời nói. Dữ liệu được thu thập trong môi trường tương đối kiểm soát như phòng họp hoặc hội thảo, có thể chứa nhiễu nền ở mức vừa phải.
+    \item \textbf{Ngôn ngữ}: Hệ thống tập trung xử lý hội thoại chủ yếu ở tiếng Anh và có hỗ trợ tiếng Việt. Các ngôn ngữ khác không được xem xét trong phạm vi của đồ án.
+    \item \textbf{Quy trình xử lý}: Hệ thống được xây dựng theo kiến trúc pipeline, bao gồm các bước chính: phát hiện hoạt động giọng nói (VAD), định danh người nói (Speaker Diarization), nhận dạng tiếng nói (ASR), và truy xuất thông tin dựa trên mô hình RAG.
+    \item \textbf{Kết quả đầu ra}: Đầu ra của hệ thống là văn bản hội thoại có cấu trúc, kèm theo thông tin người nói và mốc thời gian, cho phép thực hiện các truy vấn ngữ nghĩa và sinh câu trả lời dựa trên nội dung cuộc họp.
+    \item \textbf{Quy mô mô hình và phần cứng}: Hệ thống sử dụng các mô hình học sâu có sẵn với quy mô vừa và lớn, triển khai trên GPU phổ thông. Đồ án không đặt mục tiêu tối ưu cho các thiết bị biên hoặc môi trường tài nguyên hạn chế.
+    \item \textbf{Chế độ triển khai}: Một số thành phần của hệ thống, đặc biệt là mô hình ngôn ngữ lớn, được tích hợp thông qua API trực tuyến. Do đó, hệ thống được thiết kế theo hướng xử lý bán trực tuyến (online/semi-online), không đảm bảo khả năng hoạt động hoàn toàn độc lập khỏi kết nối mạng.
+    \item \textbf{Phạm vi thiết kế}: Hệ thống được thiết kế theo hướng mô-đun, cho phép thay thế hoặc nâng cấp từng thành phần (ví dụ: mô hình ASR hoặc mô hình embedding) mà không ảnh hưởng đến toàn bộ kiến trúc, nhưng không hướng tới việc đề xuất hay nghiên cứu thuật toán mới.
+\end{itemize}
+
+\subsection{Giới hạn của bài toán}
+
+Bên cạnh các mục tiêu đạt được, đồ án tồn tại một số giới hạn như sau:
+\begin{itemize}
+    \item Hệ thống không nhằm mục tiêu xử lý chính xác tuyệt đối các trường hợp chồng lấn lời nói phức tạp; diarization chủ yếu dựa trên các đoạn có tiếng nói rõ ràng.
+    \item Việc điều chỉnh ranh giới hội thoại sau ASR có sử dụng mô hình ngôn ngữ lớn, tuy nhiên kết quả của bước này khó kiểm chứng trực tiếp và phụ thuộc vào chất lượng phiên âm đầu vào.
+    \item Chất lượng toàn bộ pipeline phụ thuộc đáng kể vào sai số tích lũy từ các bước xử lý tiếng nói, đặc biệt là lỗi bỏ sót tiếng nói (Miss) và lỗi nhầm lẫn người nói (Confusion).
+    \item Hệ thống chưa tối ưu cho các kịch bản thời gian thực và được thiết kế chủ yếu cho xử lý ngoại tuyến (offline processing).
+        \item Hiệu quả truy xuất phụ thuộc đáng kể vào chiến lược phân đoạn văn bản (chunking). Các đoạn hội thoại không tối ưu về độ dài có thể làm suy giảm khả năng nắm bắt ngữ cảnh của truy vấn.
+    \item Truy xuất dựa trên vector chủ yếu phản ánh mức độ tương đồng ngữ nghĩa tổng quát, do đó có thể chưa đảm bảo độ chính xác tuyệt đối đối với các truy vấn yêu cầu thông tin định danh cụ thể như tên riêng, con số hoặc mốc thời gian.
+    \item Mặc dù LLM chỉ được sử dụng trên ngữ cảnh đã truy xuất, mô hình vẫn có khả năng sinh ra thông tin suy diễn không tồn tại trong dữ liệu gốc khi ngữ cảnh cung cấp chưa đủ đầy hoặc chưa phù hợp.
+    \item Chất lượng câu trả lời phụ thuộc mạnh vào thiết kế prompt và chiến lược xếp hạng lại (re-ranking), các thành phần này hiện chủ yếu dựa trên kinh nghiệm và chưa được tối ưu hóa một cách hệ thống.
+    \item Hệ thống không thực hiện tinh chỉnh LLM theo miền dữ liệu hội họp, do đó khả năng thích nghi với các truy vấn chuyên ngành hoặc cấu trúc hội thoại phức tạp còn hạn chế.
+\end{itemize}

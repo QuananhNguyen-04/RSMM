@@ -1,0 +1,23 @@
+\subsection{Đánh giá khả năng tự sửa lỗi của hệ thống RAG}
+
+\textbf{Vai trò:}
+Trong điều kiện dữ liệu đầu vào chứa lỗi ASR, hệ thống cần có khả năng phục hồi ngữ nghĩa để đảm bảo kết quả truy xuất và trả lời vẫn chính xác. Đánh giá này nhằm kiểm tra khả năng "tự sửa lỗi" của pipeline RAG.
+
+\textbf{Tiêu chuẩn đánh giá:}
+\begin{itemize}
+    \item Khả năng hiểu đúng truy vấn khi dữ liệu chứa lỗi chính tả.
+    \item Khả năng truy xuất đúng ngữ cảnh dù từ khóa bị biến dạng.
+    \item Khả năng chuẩn hóa lại thông tin trong quá trình sinh câu trả lời.
+\end{itemize}
+
+\textbf{Chỉ số đo lường:}
+\begin{itemize}
+    \item HitRate@K trong điều kiện dữ liệu nhiễu
+    \item Đánh giá định tính kết quả trả lời
+\end{itemize}
+
+\textbf{Kết quả:}
+Hệ thống duy trì HitRate@K ở mức \textit{[điền số]} ngay cả khi dữ liệu chứa lỗi ASR. Các trường hợp như ``ô đê a'' → ODA hoặc ``bi hoa xe'' → BIWASE vẫn được xử lý đúng trong phần lớn truy vấn.
+
+\textbf{Nhận xét:}
+Cơ chế semantic search đóng vai trò quan trọng trong việc vượt qua lỗi chính tả, trong khi mô hình sinh giúp chuẩn hóa lại thông tin đầu ra. Tuy nhiên, trong các trường hợp lỗi ASR làm thay đổi hoàn toàn ngữ nghĩa, hệ thống vẫn có nguy cơ đưa ra kết quả sai.

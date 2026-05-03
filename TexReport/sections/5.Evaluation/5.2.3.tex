@@ -1,0 +1,30 @@
+\subsection{So sánh hiệu năng tìm kiếm}
+
+\textbf{Vai trò:}
+Mô-đun truy xuất đóng vai trò xác định tập ngữ cảnh đầu vào cho mô hình sinh. Việc đánh giá nhằm kiểm tra khả năng bao phủ và ưu tiên thông tin quan trọng của hệ thống tìm kiếm.
+
+\textbf{Tiêu chuẩn đánh giá:}
+\begin{itemize}
+    \item Khả năng tìm được đoạn chứa đáp án đúng.
+    \item Khả năng ưu tiên các đoạn quan trọng lên đầu danh sách.
+    \item Khả năng loại bỏ thông tin nhiễu.
+\end{itemize}
+
+\textbf{Chỉ số đo lường:}
+\begin{itemize}
+    \item \textbf{Hit Rate@K}
+    \item \textbf{MRR}
+    \item \textbf{Context Relevance}
+\end{itemize}
+
+\textbf{Thiết lập so sánh:}
+\begin{itemize}
+    \item Chunking truyền thống (theo câu)
+    \item Parent Document Retrieval (chia nhỏ đoạn theo ~40 từ)
+\end{itemize}
+
+\textbf{Kết quả:}
+Parent Document Retrieval đạt HitRate@K = \textit{[điền số]}, cao hơn so với phương pháp truyền thống (\textit{[điền số]}). Giá trị MRR đạt \textit{[điền số]}, cho thấy các đoạn chứa thông tin quan trọng thường được xếp ở vị trí đầu.
+
+\textbf{Nhận xét:}
+Chiến lược chia nhỏ đoạn hội thoại giúp giảm đáng kể tỷ lệ bỏ sót thông tin. Đồng thời, việc mở rộng ngữ cảnh theo token giúp cải thiện Context Relevance, đặc biệt với các truy vấn phức tạp.

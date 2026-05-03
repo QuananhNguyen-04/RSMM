@@ -1,0 +1,20 @@
+\section{Mục tiêu Đồ án}
+
+\subsection{Mục tiêu tổng quát}
+Mục tiêu chính của đồ án là nghiên cứu, thiết kế và hiện thực hóa một quy trình xử lý đầu cuối (end-to-end pipeline) nhằm tự động hóa việc khai thác tri thức từ dữ liệu âm thanh hội họp. Hệ thống hướng tới khả năng vận hành ổn định trên các dữ liệu thực tế có độ phức tạp cao (đa người nói, nhiễu môi trường), giúp chuyển đổi tài nguyên âm thanh phi cấu trúc thành thông tin có giá trị sử dụng.
+
+\subsection{Mục tiêu cụ thể}
+Để đạt được mục tiêu tổng quát nêu trên, đồ án tập trung giải quyết các nhiệm vụ cụ thể sau:
+
+\begin{itemize}
+
+\item \textbf{Xây dựng pipeline xử lý tiếng nói tích hợp:}
+Kết hợp mô-đun Phân đoạn người nói (Speaker Diarization) và Nhận dạng tiếng nói tự động (ASR) để chuyển đổi bản ghi âm thành văn bản có cấu trúc. Hệ thống cần đảm bảo định danh chính xác người nói và bảo toàn tham chiếu thời gian (timestamps) cho từng lượt lời.
+
+\item \textbf{Thiết kế hệ thống lưu trữ và truy xuất ngữ nghĩa:}
+Xây dựng cơ sở dữ liệu vector (Vector Database) phục vụ lưu trữ biên bản cuộc họp, đảm bảo duy trì mối liên kết giữa nội dung văn bản và siêu dữ liệu (metadata) về người nói và thời gian, hỗ trợ các truy vấn ngữ nghĩa phức tạp.
+
+\item \textbf{Hiện thực hóa kỹ thuật RAG (Retrieval-Augmented Generation):}
+Tích hợp Mô hình Ngôn ngữ Lớn (LLM) với cơ chế truy xuất thông tin để xây dựng hệ thống hỏi đáp. Hệ thống cần có khả năng sinh câu trả lời dựa trên nội dung cuộc họp, đồng thời cung cấp trích dẫn nguồn (citation) chính xác để đảm bảo khả năng đối chứng (grounding), giảm thiểu hiện tượng ảo giác thông tin.
+
+\end{itemize}

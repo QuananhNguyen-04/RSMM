@@ -1,0 +1,12 @@
+\section{Chuyển đổi giọng nói thành văn bản - ASR}
+Trong hệ thống xử lý hội thoại, Automatic Speech Recognition (ASR) đóng vai trò chuyển đổi tín hiệu giọng nói thành văn bản nhằm phục vụ các tác vụ truy xuất, tìm kiếm và phân tích nội dung hội thoại. 
+
+Hai kiến trúc ASR phổ biến là Whisper và Wav2Vec2-CTC được sử dụng trong các ngữ cảnh khác nhau của hệ thống. 
+\subsection{Các kiến trúc ASR}
+Một hệ thống ASR hiện đại thường bao gồm ba thành phần chính: mô hình âm học để ánh xạ tín hiệu âm thanh sang các biểu diễn ngôn ngữ trung gian, mô hình ngôn ngữ để mô hình hóa xác suất chuỗi từ, và bước giải mã để suy ra chuỗi văn bản có xác suất cao nhất. Trong các kiến trúc ASR gần đây, các thành phần này có thể được huấn luyện tách rời hoặc tích hợp trong một mô hình end-to-end thống nhất.
+\begin{itemize}
+    \item Whisper là một mô hình ASR end-to-end dựa trên kiến trúc Transformer, được huấn luyện trên tập dữ liệu đa ngôn ngữ quy mô lớn theo hướng weakly supervised learning. Mô hình tích hợp chặt chẽ giữa acoustic modeling và language modeling trong cùng một kiến trúc, cho phép xử lý linh hoạt nhiều ngôn ngữ và điều kiện âm thanh khác nhau. 
+    
+    Trong hệ thống, Whisper được sử dụng như một mô hình ASR tổng quát cho dữ liệu tiếng Anh, tận dụng khả năng thích nghi tốt với nhiễu và sự đa dạng về domain. Tuy nhiên, trong phạm vi đồ án, Whisper không được đặt trong bối cảnh so sánh hiệu năng trực tiếp với các mô hình ASR khác.
+    \item Wav2Vec2-CTC là một kiến trúc ASR dựa trên self-supervised learning, trong đó mô hình Wav2Vec2 được sử dụng để trích xuất biểu diễn âm thanh, kết hợp với hàm mất mát Connectionist Temporal Classification (CTC) để thực hiện giải mã chuỗi ký tự. Khác với các mô hình end-to-end tích hợp, kiến trúc này cho phép tách biệt rõ ràng giữa quá trình học biểu diễn âm thanh và bước suy diễn chuỗi văn bản.
+\end{itemize}

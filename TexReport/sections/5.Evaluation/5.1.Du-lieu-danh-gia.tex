@@ -1,0 +1,27 @@
+\subsection{Dữ liệu đánh giá (Evaluation Dataset)}
+
+Hệ thống được đánh giá trên hai loại dữ liệu nhằm đảm bảo cả tính chuẩn hóa và tính thực tế.
+
+\textbf{(1) AMI Corpus (Annotated Dataset):}
+Được sử dụng để đánh giá bài toán định danh người nói (speaker diarization). Dữ liệu có nhãn người nói theo thời gian, cho phép đo chính xác các chỉ số như DER và SAC.
+
+\textbf{(2) Dữ liệu hội thoại thực tế (BIWASE):}
+Bao gồm 04 bản ghi âm (khoảng 30 phút) được xử lý qua ASR.
+
+Đặc điểm:
+\begin{itemize}
+    \item Không có dấu câu, chứa lỗi nhận dạng (ASR noise)
+    \item Thông tin phân tán, nhiều số liệu và thực thể chuyên ngành
+\end{itemize}
+
+\textbf{(3) Tập Q\&A tự xây dựng:}
+\begin{itemize}
+    \item Quy mô: 50 cặp câu hỏi – đáp án
+    \item Nguồn: 5 bản transcript
+    \item Mỗi mẫu gồm:
+    \begin{itemize}
+        \item Query
+        \item Ground Truth Answer
+        \item Reference Context ID
+    \end{itemize}
+\end{itemize}

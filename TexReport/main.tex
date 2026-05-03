@@ -1,0 +1,179 @@
+% !TEX program = xelatex % (can also use "lualatex") 
+\documentclass[12pt]{report}
+\usepackage[fontsize=13pt]{scrextend}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+% \usepackage{svg}
+\usepackage{tgtermes}
+\usepackage{fontspec}
+\usepackage{biblatex}
+\usepackage{url}
+
+\addbibresource{sections/ref.bib}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning, shapes.geometric}
+\usepackage{pgfsys}
+\usepackage{transparent}
+\usepackage{graphicx}
+\setmainfont{Times New Roman}
+\usepackage{eso-pic}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tabularx}
+\usepackage{amsmath}
+
+\usepackage{anyfontsize}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{lscape}
+\linespread{1.5}
+\usepackage{hyperref}
+\usepackage{longtable}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{subcaption}
+
+
+\lstset{
+    basicstyle=\small\ttfamily, % Small font size
+    numbers=left,
+    frame=single,
+}
+\usepackage{pgfplots} % Required for the TikZ figure
+% \usepgfplotslibrary{external}
+% \tikzexternalize % Create a folder named 'saved-figures' first!
+\pgfplotsset{compat=1.17} % Ensure compatibility with the latest version of pgfplots
+\usepackage[utf8]{inputenc}
+\usepackage[acronym, toc]{glossaries} % Load gói glossaries
+\makeglossaries % Lệnh bắt buộc để tạo index
+\loadglsentries{sections/list-of-abbreviations}
+% Định nghĩa màu giống VS Code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize, % Font chữ code nhỏ gọn
+    breakatwhitespace=false,         
+    breaklines=true,                 % Tự xuống dòng nếu code quá dài
+    captionpos=b,                    % Caption nằm dưới
+    keepspaces=true,                 
+    numbers=left,                    % Số dòng bên trái
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\newcommand{\Khang}[1]{\textcolor{red!70!pink}{\textbf{\textit{#1}}}}
+
+% Define chapter font size to be 15pt
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\begin{document}
+
+\input{sections/cover-page}
+\setmainfont{Times New Roman}
+
+\clearpage
+\pagenumbering{roman} 
+\input{sections/ins-signature}
+
+\input{sections/decl-of-authen}
+
+\input{sections/ack}
+
+\input{sections/abstract}
+
+\input{sections/table-of-glossary}
+
+\input{sections/list-of-abbreviations}
+
+\input{sections/contents}
+
+\listoftables
+\newpage
+
+% \printglossary[type=\acronymtype, title={Danh mục từ viết tắt}]
+% \newpage
+
+\listoffigures
+\newpage
+
+\pagenumbering{arabic}
+
+\chapter{Giới Thiệu}
+
+% \textit{In chapter 1, the overview, objectives, and goals of the research project are illustrated. The outline of the report is also presented.}
+
+\input{sections/1.Introduction/1.1.Motivation}
+
+\input{sections/1.Introduction/1.2.Goals}
+
+\input{sections/1.Introduction/1.3.Scope}
+
+\input{sections/1.Introduction/1.4.Thesis-structure}
+
+\chapter{Công Nghệ Liên Quan}
+\label{chapter:related}
+
+\input{sections/2.Related/2.1.Technologies}
+\input{sections/2.Related/2.2.Existing-Systems}
+
+\chapter{Cơ Sở Lý Thuyết}
+
+\textit{Chương này trình bày nhưng kiến thức sơ bộ được sử dụng trong hệ thống.}
+\input{sections/3.Theoretical-Background/3.1.VAD}
+\input{sections/3.Theoretical-Background/3.2.Speech-Embeddings}
+\input{sections/3.Theoretical-Background/3.3.Clustering-Techniques}
+\input{sections/3.Theoretical-Background/3.4.ASR}
+\input{sections/3.Theoretical-Background/3.5.Semantic Search}
+\input{sections/3.Theoretical-Background/3.6.Sentence-Ranking}
+\input{sections/3.Theoretical-Background/3.7.Vector-Database}
+\input{sections/3.Theoretical-Background/3.9.RAG}
+\input{sections/3.Theoretical-Background/3.10.Metrics}
+
+\chapter{Thiết Kế \& Hiện Thực Hệ Thống}
+% 1. Tổng quan (Chung)
+\input{sections/4.System-Design-&-Implementation/4.1.System Architecture}
+\input{sections/4.System-Design-&-Implementation/4.2.Speech-Processing-Pipeline}
+
+\input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.0_intro}
+\input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.1.Indexing}
+\input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.2.Retrival}
+\input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.3_generation}
+\chapter{Đánh Giá}
+\input{sections/5.Evaluation/5.0.Tong-quan-danh-gia.tex}
+\input{sections/5.Evaluation/5.1.Du-lieu-danh-gia.tex}
+\input{sections/5.Evaluation/5.2.0.tex}
+\input{sections/5.Evaluation/5.2.1.tex}
+\input{sections/5.Evaluation/5.2.2.tex}
+\input{sections/5.Evaluation/5.2.3.tex}
+\input{sections/5.Evaluation/5.2.4.tex}
+\input{sections/5.Evaluation/5.2.5.tex}
+
+\chapter{Kết Luận}
+
+\input{sections/6.Conclusion/summary}
+\printbibliography
+% \input{sections/references}
+
+% \input{sections/appendixes/appendix}
+% \input{sections/appendixes/plan}
+% % add appendix later on
+
+\end{document}

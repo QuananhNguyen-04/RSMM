@@ -1,0 +1,55 @@
+\section{Mô hình Xử lý tiếng nói (Speech Processing Module)}
+Mô hình Xử lý tiếng nói đóng vai trò là lớp chuyển đổi trung gian giữa tín hiệu âm thanh thô và biểu diễn văn bản có cấu trúc, làm cơ sở cho toàn bộ các bước truy xuất tri thức phía sau. Mô hình này được thiết kế để bảo toàn thông tin ngữ cảnh hội thoại, đặc biệt là định danh người nói và mốc thời gian.
+
+Vì vậy, kết quả của mô hình không đơn thuần là transcript, mà là một tập các phân đoạn hội thoại được thêm dữ liệu ngoài hội thoại, đóng vai trò là dữ liệu cơ sở cho quá trình đánh chỉ mục và truy xuất sau này.
+
+Mô hình được phân thành 2 phần chính:
+\begin{itemize}
+    \item Định danh người nói (Speaker Diarization).
+    \item Nhận dạng tiếng nói tự động (Automatic Speech Recognition - ASR). 
+\end{itemize}
+
+Hai phần này hoạt động tuần tự, kết quả của Diarization quyết định các phân đoạn được đưa vào ASR, đồng thời cung cấp thông tin người nói để gán nhãn cho văn bản được sinh ra. Việc hoạt động tuần tự là cần thiết, vì các mô hình ASR tốn kém chi phí vận hành, xử lý dữ liệu qua Diarization giúp tách biệt lời nói rõ ràng giữa những diễn giả, từ đó hạn chế trộn lẫn ngữ cảnh giữa các đoạn hội thoại và cũng giúp khử nhiễu, giữ cho mô hình ASR hoạt động ổn định hơn so với bản ghi liên tục.
+
+\subsection{Định danh người nói}
+Ở bước đầu tiên, tín hiệu âm thanh đầu vào được xử lý bằng mô-đun phát hiện hoạt động giọng nói (VAD) nhằm xác định các khoảng thời gian có lời nói. Các đoạn lời nói sau đó được phân loại thành hai nhóm dựa trên độ dài: các đoạn đủ dài để trích xuất embedding ổn định và các đoạn ngắn không đạt ngưỡng tối thiểu.
+
+Việc tách riêng các đoạn ngắn ngay từ đầu nhằm tránh việc đưa các embedding kém ổn định vào quá trình phân cụm chính, vốn có thể dẫn tới các lỗi gộp hoặc tách nhãn không mong muốn.
+
+\textbf{Phân cụm thô với Embedding cỡ lớn}:
+Các đoạn giọng nói đủ dài được sử dụng để trích xuất speaker embedding bằng các mô hình chuyên dụng (như ECAPA-TDNN hoặc TitaNet-large). Các mô hình này có tính phân biệt cao và phù hợp cho việc xây dựng cấu trúc phân cụm ổn định trong không gian đặc trưng.
+
+Tập embedding thu được được đưa vào mô-đun phân cụm nhằm ước lượng số lượng người nói và gán nhãn sơ bộ cho các đoạn giọng nói dài. Kết quả của pha này được xem là các cụm thô (coarse clusters), đóng vai trò nền tảng cho các bước xử lý tiếp theo.
+
+\textbf{Khởi tạo đại diện cụm (Cluster pivots)}: Sau khi hoàn tất pha phân cụm thô, mỗi cụm người nói được đại diện bởi một tập con các đoạn giọng nói tiêu biểu. Các đoạn này được sử dụng để xây dựng các vector đại diện (pivot embeddings) cho từng cụm, nhằm tạo cầu nối giữa không gian embedding cỡ lớn và không gian embedding ở pha tiếp theo.
+
+Các pivot này cho phép chuyển thông tin về cấu trúc người nói đã được ước lượng sang không gian embedding khác, đồng thời giảm thiểu ảnh hưởng của nhiễu do các đoạn giọng nói ngắn gây ra.
+
+\textbf{Gán nhãn bổ sung}: Các đoạn giọng nói ngắn bị loại khỏi pha phân cụm ban đầu được xử lý riêng. Các đoạn này được trích xuất embedding bằng một mô hình biểu diễn có khả năng xử lý hiệu quả các phân đoạn ngắn và giàu ngữ cảnh cục bộ.
+
+Embedding của các đoạn ngắn được so sánh với các vector đại diện của từng cụm thu được từ gom cụm thô. Nhãn người nói được gán dựa trên độ tương đồng cao nhất, đảm bảo mọi đoạn giọng nói đều được gán nhãn mà không làm thay đổi cấu trúc phân cụm đã được xác định trước đó.
+
+Cuối cùng, các đoạn giọng nói được hợp nhất theo trật tự thời gian để tạo ra kết quả diarization hoàn chỉnh. Pipeline đảm bảo rằng tất cả các đoạn lời nói, bao gồm cả các đoạn ngắn, đều được gán nhãn người nói tương ứng, đồng thời giữ nguyên cấu trúc phân cụm ổn định từ pha đầu tiên.
+
+Thiết kế hai bước gán nhãn tách biệt rõ ràng nhằm hạn chế ảnh hưởng lỗi từ các đoạn ngắn của những embeddings cỡ lớn đến cấu trúc phân cụm, và tối ưu ưu điểm của hai loại mô hình embeddings hiện đại.
+
+\subsection{Mô hình Tự động Nhận diện Giọng nói}
+ASR trong hệ thống không chỉ đảm nhiệm chức năng chuyển đổi tín hiệu âm thanh sang văn bản, mà còn đóng vai trò chuẩn hóa cấu trúc hội thoại để phục vụ các bước xử lý ngữ nghĩa và truy xuất tri thức phía sau.
+
+\textbf{Gán nhãn người nói cho văn bản ASR}
+Sau khi hoàn tất quá trình Diarization, mỗi phân đoạn giọng nói được gắn nhãn và mốc thời gian. Mỗi phân đoạn không được xem là độc lập hoàn toàn trong quá trình nhận dạng tiếng nói. Trong thực tế, các phân đoạn này thường bị phân mảnh do hiện tượng cắt lời, dao động nhãn (oscillation) hoặc tách đoạn quá mức, dẫn đến độ dài ngữ cảnh không tối ưu cho ASR.
+
+\textbf{Xử lý phân mảnh trước ASR}
+Kết quả phân tích Diarization cho thấy một số lỗi còn tồn động như oscillation, merge và split, đặc biệt ở các đoạn hội thoại ngắn liên tiếp. Điều này làm suy giảm hiệu quả trong suy đoán ngữ cảnh của ASR nếu áp dụng trực tiếp lên từng đoạn riêng biệt. Vì vậy, mô hình thực hiện ASR theo từng cụm phân đoạn (segment grouping), trong đó các đoạn gần nhau về mặt thời gian được gom lại thành các đơn vị lớn hơn.
+
+Việc gom nhóm phân đoạn được điều khiển bởi một ngưỡng độ dài tối thiểu, nhằm đảm bảo mỗi đơn vị đầu vào cho ASR chứa đủ thông tin ngữ âm và ngữ cảnh để mô hình hoạt động ổn định. Cách tiếp cận này giúp giảm thiểu các lỗi nhận dạng do ngữ cảnh quá ngắn, đồng thời hạn chế việc phá vỡ cấu trúc hội thoại gốc.
+
+Để cân bằng giữa việc bảo toàn ranh giới hội thoại và yêu cầu về độ dài ngữ cảnh, hệ thống áp dụng chiến lược soft-padding sliding window. Cụ thể, mỗi cụm phân đoạn được mở rộng thêm một khoảng ngữ cảnh ngắn ở hai phía (trước và sau), với các đoạn đệm này không được xem là trung tâm nhận dạng nhưng cung cấp thêm thông tin ngữ cảnh cho mô hình ASR. Sau khi hoàn tất nhận dạng, chỉ phần văn bản tương ứng với vùng trung tâm của cửa sổ được giữ lại, trong khi phần đệm được loại bỏ nhằm tránh trùng lặp nội dung.
+
+\textbf{Hiệu chỉnh cấu trúc hội thoại dựa trên mô hình ngôn ngữ lớn}
+Mặc dù chiến lược gom cụm phân đoạn và soft-padding sliding window giúp ổn định đầu vào cho ASR, đầu ra văn bản thu được vẫn có thể chưa phản ánh chính xác cấu trúc hội thoại thực tế. Nguyên nhân là các ranh giới phân đoạn được xác định ở mức tín hiệu âm thanh không luôn tương thích với ranh giới cú pháp và ngữ nghĩa ở mức văn bản, đặc biệt trong các tình huống hội thoại nhanh, cắt lời hoặc phản
+hồi ngắn. 
+
+Do đó, hệ thống áp dụng một bước hậu xử lý dựa trên mô hình ngôn ngữ lớn (LLM) nhằm hiệu chỉnh ranh giới giữa các đoạn hội thoại dựa trên cấu trúc câu và ngữ nghĩa tổng thể của transcript. Mô hình ngôn ngữ trong bước này không sinh thêm nội dung mới, mà chỉ thực hiện việc gộp hoặc tách các đoạn văn bản để đảm bảo tính nhất quán về mặt hội thoại trước khi chuyển sang giai đoạn đánh chỉ mục và truy xuất tri thức.
+
+Bước hiệu chỉnh này được đặt sau phân hệ ASR và được xem là cần thiết để giảm thiểu tác động của hiện tượng phân mảnh phân đoạn và các lỗi tồn động từ quá trình diarization, mặc dù hiện chưa có thước đo định lượng trực tiếp cho bước xử lý này. 

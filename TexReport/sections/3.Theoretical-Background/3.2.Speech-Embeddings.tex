@@ -1,0 +1,24 @@
+\section{Biểu Diễn Đặc Trưng - Speech Embeddings}
+\subsection{Mục tiêu}
+Khi xử lý cuộc hội thoại, trích xuất đặc trưng được sử dụng để phân biệt giọng nói giữa nhiều người. Các kiến trúc được xem xét trong phần này là ECAPA-TDNN, TitaNet, WavLM; mỗi kiến trúc có ưu và nhược điểm riêng, và ảnh hưởng đến khả năng phân biệt và chất lượng embedding trong bài toán phân cụm. 
+
+Trong bối cảnh sử dụng trích xuất đặc trưng để tiến hành phân cụm, vai trò của mô hình Embeddings tập trung vào khoảng cách giữa các nhóm trong không gian đặc trưng.
+\begin{itemize}
+    \item ECAPA-TDNN là  kiến trúc mở rộng của kiến trúc Time Delay Neural Network (TDNN), với cơ chế attention và multi-scale temporal context.  
+    \item TitaNet là một kiến trúc neural sử dụng các convolution 1-chiều kết hợp với channel attention và global context pooling, được thiết kế để trích xuất biểu diễn speaker (t-vector) với khả năng mở rộng về kích thước mô hình.
+\end{itemize}
+Vì Embedding là đầu vào cho bài toán phân cụm người nói, sự khác biệt giữa các kiến trúc trên sẽ không được đánh giá độc lập mà thể hiện thông qua chất lượng phân cụm trong không gian đặc trưng, được phản ánh bởi chỉ số đánh giá tổng hợp như Diarization Error Rate (DER). 
+
+Hai mô hình trên có khác biệt về thiết kế kiến trúc và quy mô, nghiên cứu trước đây cho thấy không tồn tại khác biệt thực nghiệm rõ ràng về chất lượng embeddings giữa hai mô hình \cite{app14041329} 
+
+Khác với ECAPA-TDNN và TitaNet, mô hình WavLM không được sử dụng trong đồ án này
+như một speaker embedding chính phục vụ trực tiếp cho bài toán phân cụm người nói.
+WavLM là một mô hình biểu diễn speech dựa trên self-supervised learning với kiến trúc
+Transformer, được huấn luyện nhằm học các biểu diễn ngữ cảnh tổng quát cho nhiều
+tác vụ xử lý tiếng nói khác nhau. 
+
+Các nghiên cứu trước đây cho thấy embedding trích xuất từ WavLM mang tính ngữ cảnh
+cao và phù hợp cho các tác vụ ở mức phân đoạn ngắn, tuy nhiên các biểu diễn này
+không được tối ưu riêng cho việc phân biệt danh tính người nói và do đó thường
+không thể hiện ưu thế rõ rệt trong các bài toán speaker clustering khi so sánh
+với các kiến trúc embedding chuyên dụng như ECAPA-TDNN hoặc TitaNet. \cite{app14041329}
