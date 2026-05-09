@@ -77,6 +77,7 @@ import matplotlib.patches as mpatches
 from tqdm import tqdm
 
 # Local Project Utilities
+from transform_mp3 import mp3_to_wav
 from transform_mp4 import mp4_to_wav
 
 from rsmm_utils import (
@@ -2363,14 +2364,20 @@ def merge_corrected_spans(spans: list, overlap: int = 6) -> str:
 client = Groq(api_key=dotenv.get_key(dotenv.find_dotenv(), "GROQ_API"))
 
 if __name__ == "__main__":
-    source_path = Path("./dợt-báo-cáo_1.wav")  # variable later
+    # source_path = Path("./dợt-báo-cáo_1.wav")  # variable later
+    source_path = Path("./LLM hype led nowhere back to classic methods.wav")  # variable later
 
     if not source_path.exists():
         # Try MP4 fallback
         mp4_path = source_path.with_suffix(".mp4")
+        mp3_path = source_path.with_suffix(".mp3")
         if mp4_path.exists():
             print(f"[INFO] WAV not found. Converting MP4 → WAV: {mp4_path.name}")
             wav_path = mp4_to_wav(mp4_path)
+            source_path = Path(wav_path)
+        elif mp3_path.exists():
+            print(f"[INFO] WAV not found. Converting MP3 → WAV: {mp3_path.name}")
+            wav_path = mp3_to_wav(mp3_path)
             source_path = Path(wav_path)
         else:
             raise FileNotFoundError(
@@ -2410,8 +2417,8 @@ if __name__ == "__main__":
     # Choose model here:
     ### transcript = transcribe_chunks_ctc(waveform, sample_rate, chunks, model, processor)
     # transcript = transcribe_chunks_phowhisper(waveform, sample_rate, chunks)
-    # transcript = transcribe_chunks_w2v2_250h(waveform, sample_rate, chunks)
-    transcript = transcribe_chunks_vlsp2020(waveform, sample_rate, chunks)
+    transcript = transcribe_chunks_w2v2_250h(waveform, sample_rate, chunks)
+    # transcript = transcribe_chunks_vlsp2020(waveform, sample_rate, chunks)
 
     # print(transcript)
 

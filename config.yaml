@@ -1,0 +1,48 @@
+# paths:
+#   audio_files:
+#     - "./IS1003b.Mix-Headset.wav"
+
+#   transcriptions:
+#     input_1: "./transcriptions/final_transcriptions_IS1003b.Mix-Headset.json"
+#     input_2: "./transcriptions/final_transcriptions2.json"
+#     output_dir: "./transcriptions/"
+
+#   dataset:
+#     words_dir: "D:/Downloads/ami_public_manual_1.6.2/words"
+#     base_dir: "D:/Downloads/ami_public_manual_1.6.2/"
+#     meeting_id: "IS1003b"
+
+#   evaluation:
+#     ground_truth: "./IS1003b_words.json"
+#     prediction: "./transcriptions/final_transcriptions_IS1003b.Mix-Headset.json"
+#     speaker_summary: "./speaker_sum/speaker_summarization_IS1003b.Mix-Headset.json"
+#     topic_summary: "./topic_summary/topic_summarization_IS1003b.Mix-Headset.json"
+#     meeting_summary: "./meeting_summary/meeting_summarization_IS1003b.Mix-Headset.json"
+
+# pipeline:
+#   summarization: true
+#   diarization: true
+
+experiment:
+  name: "IS1003a.Mix-Headset"
+  # name: "IS1003b.Mix-Headset"
+  # name: "IS1003c.Mix-Headset"
+  # name: "IS1003d.Mix-Headset"
+
+paths:
+  dataset_root: "D:/Downloads/ami_public_manual_1.6.2"
+
+  audio_dir: "./audio"
+  audio: "./"
+  transcription_dir: "./transcriptions"
+
+  speaker_summary_dir: "./speaker_sum"
+  topic_summary_dir: "./topic_summary"
+  meeting_summary_dir: "./meeting_summary"
+
+  evaluation:
+    ground_truth: "./IS1003b_words.json"
+
+pipeline:
+  summarization: true
+  diarization: true

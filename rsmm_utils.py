@@ -227,3 +227,29 @@ def concat_json_arrays(raw_output: str):
             cleaned_merged.append(item)
 
     return cleaned_merged
+
+def time_to_seconds(t):
+    """
+    Convert time to seconds.
+    Supports:
+    - float / int
+    - "HH:MM:SS"
+    - "MM:SS"
+    """
+    if isinstance(t, (int, float)):
+        return float(t)
+
+    if isinstance(t, str):
+        parts = t.strip().split(":")
+        parts = [float(p) for p in parts]
+
+        if len(parts) == 3:  # HH:MM:SS
+            h, m, s = parts
+            return h * 3600 + m * 60 + s
+        elif len(parts) == 2:  # MM:SS
+            m, s = parts
+            return m * 60 + s
+        else:
+            raise ValueError(f"Invalid time format: {t}")
+
+    raise TypeError(f"Unsupported time type: {type(t)}")

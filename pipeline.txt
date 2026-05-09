@@ -1,0 +1,91 @@
+# ===============================
+# PIPELINE OVERVIEW
+# ===============================
+
+CONFIG: config.yaml
+
+[STEP 1] Automatic Speech Recognition (ASR)
+------------------------------------------
+File: new_demo_eng.py
+Input:
+  - paths.audio_files
+Output:
+  - transcriptions/*.json
+
+Command:
+  python new_demo_eng.py 
+
+[STEP 2] Summarization
+------------------------------------------
+File: summarization.py
+Input:
+  - paths.transcriptions.input_1
+  - paths.transcriptions.input_2
+Output:
+  - summarized results
+
+Command:
+  python summarization.py 
+
+
+[STEP 3] Dataset Processing
+------------------------------------------
+File: test_set_process.py
+Input:
+  - paths.dataset.words_dir
+  - paths.dataset.meeting_id
+Output:
+  - processed dataset JSON
+
+Command:
+  python test_set_process.py 
+
+[STEP 4] Evaluation
+------------------------------------------
+File: measurement1.py
+Input:
+  - paths.evaluation.ground_truth
+  - paths.evaluation.prediction
+Output:
+  - evaluation metrics (DER, etc.)
+
+Command:
+  python measurement1.py 
+
+# ===============================
+# NOTES
+# ===============================
+- Run steps sequentially
+- Check outputs after each step
+- You can skip steps if outputs already exist
+
+# =========================================
+# CONFIG ADJUSTMENT GUIDE
+# =========================================
+
+Goal:
+Change the pipeline to process a new meeting/audio file.
+
+Example target:
+  IS1003.abc.wav
+
+paths:
+  audio_files:
+    - "./IS1003.abc.wav"
+
+  transcriptions:
+    input_1: "./transcriptions/final_transcriptions_IS1003.json"
+    input_2: "./transcriptions/final_transcriptions_IS1003_alt.json"
+    output_dir: "./transcriptions/"
+
+  dataset:
+    words_dir: "./ami_public_manual_1.6.2/words"
+    meeting_id: "IS1003"
+
+  evaluation:
+    ground_truth: "./IS1003_words.json"
+    prediction: "./transcriptions/final_transcriptions_IS1003.json"
+
+pipeline:
+  summarization: true
+  diarization: true
