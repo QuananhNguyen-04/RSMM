@@ -1,9 +1,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces So sánh kiến trúc Bi-Encoder và Cross-Encoder}}{15}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces So sánh kiến trúc Bi-Encoder và Cross-Encoder}}{16}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Sơ đồ luồng xử lý dữ liệu tích hợp chức năng Tóm tắt trong mô-đun RAG}}{30}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Sơ đồ quy trình truy xuất hai giai đoạn (Retrieval \& Re-ranking)}}{34}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Sơ đồ luồng xử lý dữ liệu tích hợp chức năng Tóm tắt trong mô-đun RAG}}{33}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sơ đồ quy trình truy xuất hai giai đoạn (Retrieval \& Re-ranking)}}{37}{figure.caption.25}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

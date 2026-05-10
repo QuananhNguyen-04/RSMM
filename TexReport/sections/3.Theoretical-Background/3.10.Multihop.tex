@@ -1,0 +1,22 @@
+\section{Truy xuất và Suy luận đa bước (Multi-step Retrieval and Reasoning)}
+
+\subsection{Thách thức của các truy vấn đa bước (Multi-hop queries)}
+Trong các hệ thống RAG tiêu chuẩn, quá trình truy xuất thường được thực hiện thông qua một thao tác tìm kiếm duy nhất ngay sau khi tiếp nhận truy vấn \cite{lewis2020retrieval}. Mặc dù cách tiếp cận này thể hiện hiệu năng cao đối với các câu hỏi tra cứu thông tin trực tiếp, các nghiên cứu gần đây chỉ ra rằng nó gặp hạn chế lớn khi xử lý các truy vấn đa bước (\textit{multi-hop queries}) đòi hỏi nhiều tri thức \cite{xiong2020answering}. Các truy vấn đa bước yêu cầu hệ thống phải xác định một thông tin trung gian, sau đó sử dụng thông tin này như một manh mối (\textit{bridge entity}) để tiếp tục định vị đáp án cuối cùng \cite{yang2018hotpotqa}. Việc chỉ truy xuất một lần dựa trên truy vấn gốc thường dẫn đến hiện tượng "khoảng trống ngữ nghĩa" (\textit{semantic gap}), khiến LLM không thu thập đủ ngữ cảnh cần thiết để đưa ra suy luận chính xác \cite{xiong2020answering}.
+
+\subsection{Kỹ thuật Chuỗi suy luận (Chain-of-Thought - CoT)}
+Để giải quyết bài toán suy luận phức tạp, kỹ thuật Chuỗi suy luận (Chain-of-Thought - CoT) đã được đề xuất nhằm hướng dẫn LLM phân rã một bài toán lớn thành các bước lập luận nhỏ, được thực hiện tuần tự trước khi đưa ra kết quả cuối cùng \cite{wei2022chain}. Tuy nhiên, Trivedi và cộng sự \cite{trivedi2023interleaving} lập luận rằng CoT truyền thống phụ thuộc hoàn toàn vào bộ nhớ tham số (\textit{parametric memory}) của mô hình. Đối với các bài toán yêu cầu tri thức cập nhật hoặc dữ liệu nội bộ đặc thù (như biên bản hội họp), việc sử dụng CoT thuần túy làm tăng rủi ro phát sinh hiện tượng ảo giác (\textit{hallucination}), do LLM có xu hướng tự sinh ra các bước suy luận thiếu căn cứ thực tế \cite{ji2023survey}.
+
+\subsection{Phương pháp Lồng ghép Truy xuất và Suy luận (IRCoT)}
+Nhằm khắc phục những hạn chế của cả RAG tiêu chuẩn và CoT, phương pháp Lồng ghép Truy xuất và Suy luận (Interleaving Retrieval with Chain-of-Thought - IRCoT) đã được giới thiệu \cite{trivedi2023interleaving}. Trái ngược với kiến trúc tách rời giữa truy xuất và tạo sinh, IRCoT thiết lập một vòng lặp tương tác liên tục giữa hai thành phần này.
+
+Theo Trivedi và cộng sự \cite{trivedi2023interleaving}, cơ chế hoạt động cốt lõi của IRCoT được thực hiện qua các bước lặp:
+\begin{enumerate}
+    \item \textbf{Khởi tạo:} Dựa trên câu hỏi gốc, LLM tạo ra một bước suy luận khởi đầu (\textit{partial CoT}).
+    \item \textbf{Truy xuất ngữ cảnh:} Bước suy luận này, chứa các manh mối mới, được sử dụng làm truy vấn (\textit{query}) để tìm kiếm tài liệu liên quan trong không gian vector.
+    \item \textbf{Tích hợp:} Các tài liệu vừa được truy xuất sẽ được bổ sung vào bộ đệm ngữ cảnh (\textit{context window}).
+    \item \textbf{Suy luận tiếp nối:} Dựa trên tập ngữ cảnh đã được làm giàu, LLM tiếp tục sinh ra bước suy luận tiếp theo.
+    \item \textbf{Kết thúc:} Vòng lặp này tiếp diễn cho đến khi LLM thu thập đủ thông tin thực tế hoặc đạt đến giới hạn số bước lặp được cấu hình trước \cite{trivedi2023interleaving}.
+\end{enumerate}
+
+\subsection{Khả năng ứng dụng trong hệ thống RAG hội thoại}
+Đặc thù của dữ liệu hội thoại nhiều người tham gia là tính phân mảnh; thông tin thường không xuất hiện liền mạch mà bị phân tán theo thời gian và đan xen giữa các lượt phát biểu của nhiều diễn giả \cite{zhong2021qmsum}. Việc ứng dụng kiến trúc IRCoT cho phép hệ thống RAG vượt qua giới hạn của tìm kiếm từ khóa tĩnh. Thông qua vòng lặp của IRCoT \cite{trivedi2023interleaving}, hệ thống có khả năng tự động bóc tách các điều kiện truy vấn phức tạp (ví dụ: xác định mốc thời gian diễn ra sự kiện trước, sau đó dùng thời gian đó làm manh mối để tìm kiếm phát biểu của diễn giả cụ thể) và truy vết chính xác chuỗi sự kiện. Cơ chế này đóng vai trò then chốt trong việc đáp ứng yêu cầu tổng hợp thông tin và suy luận logic từ các văn bản hội thoại mang nhiễu.

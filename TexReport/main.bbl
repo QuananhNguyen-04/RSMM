@@ -833,6 +833,47 @@
       \field{volume}{1}
       \field{year}{2021}
     \endentry
+    \entry{trivedi2023interleaving}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=7271d22448c83950b62ad1ab83d236e3}{%
+           family={Trivedi},
+           familyi={T\bibinitperiod},
+           given={Harsh},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f34635e70b0099ab06a2684bf118b906}{%
+           family={Balasubramanian},
+           familyi={B\bibinitperiod},
+           given={Niranjan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d52b94839fda8bece4ad0c811146f04f}{%
+           family={Khot},
+           familyi={K\bibinitperiod},
+           given={Tushar},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a9e0631f7cb86b51f2dbfd908c164960}{%
+           family={Sabharwal},
+           familyi={S\bibinitperiod},
+           given={Ashish},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a63401a245dcd533e923bad37546f041}
+      \strng{fullhash}{d8eb1232cdb6560bfec8a4c8cff14df7}
+      \strng{fullhashraw}{d8eb1232cdb6560bfec8a4c8cff14df7}
+      \strng{bibnamehash}{a63401a245dcd533e923bad37546f041}
+      \strng{authorbibnamehash}{a63401a245dcd533e923bad37546f041}
+      \strng{authornamehash}{a63401a245dcd533e923bad37546f041}
+      \strng{authorfullhash}{d8eb1232cdb6560bfec8a4c8cff14df7}
+      \strng{authorfullhashraw}{d8eb1232cdb6560bfec8a4c8cff14df7}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 61st annual meeting of the association for computational linguistics (volume 1: long papers)}
+      \field{title}{Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions}
+      \field{year}{2023}
+      \field{pages}{10014\bibrangedash 10037}
+      \range{pages}{24}
+    \endentry
     \entry{vaswani2017attention}{inproceedings}{}{}
       \name{author}{8}{}{%
         {{hash=7f28e84700536646dd6620a0db07ad09}{%
@@ -893,7 +934,272 @@
       \field{volume}{30}
       \field{year}{2017}
     \endentry
+    \entry{wei2022chain}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{8}{}{%
+        {{hash=61331a11b490f3d927555985facd25b3}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+        {{hash=27d22d8f05f44b47f7dcfe9b7fb85584}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xuezhi},
+           giveni={X\bibinitperiod}}}%
+        {{hash=fc76f5fb256da4d423554f8e629b4321}{%
+           family={Schuurmans},
+           familyi={S\bibinitperiod},
+           given={Dale},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3fd5b56bfa48546f2caae7b4aa56a29f}{%
+           family={Bosma},
+           familyi={B\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61e00ed0c44b8bddb9077a74a4ac1167}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Fei},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4c62c73d10bbf27f93c07774d30f647c}{%
+           family={Chi},
+           familyi={C\bibinitperiod},
+           given={Ed},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c636f146591d51579a8119b777394878}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Quoc\bibnamedelima V},
+           giveni={Q\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=797f9a226fd7356db5edc6feba1a0e87}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Denny},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e5e566ee8f47df717196e96221e7705}
+      \strng{fullhash}{de36d2c748a7c37004afe2bbfdfd32bf}
+      \strng{fullhashraw}{de36d2c748a7c37004afe2bbfdfd32bf}
+      \strng{bibnamehash}{7e5e566ee8f47df717196e96221e7705}
+      \strng{authorbibnamehash}{7e5e566ee8f47df717196e96221e7705}
+      \strng{authornamehash}{7e5e566ee8f47df717196e96221e7705}
+      \strng{authorfullhash}{de36d2c748a7c37004afe2bbfdfd32bf}
+      \strng{authorfullhashraw}{de36d2c748a7c37004afe2bbfdfd32bf}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in neural information processing systems}
+      \field{title}{Chain-of-thought prompting elicits reasoning in large language models}
+      \field{volume}{35}
+      \field{year}{2022}
+      \field{pages}{24824\bibrangedash 24837}
+      \range{pages}{14}
+    \endentry
+    \entry{xiong2020answering}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=ebf728d4edd3772aa46233df8265003e}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Wenhan},
+           giveni={W\bibinitperiod}}}%
+        {{hash=b20b7b3e0754dd9463e86b1812ee4ddc}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xiang\bibnamedelima Lorraine},
+           giveni={X\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=5ae8e391a6b9231786d05547bb57e8cd}{%
+           family={Iyer},
+           familyi={I\bibinitperiod},
+           given={Srini},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e483b52ce2cd3ba2fd08e7bf4fef4ff0}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Jingfei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ecbe786a5668bf643d74bb24fe1c3cfe}{%
+           family={Lewis},
+           familyi={L\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3b9b2f81da3e41fbc72b81f1b7f2e722}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={William\bibnamedelima Yang},
+           giveni={W\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=09002dc86e3060fd9d68dec0211c0f18}{%
+           family={Mehdad},
+           familyi={M\bibinitperiod},
+           given={Yashar},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d4d56d3d370b3afd4ad2ebf985fbd3f8}{%
+           family={Yih},
+           familyi={Y\bibinitperiod},
+           given={Wen-tau},
+           giveni={W\bibinithyphendelim t\bibinitperiod}}}%
+        {{hash=6cd024b217f3f2f8126e253b8c84d24d}{%
+           family={Riedel},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ca01c762f4a52dd8a8548508f8d727c9}{%
+           family={Kiela},
+           familyi={K\bibinitperiod},
+           given={Douwe},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca95c88c849e034912cfa00efc780041}
+      \strng{fullhash}{5f7964e5f3531b9976de8522d082e36a}
+      \strng{fullhashraw}{5f7964e5f3531b9976de8522d082e36a}
+      \strng{bibnamehash}{ca95c88c849e034912cfa00efc780041}
+      \strng{authorbibnamehash}{ca95c88c849e034912cfa00efc780041}
+      \strng{authornamehash}{ca95c88c849e034912cfa00efc780041}
+      \strng{authorfullhash}{5f7964e5f3531b9976de8522d082e36a}
+      \strng{authorfullhashraw}{5f7964e5f3531b9976de8522d082e36a}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2009.12756}
+      \field{title}{Answering complex open-domain questions with multi-hop dense retrieval}
+      \field{year}{2020}
+    \endentry
+    \entry{yang2018hotpotqa}{inproceedings}{}{}
+      \name{author}{7}{}{%
+        {{hash=6b1fa069ba3a41402c63a24209e47289}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Zhilin},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=90315a68d91c0dd0775cb493bc6967a6}{%
+           family={Qi},
+           familyi={Q\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5ddb374f636f20980ee704d638a01465}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Saizheng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Yoshua},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=be006ecd16e3b55e58d8a895354f80e8}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+        {{hash=bd2be300d445e9f6db7808f9533e66cb}{%
+           family={Salakhutdinov},
+           familyi={S\bibinitperiod},
+           given={Ruslan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2214edb8305f7ccd7cdc310b3a8ae1b4}{%
+           family={Manning},
+           familyi={M\bibinitperiod},
+           given={Christopher\bibnamedelima D},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{c01d380693737340325a0771b3b3b362}
+      \strng{fullhash}{114f49b5a5e2c27a6fdcee061465b203}
+      \strng{fullhashraw}{114f49b5a5e2c27a6fdcee061465b203}
+      \strng{bibnamehash}{c01d380693737340325a0771b3b3b362}
+      \strng{authorbibnamehash}{c01d380693737340325a0771b3b3b362}
+      \strng{authornamehash}{c01d380693737340325a0771b3b3b362}
+      \strng{authorfullhash}{114f49b5a5e2c27a6fdcee061465b203}
+      \strng{authorfullhashraw}{114f49b5a5e2c27a6fdcee061465b203}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2018 conference on empirical methods in natural language processing}
+      \field{title}{HotpotQA: A dataset for diverse, explainable multi-hop question answering}
+      \field{year}{2018}
+      \field{pages}{2369\bibrangedash 2380}
+      \range{pages}{12}
+    \endentry
+    \entry{zhong2021qmsum}{inproceedings}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=876a1475c0ffd4fb67f85c1bf2fcfa24}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ebd9e379c8da5767029e08693ce44f22}{%
+           family={Yin},
+           familyi={Y\bibinitperiod},
+           given={Da},
+           giveni={D\bibinitperiod}}}%
+        {{hash=fe5435f0fc61cb65658815c3b6163c49}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Tao},
+           giveni={T\bibinitperiod}}}%
+        {{hash=bc2df031b50bd0f7a8329da3f078be2a}{%
+           family={Zaidi},
+           familyi={Z\bibinitperiod},
+           given={Ahmad},
+           giveni={A\bibinitperiod}}}%
+        {{hash=51d1631541bdd7952b83b04f0dbc6e2f}{%
+           family={Mutuma},
+           familyi={M\bibinitperiod},
+           given={Mutethia},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b8e884f80a021562691d97cdde1ca0f8}{%
+           family={Jha},
+           familyi={J\bibinitperiod},
+           given={Rahul},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c57d70bdcbd6111110bd0c040a14c30e}{%
+           family={Hassan},
+           familyi={H\bibinitperiod},
+           given={Ahmed},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c4927df8e95405dfbbf5b894d58d4fca}{%
+           family={Celikyilmaz},
+           familyi={C\bibinitperiod},
+           given={Asli},
+           giveni={A\bibinitperiod}}}%
+        {{hash=621013bf54d3546375ad71f17f020b5b}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9057ec1bc6c2faaf12dfb4b37a8d37d0}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Xipeng},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{e8e02f2a7bc54eea7b39dbf085820628}
+      \strng{fullhash}{5e7810f38a6d0e4ba733033ccf10f83c}
+      \strng{fullhashraw}{5e7810f38a6d0e4ba733033ccf10f83c}
+      \strng{bibnamehash}{e8e02f2a7bc54eea7b39dbf085820628}
+      \strng{authorbibnamehash}{e8e02f2a7bc54eea7b39dbf085820628}
+      \strng{authornamehash}{e8e02f2a7bc54eea7b39dbf085820628}
+      \strng{authorfullhash}{5e7810f38a6d0e4ba733033ccf10f83c}
+      \strng{authorfullhashraw}{5e7810f38a6d0e4ba733033ccf10f83c}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies}
+      \field{title}{QMSum: A new benchmark for query-based multi-domain meeting summarization}
+      \field{year}{2021}
+      \field{pages}{5905\bibrangedash 5921}
+      \range{pages}{17}
+    \endentry
   \enddatalist
+  \missing{17}
 \endrefsection
 \endinput
 

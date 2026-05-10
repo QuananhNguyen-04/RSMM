@@ -8,13 +8,19 @@ Mục tiêu chính của đồ án là nghiên cứu, thiết kế và hiện th
 
 \begin{itemize}
 
-\item \textbf{Xây dựng pipeline xử lý tiếng nói tích hợp:}
-Kết hợp mô-đun Phân đoạn người nói (Speaker Diarization) và Nhận dạng tiếng nói tự động (ASR) để chuyển đổi bản ghi âm thành văn bản có cấu trúc. Hệ thống cần đảm bảo định danh chính xác người nói và bảo toàn tham chiếu thời gian (timestamps) cho từng lượt lời.
+\item \textbf{Thiết lập pipeline tiền xử lý âm thanh:}
+Sử dụng các mô hình tiền huấn luyện (pre-trained models) hiện hành cho bài toán Phân đoạn người nói (Speaker Diarization) và Nhận dạng tiếng nói tự động (ASR). Mục tiêu là thiết lập luồng dữ liệu tự động để trích xuất văn bản và siêu dữ liệu (người nói, thời gian) nhằm tạo đầu vào thực tế cho hệ thống.
 
-\item \textbf{Thiết kế hệ thống lưu trữ và truy xuất ngữ nghĩa:}
-Xây dựng cơ sở dữ liệu vector (Vector Database) phục vụ lưu trữ biên bản cuộc họp, đảm bảo duy trì mối liên kết giữa nội dung văn bản và siêu dữ liệu (metadata) về người nói và thời gian, hỗ trợ các truy vấn ngữ nghĩa phức tạp.
+\item \textbf{Phát triển kiến trúc RAG chịu lỗi:}
+Xây dựng cơ sở dữ liệu vector và hệ thống truy xuất thông tin có khả năng hoạt động hiệu quả trên tập dữ liệu thực tế mang nhiễu (lỗi nhận diện từ vựng, sai lệch ranh giới người nói). Trọng tâm đặt vào việc ứng dụng phương pháp tìm kiếm ngữ nghĩa (Semantic Search) và năng lực của LLM để hậu xử lý, chuẩn hóa và suy luận đúng thông tin thay vì phụ thuộc vào một bản ghi (transcript) hoàn hảo.
 
-\item \textbf{Hiện thực hóa kỹ thuật RAG (Retrieval-Augmented Generation):}
-Tích hợp Mô hình Ngôn ngữ Lớn (LLM) với cơ chế truy xuất thông tin để xây dựng hệ thống hỏi đáp. Hệ thống cần có khả năng sinh câu trả lời dựa trên nội dung cuộc họp, đồng thời cung cấp trích dẫn nguồn (citation) chính xác để đảm bảo khả năng đối chứng (grounding), giảm thiểu hiện tượng ảo giác thông tin.
+\item \textbf{Xử lý truy vấn phức tạp, đa bước:}
+Nâng cấp cơ chế RAG để giải quyết các câu hỏi đòi hỏi khả năng suy luận qua nhiều bước hoặc kết hợp thông tin từ nhiều nguồn. Tích hợp linh hoạt kết quả tìm kiếm vector với cơ chế lọc theo siêu dữ liệu (Metadata Filtering) nhằm định vị chính xác thông tin bị phân tán trong các bản ghi hội thoại dài.
+
+\item \textbf{Xây dựng chiến lược tóm tắt hội thoại đa tầng (Multi-level Summarization):}
+Ứng dụng Mô hình Ngôn ngữ Lớn (LLM) để giải quyết bài toán ngữ cảnh dài (Long-context), phát triển hệ thống tóm tắt theo ba cấp độ: tóm tắt tổng quan toàn bộ cuộc họp, tóm tắt chi tiết theo từng chủ đề thảo luận và tổng hợp các phát biểu trọng tâm của từng cá nhân tham gia.
+
+\item \textbf{Xây dựng phương pháp đánh giá hệ thống:}
+Thực nghiệm và đo lường hiệu năng của hệ thống trên các kịch bản thực tế. Tập trung đánh giá khả năng "tự sửa lỗi" và phục hồi ngữ nghĩa của hệ thống RAG trước các sai số từ ASR, mức độ đóng góp của siêu dữ liệu vào độ chính xác truy xuất, cũng như kiểm chứng tính xác thực (faithfulness) của các mô-đun sinh văn bản.
 
 \end{itemize}

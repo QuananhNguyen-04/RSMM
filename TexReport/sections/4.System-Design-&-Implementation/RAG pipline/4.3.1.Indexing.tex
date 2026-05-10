@@ -4,9 +4,10 @@
 Giai đoạn đầu tiên của đường ống RAG là chuyển đổi dữ liệu hội thoại thô thành cấu trúc có thể tìm kiếm được. Quá trình này không chỉ đơn thuần là lưu trữ văn bản mà còn bao gồm việc làm sạch dữ liệu, mã hóa ngữ nghĩa (Vectorization) và thiết lập cơ sở dữ liệu vector tối ưu.
 
 \subsubsection{Tiền xử lý và Chuẩn hóa dữ liệu đầu vào}
-Hệ thống tiếp nhận đầu vào là các tệp JSON được sinh ra từ mô-đun ASR. Do đặc thù của dữ liệu hội thoại tự nhiên, thông tin đầu vào thường gặp các vấn đề như thiếu nhãn người nói hoặc định dạng không đồng nhất. Để đảm bảo tính toàn vẹn dữ liệu, quy trình chuẩn hóa (\textit{Data Sanitization}) được áp dụng trong phương thức \texttt{\_load\_memory\_kb} với các tiêu chí sau:
+Hệ thống tiếp nhận đầu vào là các tệp JSON được sinh ra từ mô-đun ASR. Do đặc thù của dữ liệu hội thoại tự nhiên, thông tin đầu vào thường gặp các vấn đề như thiếu nhãn người nói hoặc định dạng không đồng nhất. Để đảm bảo tính toàn vẹn dữ liệu, quy trình chuẩn hóa được áp dụng trong phương thức \texttt{\_load\_memory\_kb} với các tiêu chí sau:
 
 \begin{itemize}
+    \item \textbf{Phân đoạn văn bản (Chunking):} Mỗi câu thoại dài được chia nhỏ thành các đoạn (\textit{chunks}) có độ dài tối đa 40 từ với độ chồng lấp (\textit{overlap}) là 10 từ. Việc này giúp vector đại diện tập trung hơn vào các ý chính và tránh hiện tượng mất mát thông tin tại ranh giới các đoạn.
     \item \textbf{Định danh lượt lời:} Mỗi lượt lời (utterance) được gán một định danh duy nhất (\texttt{utt\_id}) phục vụ truy vết.
     \item \textbf{Xử lý dữ liệu khuyết thiếu:} Hệ thống kiểm tra các trường bắt buộc (\texttt{speaker}, \texttt{text}). Cơ chế an toàn (\textit{Fail-safe}) sẽ gán giá trị mặc định (ví dụ: "Unknown Speaker") nếu dữ liệu bị thiếu nhằm tránh lỗi thực thi.
     \item \textbf{Tổng hợp toàn văn:} Song song với xử lý từng câu, hệ thống ghép nối nội dung thành chuỗi văn bản liền mạch (\texttt{full\_text}) phục vụ riêng cho tác vụ tóm tắt.

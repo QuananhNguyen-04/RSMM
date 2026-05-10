@@ -1,0 +1,28 @@
+\subsection{Quy trình Truy xuất và Suy luận đa bước (Multi-step Retrieval and Reasoning)}
+\label{subsec:multistep}
+
+Để giải quyết các truy vấn phức tạp đòi hỏi sự kết nối thông tin từ nhiều đoạn hội thoại khác nhau hoặc yêu cầu khả năng suy luận logic qua nhiều mốc thời gian, hệ thống được nâng cấp với quy trình truy xuất đa bước dựa trên tư tưởng của phương pháp IRCoT (Interleaving Retrieval with Chain-of-Thought) \cite{17}. Điểm cốt lõi của quy trình này là sự tách biệt giữa luồng xử lý đơn giản và phức tạp thông qua một bộ định tuyến thông minh (\textit{Query Router}).
+
+\subsubsection{Cơ chế định tuyến truy vấn (Query Routing)}
+Thay vì áp dụng một quy trình cố định cho mọi loại câu hỏi, hệ thống sử dụng lớp định tuyến (\textit{Router Layer}) dựa trên kiến trúc đóng gói sẵn \texttt{RouterQueryEngine} (LlamaIndex). 
+
+LLM đóng vai trò là bộ chọn (\textit{Selector}), phân tích đặc điểm của câu hỏi người dùng và lịch sử hội thoại để quyết định nhánh thực thi:
+\begin{itemize}
+    \item \textbf{Nhánh đơn bước (Single-step Retrieval):} Áp dụng cho các truy vấn tra cứu sự thật trực tiếp (Fact Retrieval). Hệ thống sẽ đi thẳng vào quy trình tìm kiếm vector và trả lời như mô tả tại Mục \ref{subsec:retrieval}.
+    \item \textbf{Nhánh đa bước (Multi-step Reasoning):} Áp dụng cho các truy vấn đòi hỏi tổng hợp, so sánh hoặc truy vết chuỗi sự kiện phân tán. Nhánh này sẽ kích hoạt vòng lặp tương tác giữa suy luận và truy xuất.
+\end{itemize}
+
+\subsubsection{Vòng lặp suy luận và truy xuất tương tác}
+Dựa trên triết lý lồng ghép của IRCoT \cite{17}, quy trình đa bước được thực hiện thông qua một chuỗi các bước lặp, trong đó mỗi bước bao gồm:
+
+\begin{enumerate}
+    \item \textbf{Phân rã bài toán (Decomposition):} LLM phân tích câu hỏi phức tạp và xác định các thông tin thiếu hụt, từ đó tạo ra bước suy luận đầu tiên (\textit{Thought}) và các câu hỏi phụ (\textit{Sub-queries}).
+    \item \textbf{Truy xuất từng phần:} Với mỗi câu hỏi phụ, hệ thống gọi lại hàm \texttt{retrieve\_context} hiện có để trích xuất các đoạn văn bản liên quan nhất. 
+    \item \textbf{Tích hợp và Cập nhật tri thức:} Các thông tin mới tìm được (bao gồm cả ngữ cảnh mở rộng $\pm 1$ lượt lời) được đưa vào bộ đệm ngữ cảnh (\textit{Context Buffer}). 
+    \item \textbf{Đánh giá và Tiếp nối:} LLM đánh giá tập tri thức hiện tại. Nếu thông tin vẫn chưa đủ để đưa ra kết luận cuối cùng, một bước suy luận mới sẽ được khởi tạo dựa trên các manh mối vừa tìm thấy, tạo thành một vòng lặp liên tục cho đến khi đạt được giới hạn số bước lặp hoặc thu thập đủ thông tin.
+\end{enumerate}
+
+\subsubsection{Tổng hợp phản hồi đa nguồn (Synthesis)}
+Sau khi kết thúc vòng lặp truy xuất, toàn bộ các đoạn hội thoại từ các bước lặp khác nhau sẽ được hợp nhất. Hệ thống sử dụng mô hình \texttt{bge-reranker} để đánh giá lại độ ưu tiên của toàn bộ kho ngữ cảnh vừa thu thập được nhằm loại bỏ các thông tin nhiễu phát sinh trong quá trình lặp. 
+
+Cuối cùng, mô hình \textbf{Gemini 2.5 Flash} sẽ thực hiện bước tạo sinh phản hồi cuối cùng, đảm bảo câu trả lời được neo giữ (\textit{grounded}) chặt chẽ vào chuỗi dẫn chứng đa bước đã tìm được, giúp giải quyết triệt để hiện tượng ảo giác.
