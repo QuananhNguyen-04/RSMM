@@ -98,15 +98,11 @@ Filter the speaker transcript into informative evidence units.
 Rules: Each unit must
 - Use ONLY input content
 - Preserve original wording aggressively
-- Minimize rewriting
+- No rewriting
 - Keep important facts, decisions, findings, constraints, requirements, proposals
 - Remove filler, repetition, weak conversation, acknowledgements
 - No hallucinations
 - Keep timestamps
-
-Limits:
-- Prefer 4-10+ high-information units
-- Keep units short and information-dense
 
 Return ONLY valid JSON, No explanations:
 {
@@ -157,8 +153,8 @@ Rules:
 - Prefer compression over paraphrasing
 
 Limits:
-- Max 3 sentences
-- Max 60 words
+- Max 3-4 sentences
+- Max 80 words
 
 Return ONLY valid JSON:
 {"summary":"..."}
@@ -286,7 +282,7 @@ Rules:
 - Prefer compression over paraphrasing
 
 Limits:
-- Max 80 words
+- Max 100 words
 
 Return ONLY valid JSON. NO explanation, malformed result.
 
@@ -316,7 +312,7 @@ Format:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Input:\n{context}"}
         ],
-        temperature=0.3,
+        temperature=0.2,
     )
 
     output = clean_llm_output(response.choices[0].message.content)
@@ -411,28 +407,45 @@ def save_results(path, results):
 
 def summarize_final_llm(client, evidence_units):
     system_prompt = """
-Produce a compact meeting summary.
+Task:
+Produce a single compact meeting summary using ONLY the provided topic summaries.
 
-Keep ONLY:
+You are NOT allowed to restructure the output.
+Rules:
+- You MUST use ONLY words, phrases, or closely matching fragments from the input topic summaries.
+- Use ONLY information from topic summaries
+- Do NOT invent new structure or categories
+- Do NOT create bullet points or lists
+- Preserve key factual content
+- Compress aggressively but keep meaning
+
+Content focus:
+Include ONLY:
 - major decisions
 - key requirements
 - critical findings
 - important constraints
 
-Rules:
-- Use ONLY topic summaries
-- No hallucinations
-- Preserve original phrasing unless compression requires minor edits.
-- Remove redundancy
-- Prefer compression over paraphrasing
+Style:
+- Single coherent paragraph only
+- Dense factual writing
+- Minimal wording
+- No headers, no labels, no enumeration
 
-Limits:
-- Max 80 words
+Length:
+- Maximum 150 words
 
-Return ONLY valid JSON. NO explanation, malformed result.:
+Output format (STRICT):
+Return ONLY valid JSON:
+
 {
-  "summary": "..."
+  "summary": "single paragraph text here"
 }
+
+No other keys are allowed.
+No explanation.
+No markdown.
+No extra text.
 """
     context_parts = []
 
@@ -453,7 +466,7 @@ Return ONLY valid JSON. NO explanation, malformed result.:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Input:\n{context}"}
         ],
-        temperature=0.3,
+        temperature=0.2,
     )
 
     output = clean_llm_output(response.choices[0].message.content)

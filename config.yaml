@@ -24,10 +24,8 @@
 #   diarization: true
 
 experiment:
-  name: "IS1003a.Mix-Headset"
-  # name: "IS1003b.Mix-Headset"
-  # name: "IS1003c.Mix-Headset"
-  # name: "IS1003d.Mix-Headset"
+  name: "ES2002d.Mix-Headset"
+  
 
 paths:
   dataset_root: "D:/Downloads/ami_public_manual_1.6.2"

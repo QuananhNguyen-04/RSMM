@@ -52,6 +52,28 @@ Output:
 Command:
   python measurement1.py 
 
+[STEP 5] Summarization Evaluation
+------------------------------------------
+File: measurement2.py
+Input:
+  paths.evaluation.ground_truth
+  paths.evaluation.speaker_summary
+  paths.evaluation.topic_summary
+  paths.evaluation.meeting_summary
+
+Metrics:
+  ICS (Information Coverage Score)
+  CR (Compression Ratio)
+  HR (Hallucination Rate)
+  ROUGE-L
+
+Output:
+  summary evaluation metrics
+  detailed preservation / hallucination analysis
+
+Command:
+  python measurement2.py
+
 # ===============================
 # NOTES
 # ===============================

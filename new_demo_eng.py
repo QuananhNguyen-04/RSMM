@@ -1,3 +1,4 @@
+import re
 import io, json, random, warnings
 from typing import Tuple, List, Dict
 from pathlib import Path
@@ -81,6 +82,7 @@ import matplotlib.patches as mpatches
 
 from transform_mp4 import mp4_to_wav
 
+from config import Config
 
 def load_real_audio(path: Path):
     if not path.exists():
@@ -306,16 +308,16 @@ def transcribe_chunks(waveform, sr, chunks, asr_model: Whisper):
         # Run Whisper with timestamps
         result = asr_model.transcribe(
             segment,
-            fp16=True,  # safer on CPU/small GPU
+            fp16=False,  # safer on CPU/small GPU
             word_timestamps=True,  # return per-word timestamps
-            beam_size=10,  # beam search for stability
+            beam_size=5,  # beam search for stability
             # temperature=(0, 0.1, 0.2, 0.4, 0.8),  # deterministic output
-            compression_ratio_threshold=1.8,
             language='en'
         )
-
+        # print(result)
+        # return
         # Convert Whisper word timestamps (sec) → samples
-        words = []
+        words=[]
         for w in result.get("segments", []):
             for item in w["words"]:
                 words.append(
@@ -426,57 +428,92 @@ def assign_speakers(transcripts, diar_segments, sr, snap_gap_sec=1):
     for t in transcripts:
         words_all.extend(t["words"])
 
+    sentences = []
+    cur_sentence = []
     for w in words_all:
-        w_mid = (w["start"] + w["end"]) // 2
+        cur_sentence.append(w)
 
-        # find diar segment covering this word
-        candidates = [
-            seg for seg in diar_segments if seg["start"] <= w_mid <= seg["end"]
-        ]
-        if candidates:
-            speaker = candidates[0]["speaker"]
+        if re.search(r"[.!?]$", w["word"]):  # sentence boundary
+            sentences.append(cur_sentence)
+            cur_sentence = []
+    if cur_sentence:
+        sentences.append(cur_sentence)
+    
+    for sent in sentences:
+        s_start = min(w["start"] for w in sent)
+        s_end = max(w["end"] for w in sent)
+
+        overlaps = []
+        for seg in diar_segments:
+            overlap = max(0, min(s_end, seg["end"]) - max(s_start, seg["start"]))
+            if overlap > 0:
+                overlaps.append((seg["speaker"], overlap))
+
+        if overlaps:
+            speaker = max(overlaps, key=lambda x: x[1])[0]
+
         else:
-            # nearest diar segment
+            s_mid = (s_start + s_end) / 2
             nearest = min(
                 diar_segments,
-                key=lambda s: min(abs(w_mid - s["start"]), abs(w_mid - s["end"])),
+                key=lambda s: min(abs(s_mid - s["start"]), abs(s_mid - s["end"]))
             )
-            gap = min(abs(w_mid - nearest["start"]), abs(w_mid - nearest["end"]))
+            gap = min(abs(s_mid - nearest["start"]), abs(s_mid - nearest["end"]))
             speaker = nearest["speaker"] if gap <= snap_gap_samples else None
+        results.append({
+            "speaker": speaker or "Unknown",
+            "start": s_start,
+            "end": s_end,
+            "text": " ".join(w["word"] for w in sent),
+        })
+        # find diar segment covering this word
+        # candidates = [
+        #     seg for seg in diar_segments if seg["start"] <= w_mid <= seg["end"]
+        # ]
+        # if candidates:
+        #     speaker = candidates[0]["speaker"]
+        # else:
+        #     # nearest diar segment
+        #     nearest = min(
+        #         diar_segments,
+        #         key=lambda s: min(abs(w_mid - s["start"]), abs(w_mid - s["end"])),
+        #     )
+        #     gap = min(abs(w_mid - nearest["start"]), abs(w_mid - nearest["end"]))
+        #     speaker = nearest["speaker"] if gap <= snap_gap_samples else None
 
-        # group by speaker
-        if speaker != cur_speaker:
-            if cur_words:
-                results.append(
-                    {
-                        "speaker": (
-                            f"Speaker {cur_speaker}"
-                            if isinstance(cur_speaker, (int, np.integer))
-                            else (cur_speaker or "Unknown")
-                        ),
-                        "start": min(wd["start"] for wd in cur_words),
-                        "end": max(wd["end"] for wd in cur_words),
-                        "text": " ".join(wd["word"] for wd in cur_words),
-                    }
-                )
-            cur_speaker, cur_words = speaker, [w]
-        else:
-            cur_words.append(w)
+    #     # group by speaker
+    #     if speaker != cur_speaker:
+    #         if cur_words:
+    #             results.append(
+    #                 {
+    #                     "speaker": (
+    #                         f"Speaker {cur_speaker}"
+    #                         if isinstance(cur_speaker, (int, np.integer))
+    #                         else (cur_speaker or "Unknown")
+    #                     ),
+    #                     "start": min(wd["start"] for wd in cur_words),
+    #                     "end": max(wd["end"] for wd in cur_words),
+    #                     "text": " ".join(wd["word"] for wd in cur_words),
+    #                 }
+    #             )
+    #         cur_speaker, cur_words = speaker, [w]
+    #     else:
+    #         cur_words.append(w)
 
-    # flush last
-    if cur_words:
-        results.append(
-            {
-                "speaker": (
-                    f"Speaker {cur_speaker}"
-                    if isinstance(cur_speaker, (int, np.integer))
-                    else (cur_speaker or "Unknown")
-                ),
-                "start": min(wd["start"] for wd in cur_words),
-                "end": max(wd["end"] for wd in cur_words),
-                "text": " ".join(wd["word"] for wd in cur_words),
-            }
-        )
+    # # flush last
+    # if cur_words:
+    #     results.append(
+    #         {
+    #             "speaker": (
+    #                 f"Speaker {cur_speaker}"
+    #                 if isinstance(cur_speaker, (int, np.integer))
+    #                 else (cur_speaker or "Unknown")
+    #             ),
+    #             "start": min(wd["start"] for wd in cur_words),
+    #             "end": max(wd["end"] for wd in cur_words),
+    #             "text": " ".join(wd["word"] for wd in cur_words),
+    #         }
+    #     )
 
     return results
 
@@ -1053,6 +1090,40 @@ def process_timestamps(segments, sample_rate):
         })
     return processed
 
+def merge_segments(segments):
+    new_seg = []
+    cur_seg = [segments[0]]
+    cur_s_speaker = cur_seg[0]["speaker"]
+    for seg in segments[1:]:
+        s_speaker = seg["speaker"]
+        if s_speaker == cur_s_speaker:
+            cur_seg.append(seg)
+        else:
+            text = " ".join([s["text"] for s in cur_seg])
+            start = cur_seg[0]["start"]
+            end = cur_seg[-1]["end"]
+            new_seg.append({
+                "start": start,
+                "end": end,
+                "speaker": cur_s_speaker,
+                "text": text
+            })
+            cur_seg = [seg]
+            cur_s_speaker = seg["speaker"]
+    if cur_seg:
+        text = " ".join(s["text"] for s in cur_seg)
+        start = cur_seg[0]["start"]
+        end = cur_seg[-1]["end"]
+        new_seg.append({
+            "start": start,
+            "end": end,
+            "speaker": cur_s_speaker,
+            "text": text
+        })
+    return new_seg
+
+
+
 def postprocess_diarization(client, diarized_segments):
     chunk_size = 10  # number of segments per chunk
     system_prompt = """
@@ -1120,7 +1191,6 @@ If uncertain, make minimal changes."""
         except Exception as e:
             print(f"Error during post processing: {e}")
     print("Post-processing complete.")
-    print(all_outputs)
     return all_outputs
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -1147,11 +1217,13 @@ client = Groq(api_key=dotenv.get_key(dotenv.find_dotenv(), "GROQ_API"))
 avg_miss = avg_fa = avg_conf = 0  # will stay zero (no GT)
 idx = 0
 
+cfg = Config()
 
-audio_files = [
-    Path("./eng_f1_test.wav"),
-    # add more files here
-]
+audio_files = cfg.audio_files
+# audio_files = [
+#     Path("./eng_f9_test.wav"),
+#     # add more files here
+# ]
 
 for idx, audio_path in enumerate(audio_files):
     waveform, sample_rate = load_real_audio(audio_path)
@@ -1198,14 +1270,16 @@ for idx, audio_path in enumerate(audio_files):
         chunks,
         asr_model,
     )
-
-    # ---------- SPEAKER ASSIGNMENT ----------
-    final_result = assign_speakers(
+    # print(transcript)
+    # print(speech_segments)
+    # # ---------- SPEAKER ASSIGNMENT ----------
+    alignment_result = assign_speakers(
         transcript,
         speech_segments,
         sample_rate,
     )
 
+    final_result = merge_segments(alignment_result)
     diar_speech = process_timestamps(final_result, sample_rate)
 
     raw = postprocess_diarization(client, diar_speech)

@@ -188,25 +188,32 @@ def flatten_pred_chunks(pred_texts):
 
     return chunks
 
+def is_low_information(text):
+
+    text = normalize(text)
+
+    if len(text.split()) < 4:
+        return True
+    
+    return False
+
+
+def compute_overlap(a, b):
+
+    a_words = set(normalize(a).split())
+    b_words = set(normalize(b).split())
+
+    if len(a_words) == 0:
+        return 0.0
+
+    return len(a_words & b_words) / len(a_words)
+
 
 def compute_layer_ics(
     gt_units,
     pred_texts,
     layer_name="unknown"
 ):
-    """
-    Layer-wise Information Coverage Score
-
-    Strategy:
-    - split GT into chunks
-    - split prediction into chunks
-    - retrieve best matching predicted chunk
-    - use max similarity
-    """
-
-    # -----------------------------------------------------
-    # split predictions
-    # -----------------------------------------------------
 
     pred_chunks = flatten_pred_chunks(pred_texts)
 
@@ -217,102 +224,111 @@ def compute_layer_ics(
             "details": []
         }
 
-    # -----------------------------------------------------
-    # precompute pred embeddings
-    # -----------------------------------------------------
-
     pred_embs = embedder.encode(
         pred_chunks,
         convert_to_tensor=True
     )
 
+    total_score = 0.0
     total_weight = 0.0
-    covered_weight = 0.0
 
     details = []
-
-    # -----------------------------------------------------
-    # compare GT → best predicted chunk
-    # -----------------------------------------------------
 
     for u in gt_units:
 
         raw_text = u["text"]
-        if not raw_text.strip():
+        gt_chunks = split_sentences(raw_text)
+        gt_chunks = [x for x in gt_chunks if not is_low_information(x)]
+        if len(gt_chunks) == 0:
             continue
         weight = INFO_WEIGHTS.get(
             u["type"],
             1.0
         )
-        # ---------------------------------------------
-        # split BEFORE normalize
-        # ---------------------------------------------
-        gt_chunks = split_sentences(raw_text)
-        # normalize AFTER splitting
-        gt_chunks = [
-            normalize(x)
-            for x in gt_chunks
-            if normalize(x)
-        ]
 
-        if len(gt_chunks) == 0:
-            continue
+        for gt_chunk in gt_chunks:
+            gt_emb = embedder.encode(gt_chunk,convert_to_tensor=True)
+            sims = util.cos_sim(gt_emb,pred_embs)[0]
 
-        gt_embs = embedder.encode(
-            gt_chunks,
-            convert_to_tensor=True
-        )
+            k = min(3, len(pred_chunks))
 
-        best_sim = 0.0
-        best_gt_chunk = None
-        best_pred_chunk = None
+            top_idxs = sims.argsort(descending=True)[:k]
+            top_vals = sims[top_idxs]
+            top_scores = []
+            top_pred_chunks = []
 
-        for i, gt_emb in enumerate(gt_embs):
+            for sim_val, idx_tensor in zip(top_vals, top_idxs):
+                idx = idx_tensor.item()
+                pred_chunk = pred_chunks[idx]
+                sim_score = sim_val.item()
+                overlap = compute_overlap(
+                    gt_chunk,
+                    pred_chunk
+                )
 
-            sims = util.cos_sim(
-                gt_emb,
-                pred_embs
-            )[0]
+                combined = (
+                    0.7 * sim_score
+                    + 0.3 * overlap
+                )
 
-            max_idx = sims.argmax().item()
+                top_scores.append(combined)
 
-            max_sim = sims[max_idx].item()
+                top_pred_chunks.append(pred_chunk)
 
-            if max_sim > best_sim:
-                best_sim = max_sim
-                best_gt_chunk = gt_chunks[i]
-                best_pred_chunk = pred_chunks[max_idx]
+            weights = [0.5, 0.3, 0.2]
+            coverage = 0.0
 
-        preserved = best_sim >= SIM_THRESHOLD
+            for i in range(len(top_scores)):
+                coverage += weights[i] * top_scores[i]
 
-        total_weight += weight
+            coverage = min(coverage, 1.0)
 
-        if preserved:
-            covered_weight += weight
+            # max_idx = sims.argmax().item()
+            # best_sim = sims[max_idx].item()
+            # best_pred = pred_chunks[max_idx]
 
-        details.append({
-            "type": u["type"],
+            # overlap = compute_overlap(
+            #     gt_chunk,
+            #     best_pred
+            # )
 
-            "gt_chunk": best_gt_chunk,
+            # # ---------------------------------
+            # # SOFT COVERAGE SCORE
+            # # ---------------------------------
 
-            "best_pred_chunk": best_pred_chunk,
+            # coverage = (
+            #     0.7 * best_sim
+            #     + 0.3 * overlap
+            # )
 
-            "similarity": round(best_sim, 4),
+            total_score += coverage * weight
+            total_weight += weight
 
-            "preserved": preserved
-        })
+            details.append({
+                "type": u["type"],
 
-    score = covered_weight / max(
-        total_weight,
-        1e-8
+                # "gt_chunk": gt_chunk,
+                "gt_chunk": gt_chunk,
+                "top_matches": [
+                    {
+                        "pred_chunk": top_pred_chunks[0],
+                        "score": round(top_scores[0], 4)
+                    }
+                ],
+                "coverage": round(coverage, 4),
+                # "preserved": coverage >= SIM_THRESHOLD
+
+            })
+
+    final_score = (
+        total_score / max(total_weight, 1e-8)
     )
 
     return {
         "layer": layer_name,
-        "score": score,
+        "score": final_score,
         "details": details
     }
-
 
 def compute_ics_all_layers(
     gt_participant,
@@ -610,7 +626,7 @@ def evaluate_all(
     # load predictions
     # -------------------------
 
-    speaker_json = load_json('./speaker_sum/speaker_summarization_IS1003b.Mix-Headset.json')
+    speaker_json = load_json(speaker_summary_path)
     topic_json = load_json(topic_summary_path)
     meeting_json = load_json(meeting_summary_path)
 
@@ -742,7 +758,7 @@ def evaluate_all(
             "meeting":
                 ics_results["meeting_details"]
         },
-        "HR_Details": hr_details
+        # "HR_Details": hr_details
     }
 
     return results
