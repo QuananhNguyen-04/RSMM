@@ -1,0 +1,32 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The project aims to design a new remote control that is original, trendy, and user-friendly. The remote should be sold for 25 euros with a production cost not exceeding 12.50 euros. It should control TV, satellite, and VCR, and have a unique selling point. The team will work on design, user interface, technical functions, and marketing requirements.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "The project aims to design a new remote control that is original, trendy, and user-friendly.",
+        "start": 0.00132,
+        "end": 0.00211
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The remote control should be sold for 25 euros, with a production cost not exceeding 12.50 euros.",
+        "start": 0.00745,
+        "end": 0.00814
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The remote control should have extra functionalities, such as controlling satellite and regular TV, and VCR.",
+        "start": 0.01331,
+        "end": 0.01412
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "A unique selling point for the remote control is desired.",
+        "start": 0.01753,
+        "end": 0.01804
+      }
+    ]
+  }
+]

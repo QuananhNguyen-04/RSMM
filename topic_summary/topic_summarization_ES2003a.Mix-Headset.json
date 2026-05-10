@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The project goal is to design a new remote control that is original, trendy, and user-friendly. The team consists of Adam Dugard, Ebenezer (marketing expert), and Dave Cochran (user interface designer). The design process will involve three phases: functional, conceptual, and detailed design. The target price range for the remote control is 2.5 Euros per unit, with a goal of selling for 25 Euros and making a profit of 50 million Euros. Ideas for the new remote control include a touch screen LCD, programmable macros, and control of multiple units. The remote control should be small, stylish, and have a unique feature, such as a joystick or d-pad. The team needs to decide on the basic functionality and user interface of the remote control. Features such as ergonomic design, a single button to turn on multiple units, and the ability to run macros are considered important.",
+    "evidence": [
+      {
+        "speaker": "Speaker 1",
+        "text": "The project goal is to design a new remote control that is original, trendy, and user-friendly.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The team consists of Adam Dugard, Ebenezer (marketing expert), and Dave Cochran (user interface designer).",
+        "start": 0.0,
+        "end": 0.029
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The agenda for the meeting includes tool training, project plan discussion, and closing.",
+        "start": 0.0,
+        "end": 0.038
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The design process will involve three phases: functional, conceptual, and detailed design.",
+        "start": 0.0,
+        "end": 0.057
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The target price range for the remote control is 2.5 Euros per unit, with a goal of selling for 25 Euros.",
+        "start": 0.0,
+        "end": 0.1257
+      }
+    ]
+  }
+]

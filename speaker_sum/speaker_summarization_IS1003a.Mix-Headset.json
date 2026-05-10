@@ -1,0 +1,160 @@
+[
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "Those things just refer to each of us, I think.",
+        "start": 0.00439,
+        "end": 0.00444
+      },
+      {
+        "text": "Each of us, I think, ME and marketing experts, it's me.",
+        "start": 0.00453,
+        "end": 0.00454
+      },
+      {
+        "text": "So you are the industrial designer?",
+        "start": 0.00515,
+        "end": 0.00517
+      },
+      {
+        "text": "So what's the difference between user interface design and industrial design?",
+        "start": 0.00526,
+        "end": 0.00538
+      },
+      {
+        "text": "It's your job, so I hope you know what it is.",
+        "start": 0.00526,
+        "end": 0.00538
+      },
+      {
+        "text": "I'm trying to give you some trends about what should be done and what the users would like to have.",
+        "start": 0.00645,
+        "end": 0.00659
+      },
+      {
+        "text": "And then this would, I guess, converge to the user interface designer and then industrial designer.",
+        "start": 0.00645,
+        "end": 0.00659
+      },
+      {
+        "text": "We have 25 minutes for the meeting.",
+        "start": 0.01308,
+        "end": 0.01322
+      },
+      {
+        "text": "So if you have questions.",
+        "start": 0.01308,
+        "end": 0.01322
+      },
+      {
+        "text": "What time is it?",
+        "start": 0.01308,
+        "end": 0.01322
+      }
+    ],
+    "summary": "The speaker and a marketing expert are present. The speaker is likely an industrial designer. They discuss trends and user preferences, relating to user interface and industrial design."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "ID is for the industrial designer. And UID is for the user interface designer.",
+        "start": 0.00446,
+        "end": 0.00452
+      },
+      {
+        "text": "I am the industrial designer. I am the user interface designer. I am the industrial designer.",
+        "start": 0.00518,
+        "end": 0.00525
+      },
+      {
+        "text": "I think the user interface design is, he will design how the user will, you know, use the relation between the user and the remote control. And the industrial design, it is how the object will look like.",
+        "start": 0.00555,
+        "end": 0.00618
+      },
+      {
+        "text": "Maybe I think the industrial design is a function design. I design the user interface, you design the function.",
+        "start": 0.00555,
+        "end": 0.00618
+      },
+      {
+        "text": "Okay, but I was thinking that it is a user to the user interface to design for example where the button will be, you know, yeah, but I don't know.",
+        "start": 0.00625,
+        "end": 0.00644
+      },
+      {
+        "text": "Kevin is really good at drawing. I think everybody should do it, so it's not a matter of...",
+        "start": 0.00829,
+        "end": 0.00835
+      },
+      {
+        "text": "Yeah, it's my favorite city so far.",
+        "start": 0.0121,
+        "end": 0.01215
+      },
+      {
+        "text": "I have an idea. You know your job. I have an idea of my job too.",
+        "start": 0.01328,
+        "end": 0.01434
+      },
+      {
+        "text": "Okay, so I make a user interface.",
+        "start": 0.00549,
+        "end": 0.00551
+      }
+    ],
+    "summary": "ID is for industrial designer. UID is for user interface designer. Industrial design relates to an object's appearance, while user interface design focuses on user interaction and button placement."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "The project is to create a new remote control.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "text": "The remote control has to be original, trendy and user-friendly.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "text": "The project method involves individual work and meetings for functional, conceptual, and detailed design.",
+        "start": 0.02,
+        "end": 0.04
+      },
+      {
+        "text": "The selling price of the project will be 25 euros and the product cost will be not more than 12 euros and 50 centims.",
+        "start": 0.02,
+        "end": 0.04
+      },
+      {
+        "text": "The remote control should be an international product, not too expensive, and with new functionalities.",
+        "start": 0.06,
+        "end": 0.08
+      },
+      {
+        "text": "The product cost should not exceed 12.50 euros to maximize benefit.",
+        "start": 0.06,
+        "end": 0.08
+      },
+      {
+        "text": "The goal is to create a remote control that people would be interested in buying.",
+        "start": 0.06,
+        "end": 0.08
+      },
+      {
+        "text": "Each group member has a specific role and will work on design and technical functions of the remote control.",
+        "start": 0.02,
+        "end": 0.04
+      },
+      {
+        "text": "The project manager will manage all the groups.",
+        "start": 0.04,
+        "end": 0.05
+      }
+    ],
+    "summary": "The project aims to create an original, trendy, and user-friendly remote control. The selling price will be 25 euros, with a product cost not exceeding 12.50 euros. The project involves individual work and meetings to design a functional, conceptual, and detailed remote control."
+  }
+]

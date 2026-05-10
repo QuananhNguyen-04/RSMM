@@ -1,0 +1,98 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The discussion centered around the design and usability of remote controls. A study of 100 subjects found that 75% of users find most remote controls ugly, and 80% would be willing to pay more for a more aesthetically pleasing design. The current design has several issues, including 10% of buttons being used, 35% of people finding it hard to learn, and 26% experiencing RSI problems. The speakers agreed that a simpler design with fewer buttons could improve user experience and sales.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "We have 100 subjects. We observe their remote control use in a lab. And then after all the experiments, they had to fill up a questionnaire and see what was OK or not for them.",
+        "start": 13.03,
+        "end": 13.58
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "Actually, 75% of the users find the most remote controls ugly. Then 80% of users would spend more money. Actually, if the remote controls were not so ugly, so this is where we could have a good market, I guess, if people are ready to pay more.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "10% of the buttons are actually used in a remote control, and this is one of the main points for me, but I'll come back to it later. So we should change this as well. And users are actually zapping a lot, so they are using the device intensively. It takes too much time to learn how to use the remote control for 35% of the people. And remote controls are really bad for RSI problems for 26% of the users.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "My personal preference for this problem is we have to meet the user needs. If we can make it look fancy, then we might sell more than our concurrent. If you could have less buttons, still maybe the same number of functions, but less buttons, this would definitely be a good way of selling more.",
+        "start": 15.4,
+        "end": 16.28
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "Yeah, if we could remember like not too many buttons and make it look fancy. I think it would make it.",
+        "start": 19.07,
+        "end": 20.21
+      }
+    ]
+  },
+  {
+    "topic_id": 1,
+    "summary": "Speaker 3 acknowledged being a foul.",
+    "evidence": [
+      {
+        "speaker": "Speaker 3",
+        "text": "I'm a foul.",
+        "start": 134.0,
+        "end": 135.0
+      }
+    ]
+  },
+  {
+    "topic_id": 2,
+    "summary": "There was no central discussion theme or meaningful information provided in the input.",
+    "evidence": [
+      {
+        "speaker": "Speaker 3",
+        "text": "I'm not sure.",
+        "start": 168.0,
+        "end": 168.0
+      }
+    ]
+  },
+  {
+    "topic_id": 3,
+    "summary": "The meeting discussed the design of a remote control for a Google TV system. The remote control should be easy to use, powerful, and have a user-friendly interface. The design team considered various aspects such as infrared vs laser-based technology, wireless vs wired connectivity, and the number of buttons required. They also discussed the importance of aesthetics, including color options, and the need to balance functionality with cost. The team decided to focus on designing a remote control specifically for television use, rather than a universal remote control. They also considered the use of a switch menu to categorize functions and reduce the number of buttons.",
+    "evidence": [
+      {
+        "speaker": "Speaker 1",
+        "text": "So you proposed you to have the remote control, which will be powerful? It's a basic function. So powerful? Yeah, powerful. Many functions, and very easy to use.",
+        "start": 0.244,
+        "end": 0.271
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "Okay. So you can move to the next slide. As you all know, my job is to design, to give an initial design of the remote control. So basically, the remote control will be infrared control.",
+        "start": 0.35,
+        "end": 0.405
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "OK, so first I will present the technique function design for user interface for our remote TV control. I will focus on user interface design.",
+        "start": 0.358,
+        "end": 0.64
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "Yeah, I think for the cost you want, for the cost you want, it's better to have, yeah, you can move to the next slide. So the different, the findings, you know, what you will find inside the system here inside, it is just, you know, a bulb and an infrared bulb.",
+        "start": 0.419,
+        "end": 0.489
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "Yeah, I think it's possible, because we can mix several functions in one button, so that you have less buttons.",
+        "start": 0.1047,
+        "end": 0.112
+      }
+    ]
+  }
+]

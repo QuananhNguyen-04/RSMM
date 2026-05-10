@@ -1,17 +1,17 @@
 # Fdb version 4
-["biber main"] 1777807246.31106 "main.bcf" "main.bbl" "main" 1777807262.33717 0
-  "main.bcf" 1777807260 110564 d0df7ed43a97497befee182cac14fbfd "xelatex"
+["biber main"] 1778415331.73116 "main.bcf" "main.bbl" "main" 1778415344.66332 0
+  "main.bcf" 1778415343 110564 d0df7ed43a97497befee182cac14fbfd "xelatex"
   "sections/ref.bib" 1777025750 7992 7f6264e8d235eafff669dacfbdb5f652 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["xdvipdfmx"] 1777807261.17786 "main.xdv" "main.pdf" "main" 1777807262.34766 0
-  "main.xdv" 1777807260 1111716 3d4dba282d4f8886a669506a01d7d2bf "xelatex"
+["xdvipdfmx"] 1778415343.59303 "main.xdv" "main.pdf" "main" 1778415344.67399 0
+  "main.xdv" 1778415343 1217936 56f8b62f2e7f79a73a8ff8f3d52aaa13 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1777807257.02698 "main.tex" "main.xdv" "main" 1777807262.33733 0
+["xelatex"] 1778415338.97706 "main.tex" "main.xdv" "main" 1778415344.66349 0
   "d:/TinyTeX/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1777004114 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "d:/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1777004060 1004 54797486969f23fa377b128694d548df ""
   "d:/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1777004060 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -272,15 +272,15 @@
   "images/RAG_pipline.png" 1777025751 76315 32fa92a1f4e7e4182c0b9899439cc2ef ""
   "images/retrieval.jpg" 1777025751 7148 5545f777f968c3f6e3f605a9a0cac326 ""
   "images/so sanh.png" 1777025751 72162 5afca7d161364c9433fe2d7e6edea4b8 ""
-  "main.aux" 1777807260 22327 37434184e21817bfe4a45ea5ba09b613 "xelatex"
-  "main.bbl" 1777807252 36895 5d4f46f57721ad9ff2866b03e887b2be "biber main"
-  "main.glsdefs" 1777807259 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "main.lof" 1777807260 584 ce6d77072817cd0ae4c2613f2a01a27c "xelatex"
-  "main.lot" 1777807260 419 79bfe25fbd0d4ca0aad5a63237a8faac "xelatex"
-  "main.out" 1777807260 15309 50b4e7f3ff1954fa54ca3f43cd1a572e "xelatex"
-  "main.run.xml" 1777807260 2342 d4a0b5833cc46f03c8e8d8b4c5a453c8 "xelatex"
+  "main.aux" 1778415343 22703 1d74033e7d18b3f6aaf0d19841c286f5 "xelatex"
+  "main.bbl" 1778415334 36895 5d4f46f57721ad9ff2866b03e887b2be "biber main"
+  "main.glsdefs" 1778415341 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "main.lof" 1778415343 584 66e97d001202daaaf92bf3ea361fb439 "xelatex"
+  "main.lot" 1778415343 713 69a03932cb6c8aecf7b02e306f363c3b "xelatex"
+  "main.out" 1778415343 15309 50b4e7f3ff1954fa54ca3f43cd1a572e "xelatex"
+  "main.run.xml" 1778415343 2342 d4a0b5833cc46f03c8e8d8b4c5a453c8 "xelatex"
   "main.tex" 1777806955 5421 96ed696c50608c4be51c05b73e9327ec ""
-  "main.toc" 1777807260 9770 d34310a88ef972125c0051f0ca77b5e3 "xelatex"
+  "main.toc" 1778415343 9770 450c4f993524a7bbf357946bbdee1213 "xelatex"
   "sections/1.Introduction/1.1.Motivation.tex" 1777025750 5188 e88a43191c7a28b7ff3f48549d507095 ""
   "sections/1.Introduction/1.2.Goals.tex" 1777788014 2083 b06cbab8f8b49e4b0116694b9fd166b2 ""
   "sections/1.Introduction/1.3.Scope.tex" 1777025750 5028 7908013d9e38ed168980b4e6f92c06d3 ""
@@ -288,7 +288,7 @@
   "sections/2.Related/2.1.Technologies.tex" 1777025750 1581 a5af78d926646041d176dce888d284ae ""
   "sections/2.Related/2.2.Existing-Systems.tex" 1777025750 3223 8622c517ecb1dd56c6ed32dfadf551c3 ""
   "sections/3.Theoretical-Background/3.1.VAD.tex" 1777025750 946 49e314186ed459efed29840117c97ec7 ""
-  "sections/3.Theoretical-Background/3.10.Metrics.tex" 1777807103 5148 fecfa0a18ee3b37e9d99fe7c28ba6eaa ""
+  "sections/3.Theoretical-Background/3.10.Metrics.tex" 1778406612 10303 989e70048768947e2caa8e3921fd6198 ""
   "sections/3.Theoretical-Background/3.2.Speech-Embeddings.tex" 1777025750 2749 4e1f19cf2f60da9aa5d037e5b3a66581 ""
   "sections/3.Theoretical-Background/3.3.Clustering-Techniques.tex" 1777025750 2619 7848a91ec04df2c66fe57ee516752e98 ""
   "sections/3.Theoretical-Background/3.4.ASR.tex" 1777025750 2338 5f962d51e6afc51a3cee37fe89148f45 ""
@@ -305,8 +305,8 @@
   "sections/5.Evaluation/5.0.Tong-quan-danh-gia.tex" 1777806194 680 49234ebc9c608cb94b75ed574fda8e07 ""
   "sections/5.Evaluation/5.1.Du-lieu-danh-gia.tex" 1777806203 1134 ce21cf1cdd179623cfbffa498b4b1e89 ""
   "sections/5.Evaluation/5.2.0.tex" 1777806795 14619 c37e194c4e5329d3754131208556220b ""
-  "sections/5.Evaluation/5.2.1.tex" 1777806822 1974 1346ed3c2ebd02e7e1bbd4384d024ef8 ""
-  "sections/5.Evaluation/5.2.2.tex" 1777806839 1751 e97935f6dce84939a0f73cb2a3557858 ""
+  "sections/5.Evaluation/5.2.1.tex" 1778415324 5461 a7ad10e39dbf49606c786d2cbef487bd ""
+  "sections/5.Evaluation/5.2.2.tex" 1778415312 6583 24e787ab1b1ad432aeac584bdcd07457 ""
   "sections/5.Evaluation/5.2.3.tex" 1777806851 1531 30d79b252ac784a47c9d287d03f2154e ""
   "sections/5.Evaluation/5.2.4.tex" 1777806862 1164 bab725adfe90ff6179cf15600f3d35c7 ""
   "sections/5.Evaluation/5.2.5.tex" 1777806874 1549 05f6e6cdd8ac7828db5d7280f4e5be53 ""

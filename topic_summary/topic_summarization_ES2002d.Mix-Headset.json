@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The final detailed design meeting discussed the look and feel design, user interface design, and evaluated the product, resulting in a final decision on the remote control's details. The Ninja Homo design includes an LCD screen, scroll wheel, number pad, confirm button, power button, and jog dial. The design aims for a stylish look and feel, high-tech innovation, and simplicity of use. The team rated the design's stylish look and feel as 5 or 6 out of 7 and high-tech innovation as 2 to 3 out of 7. The design achieved 70% efficacy of the original goal. The remote control design features a snowman shape, no LCD display, kinetic power and battery, rubber buttons, backlighting with internal LEDs, a jog dial, and the company slogan. The dimensions are 10 centimeters in height. The features include a jog dial for volume, contrast, brightness, channel tuning, and input selection. The remote control will have a battery, but no kinetic power, due to cost restraints. The case will be single, not double, and may not have rubber buttons due to cost. The interface will have a limited number of buttons, with four being a potential number.",
+    "evidence": [
+      {
+        "speaker": "Speaker 1",
+        "text": "The final detailed design meeting is to discuss the look and feel design, user interface design, and evaluate the product, resulting in a final decision on the remote control's details.",
+        "start": 0.0,
+        "end": 1.08
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The Ninja Homo is made in Japan with a few changes, including an LCD screen and a scroll wheel for menu access. The LCD panel displays functional information, such as brightness and contrast, with a simple design. The device has a number pad and a confirm button, with a power button that also serves as a standby signal. Advanced functions, such as contrast and color, can be accessed through the jog dial.",
+        "start": 0.0,
+        "end": 0.29
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The goal is to create a high-end product with a stylish look and feel, while considering cost and functionality.",
+        "start": 0.0,
+        "end": 0.29
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The design evaluation criteria include stylish look and feel, high-tech innovation, and simplicity of use. The team rates the design's stylish look and feel as 5 or 6 out of 7. The design's high-tech innovation is rated as 2 to 3 out of 7.",
+        "start": 0.18,
+        "end": 0.21
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The team's design achieves 70% efficacy of the original goal. The process of working on the design was hindered by the structure of the task and the need to work in isolation. The use of a whiteboard and digital pens could have facilitated a more collaborative and creative process.",
+        "start": 0.25,
+        "end": 0.52
+      }
+    ]
+  }
+]

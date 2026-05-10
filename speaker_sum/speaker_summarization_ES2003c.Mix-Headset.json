@@ -1,0 +1,371 @@
+[
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "The project aims to design a remote control with a minimal design, using a small joystick, LCD, and a few buttons for navigation.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have a novelty feature to locate it via a small transmitter.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The design will be adventurous in terms of physical shape due to the minimal design.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The meeting is a conceptual design phase to discuss materials, outsourcing, and construction of the remote control.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The kinetic battery option was questioned for its ability to supply enough power.",
+        "start": 0.03,
+        "end": 0.051
+      },
+      {
+        "text": "Different types of battery shapes were discussed, including flat, single curved, and double curved designs.",
+        "start": 0.04,
+        "end": 0.059
+      },
+      {
+        "text": "The cost implications of using titanium for a double curved design were questioned.",
+        "start": 0.05,
+        "end": 0.07
+      },
+      {
+        "text": "The need for an advanced chip for the LCD was discussed, and its impact on cost.",
+        "start": 0.07,
+        "end": 0.09
+      },
+      {
+        "text": "The idea of using an LCD lux was considered feasible.",
+        "start": 0.09,
+        "end": 0.1
+      },
+      {
+        "text": "Conventional battery and plastic or rubber as casing materials were considered a good way forward.",
+        "start": 0.1,
+        "end": 0.11
+      },
+      {
+        "text": "The double curved design was considered most appropriate for the remote control.",
+        "start": 0.13,
+        "end": 0.14
+      },
+      {
+        "text": "The target audience for the remote control is people under the age of 60.",
+        "start": 0.32,
+        "end": 0.33
+      },
+      {
+        "text": "The idea of a USB interface for the remote control was discussed, but its cost implications were a concern.",
+        "start": 0.34,
+        "end": 0.36
+      }
+    ],
+    "summary": "The project aims to design a remote control with a minimal design, using a small joystick, LCD, and a few buttons for navigation, and a novelty feature to locate it via a small transmitter. The design will be adventurous in terms of physical shape. The meeting discussed materials, outsourcing, and construction, including battery options such as kinetic battery, flat, single curved, and double curved designs. The double curved design was considered most appropriate. The need for an advanced chip for the LCD and a USB interface were discussed, with cost implications being a concern. Conventional battery and plastic or rubber as casing materials were considered a good way forward. The target audience is people under 60."
+  },
+  {
+    "id": "Speaker 3",
+    "info": [
+      {
+        "text": "The case could be made of plastic, rubber, titanium, or wood, but plastic is the probable choice.",
+        "start": 0.0,
+        "end": 0.31
+      },
+      {
+        "text": "The infrared transmitter will be bought off the shelf.",
+        "start": 0.0,
+        "end": 0.31
+      },
+      {
+        "text": "The joystick could be made of plastic or rubber.",
+        "start": 0.0,
+        "end": 0.31
+      },
+      {
+        "text": "Possible battery options include a hand dynamo, kinetic type batteries, solid-powered batteries, and conventional batteries.",
+        "start": 0.0,
+        "end": 0.31
+      },
+      {
+        "text": "Conventional batteries are recommended over solar cells.",
+        "start": 0.4,
+        "end": 0.15
+      },
+      {
+        "text": "The design could feature a double-curved or single-curved control.",
+        "start": 0.52,
+        "end": 1.2
+      },
+      {
+        "text": "A double-curved control looks better but can't be made with titanium.",
+        "start": 1.2,
+        "end": 1.2
+      },
+      {
+        "text": "The use of LCD display and scroll wheel requires a more expensive chip.",
+        "start": 1.2,
+        "end": 1.2
+      },
+      {
+        "text": "A number keypad is likely necessary for channel selection.",
+        "start": 1.2,
+        "end": 1.2
+      },
+      {
+        "text": "The internal components of the remote control translate key presses into infrared signals.",
+        "start": 2.44,
+        "end": 3.44
+      },
+      {
+        "text": "Conventional batteries and a single-curved case may be used to reduce costs.",
+        "start": 3.06,
+        "end": 3.35
+      }
+    ],
+    "summary": "The remote control case could be made of plastic, rubber, titanium, or wood, with plastic being the probable choice. The joystick could be made of plastic or rubber. The infrared transmitter will be bought off the shelf. Possible battery options include a hand dynamo, kinetic type batteries, solid-powered batteries, and conventional batteries, with conventional batteries being recommended. The design could feature a double-curved or single-curved control, with a double-curved control looking better but not compatible with titanium. A number keypad is likely necessary for channel selection. The use of LCD display and scroll wheel requires a more expensive chip. Conventional batteries and a single-curved case may be used to reduce costs."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "People want the remote control to look cool more than they wanted to be cool, as in they wanted to do a lot of goods.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The interface is really important and easy to use.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The second point is twice as important as the third point.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "People want it to be technologically innovative.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The fashion now, for furniture, for clothes, for shoes, how that relates to remote control I don't know.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "We had the choice between rubber and plastic.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "If it's a type of rubber that you can squeeze, you know it's spongy, then that's good to mention that the rubber material is the type of stress ball material.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "My personal opinion, we want something fancy and technologically innovative, obviously, but what we need is something that looks like it's from the future, that looks cool, that's different.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Now the fruit and veg options, either we go in that direction or we stay totally away from it.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "I mean a research did come up with fruit and veg, so maybe it is important.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Few questions about a spongy remote control.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "I've seen plastic remote controls.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "So if we want something strong and sturdy, I say stable plastic or titanium.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "But if we go with spongy, we can stress that you can drop this as many times as you want.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "It doesn't matter. It's spongy material. It's not going to break.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "So just to summarize, people want stuff that's cool, that looks like it's cool.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "And if it is cool, then that's a bonus.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Where it doesn't have to be people like Fruit and Veg.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "We can either go down that alley or stay totally away from it.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "People like sponge material, if we're going to use sponge material, we have to think of how practical it is and how we can further promote that idea.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "You can incorporate names into the menu.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Okay, you can use music like they do on the Sky Digital.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Is it actually a book of names to digits or is it like a few pages?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "I was just thinking if we were to store this information some type of mapping.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "This person probably need to use this feature like once.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Some of these things kind of logically follow the others.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "How can product evaluation, doesn't that come after actually seeing a product prototype?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "At this stage, we still have no target audience?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "But you're going to need some type of flash memory or something.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Well, something that doesn't, you wouldn't have to redo the whole thing once the batteries are changed, once you have the power.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Different languages, different skins and stuff like that.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "If it was customizable as in different languages and stuff, that does open, it is supposed to be international, right?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Sure, I mean we are trying to promote a remote control but we want to keep the company brand as well.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ],
+    "summary": "People want a remote control that looks cool and is technologically innovative. The interface should be easy to use, and this is a key consideration. A spongy, stress ball-like material could be used, which would be durable and able to withstand drops. The design should be different and futuristic. The remote could incorporate features like customizable names and music. It may also need to store information in a mapping, and have flash memory. Considerations include different languages and skins for international use, and promoting the company brand while also promoting the remote control."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "The design should be ergonomic for both left and right-handed people.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have a joystick, two function buttons, and an LCD.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The joystick will be placed to rest over the joint of the forefinger.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The design will have two points of articulation, one below and one above the main grip.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have a cable to connect it to a computer for programming.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have a menu structure that can be customizable.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have on-board memory.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The design will be made of rubber for a soft touch and organic feel.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The LCD will be placed at the base of the wrist.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The top function button will be the on-off switch in basic mode and the enter button in menu mode.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control will have a mode for programming without a computer.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "A sound effect, such as a monkey noise, could be used to help locate the remote control if it is lost.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ],
+    "summary": "The remote control design should be ergonomic for both left and right-handed people, with a joystick placed to rest over the joint of the forefinger and two points of articulation for comfortable grip. It will feature a joystick, two function buttons, and an LCD at the base of the wrist. The design will be made of rubber for a soft touch and organic feel. The top function button will serve as the on-off switch in basic mode and the enter button in menu mode. The remote control will have on-board memory, a customizable menu structure, and a cable for computer connection. Additionally, it will have a mode for programming without a computer and a feature to produce a sound effect, such as a monkey noise, to help locate it if lost."
+  }
+]

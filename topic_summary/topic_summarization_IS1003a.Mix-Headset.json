@@ -1,0 +1,26 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "Create an original, trendy, and user-friendly remote control. The project involves individual work and meetings for functional, conceptual, and detailed design. The selling price is 25 euros, with a product cost not exceeding 12.50 euros. The goal is to create an international product with new functionalities.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "The project is to create a new remote control. The remote control has to be original, trendy and user-friendly.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The project method involves individual work and meetings for functional, conceptual, and detailed design. The selling price of the project will be 25 euros and the product cost will be not more than 12 euros and 50 centims.",
+        "start": 0.02,
+        "end": 0.04
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The remote control should be an international product, not too expensive, and with new functionalities. The product cost should not exceed 12.50 euros to maximize benefit. The goal is to create a remote control that people would be interested in buying.",
+        "start": 0.06,
+        "end": 0.08
+      }
+    ]
+  }
+]

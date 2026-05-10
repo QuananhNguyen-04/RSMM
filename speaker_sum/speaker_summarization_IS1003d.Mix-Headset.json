@@ -1,0 +1,180 @@
+[
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "The remote control design has a fancy look and feel, with a unique shape and colors.",
+        "start": 0.0,
+        "end": 0.07
+      },
+      {
+        "text": "The design is inspired by fruits and vegetables, with a lemon-like shape.",
+        "start": 0.067,
+        "end": 0.135
+      },
+      {
+        "text": "The remote control has a microphone embedded and a solar receptor.",
+        "start": 0.136,
+        "end": 0.204
+      },
+      {
+        "text": "The product has three key points: fancy look and feel, technological innovation, and ease of use.",
+        "start": 0.205,
+        "end": 0.272
+      },
+      {
+        "text": "The ease of use is evaluated on a scale of 1 to 7, with 3 being a reasonable score.",
+        "start": 0.273,
+        "end": 0.341
+      },
+      {
+        "text": "The product has a wooden base and a plastic body, with a solar cell on top.",
+        "start": 0.342,
+        "end": 0.409
+      },
+      {
+        "text": "The solar cell is a new, revolutionary technology that can be placed outside.",
+        "start": 0.41,
+        "end": 0.478
+      },
+      {
+        "text": "The product's price is around 12.50 euros, making it a cost-effective option.",
+        "start": 0.479,
+        "end": 0.547
+      },
+      {
+        "text": "The design team considers adding a logo and changing the color scheme.",
+        "start": 0.548,
+        "end": 0.616
+      },
+      {
+        "text": "The final prototype is a flying saucer-shaped remote control with a pineapple design.",
+        "start": 0.617,
+        "end": 0.685
+      }
+    ],
+    "summary": "The remote control has a fancy, fruit-inspired design, with a lemon-like shape. It features a microphone, solar receptor, and wooden base. Key points include its look, technological innovation, and ease of use. The product is priced around 12.50 euros."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "The judgement is biased.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The project presentation will be given by David Jordan and Baba.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The proposed remote control will be evaluated and its price estimated.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control design resembles a pineapple.",
+        "start": 0.08,
+        "end": 0.08
+      },
+      {
+        "text": "The remote control has voice recognition technology.",
+        "start": 0.1,
+        "end": 0.1
+      },
+      {
+        "text": "The remote control has tactile buttons.",
+        "start": 0.1,
+        "end": 0.1
+      },
+      {
+        "text": "The prototype will be evaluated from a financial perspective.",
+        "start": 0.17,
+        "end": 0.17
+      },
+      {
+        "text": "The remote control must cost between 12 and 50 euros.",
+        "start": 0.17,
+        "end": 0.17
+      },
+      {
+        "text": "The remote control design will be transformed into a pineapple shape.",
+        "start": 0.17,
+        "end": 0.17
+      },
+      {
+        "text": "The design has a single curved or double curved case.",
+        "start": 0.2,
+        "end": 0.2
+      },
+      {
+        "text": "The remote control has a solar cell and voice recognition.",
+        "start": 0.2,
+        "end": 0.2
+      },
+      {
+        "text": "The final product is nearly complete.",
+        "start": 0.34,
+        "end": 0.34
+      }
+    ],
+    "summary": "The project presentation is by David Jordan and Baba. The remote control has voice recognition, tactile buttons, and a solar cell. Its design resembles a pineapple and must cost 12-50 euros. The prototype's financial perspective will be evaluated."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "This is our product prototype made by Clint. It features a yellow and red color scheme, with yellow being our company color and red being more attractive.",
+        "start": 0.0,
+        "end": 0.03
+      },
+      {
+        "text": "The prototype design includes two basic shapes: a cycle and a triangle space, referred to as a mushroom design.",
+        "start": 0.0,
+        "end": 0.03
+      },
+      {
+        "text": "Key features of the prototype include a fancy and unique design, a circle channel selection, and a stable triangle base.",
+        "start": 0.03,
+        "end": 0.04
+      },
+      {
+        "text": "The circle channel selection allows users to turn a ball to select channels, providing a convenient alternative to traditional button-based selection.",
+        "start": 0.03,
+        "end": 0.04
+      },
+      {
+        "text": "The prototype includes a microphone and a button for broadening channels.",
+        "start": 0.1,
+        "end": 0.16
+      },
+      {
+        "text": "The channel selection feature allows for incremental changes, such as 1 to 10, 10 to 12, or 10 to 20 channels.",
+        "start": 0.15,
+        "end": 0.17
+      },
+      {
+        "text": "The electronics have been changed from a sample sensor to a regular chip.",
+        "start": 0.21,
+        "end": 0.22
+      },
+      {
+        "text": "There may be two versions of the product, with the first part being in the basic program.",
+        "start": 0.22,
+        "end": 0.23
+      },
+      {
+        "text": "The price of the product is 25 euros.",
+        "start": 0.3,
+        "end": 0.31
+      },
+      {
+        "text": "The product has been nicknamed the 'Pineapple remote control' or 'cute mushroom controller'.",
+        "start": 0.31,
+        "end": 0.32
+      }
+    ],
+    "summary": "The prototype features a yellow and red color scheme with a mushroom design. Key features include a circle channel selection, stable triangle base, microphone, and button. The product allows for incremental channel changes and costs 25 euros. It's also nicknamed 'Pineapple remote control' or 'cute mushroom controller'."
+  }
+]

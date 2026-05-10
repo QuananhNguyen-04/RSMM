@@ -6,11 +6,12 @@ Phần này trình bày các chỉ số đánh giá được sử dụng trong t
 \subsubsection{Diarization Metrics}
 
 \textbf{Vai trò:}
-Đánh giá chất lượng của mô-đun định danh người nói, là bước nền tảng ảnh hưởng trực tiếp đến toàn bộ pipeline phía sau.
+
+Các chỉ số diarization được sử dụng để đánh giá chất lượng của mô-đun định danh người nói trong pipeline chuyển đổi âm thanh thành văn bản. Đây là bước nền tảng ảnh hưởng trực tiếp đến toàn bộ các thành phần phía sau như speech recognition, summarization, retrieval và question answering. Nếu speaker bị gán sai hoặc nội dung hội thoại bị mất trong giai đoạn diarization, các lỗi này sẽ tiếp tục lan truyền sang các tầng xử lý downstream và làm giảm chất lượng của toàn bộ hệ thống.
 
 \textbf{Diarization Error Rate (DER):}
 
-DER là chỉ số tiêu chuẩn để đo lường mức độ sai lệch giữa kết quả diarization và ground truth theo thời gian.
+DER là chỉ số tiêu chuẩn được sử dụng để đo lường mức độ sai lệch giữa kết quả diarization và ground truth theo trục thời gian của hội thoại.
 
 \[
 DER = \frac{Miss + FalseAlarm + Confusion}{Total\ Speech\ Time}
@@ -18,59 +19,84 @@ DER = \frac{Miss + FalseAlarm + Confusion}{Total\ Speech\ Time}
 
 Trong đó:
 \begin{itemize}
-    \item \textbf{Miss (Missed Speech):} phần speech không được phát hiện
-    \item \textbf{False Alarm:} phần không phải speech nhưng bị phát hiện nhầm
-    \item \textbf{Confusion:} phần speech được gán sai người nói
+    \item \textbf{Miss (Missed Speech):} phần speech tồn tại trong audio nhưng không được hệ thống phát hiện.
+    
+    \item \textbf{False Alarm:} phần không phải speech nhưng bị nhận diện nhầm là speech.
+    
+    \item \textbf{Confusion:} phần speech được phát hiện nhưng bị gán sai speaker.
 \end{itemize}
 
-Trong phạm vi hệ thống, phân tích tập trung chủ yếu vào:
-\begin{itemize}
-    \item \textbf{Miss:} ảnh hưởng trực tiếp đến việc mất thông tin đầu vào cho ASR
-    \item \textbf{Confusion:} ảnh hưởng đến tính đúng đắn của metadata speaker, từ đó tác động đến retrieval và QA
-\end{itemize}
+Trong phạm vi nghiên cứu này, quá trình phân tích tập trung chủ yếu vào hai thành phần Miss và Confusion. Miss làm mất thông tin đầu vào cho ASR và các bước xử lý phía sau, trong khi Confusion ảnh hưởng trực tiếp đến tính đúng đắn của speaker metadata. Điều này đặc biệt quan trọng đối với các hệ thống retrieval theo người tham gia hoặc các tác vụ tổng hợp thông tin theo speaker.
 
 \textbf{Speaker Matching (Label Alignment):}
 
-Do nhãn speaker trong hệ thống mang tính ký hiệu (arbitrary), cần thực hiện bước ánh xạ nhãn giữa kết quả dự đoán và ground truth trước khi tính DER.
+Do các speaker labels trong hệ thống diarization chỉ mang tính ký hiệu và không có ý nghĩa cố định, cần thực hiện bước ánh xạ nhãn giữa kết quả dự đoán và ground truth trước khi tính DER.
 
-Bài toán này được mô hình hóa như một bài toán gán tối ưu và được giải bằng thuật toán Hungarian, dựa trên ma trận nhầm lẫn (confusion matrix) ở mức frame.
+Bài toán này được mô hình hóa như một bài toán gán tối ưu và được giải bằng thuật toán Hungarian dựa trên confusion matrix ở mức frame. Quá trình alignment giúp đảm bảo việc tính toán DER phản ánh đúng chất lượng speaker assignment thay vì bị ảnh hưởng bởi sự khác biệt trong cách đánh số nhãn speaker.
 
 \textbf{Phân tích lỗi:}
+
+Ngoài các chỉ số định lượng, hệ thống còn thực hiện phân tích các dạng lỗi phổ biến trong speaker diarization nhằm hỗ trợ quá trình chẩn đoán và cải thiện pipeline.
+
 \begin{itemize}
-    \item Label oscillation (dao động nhãn)
-    \item Over-merging (gộp nhiều speaker)
-    \item Over-splitting (tách một speaker thành nhiều nhãn)
+    \item \textbf{Label Oscillation:} hiện tượng speaker labels thay đổi liên tục trong cùng một đoạn phát biểu.
+    
+    \item \textbf{Over-merging:} nhiều speaker khác nhau bị gộp thành cùng một nhãn.
+    
+    \item \textbf{Over-splitting:} một speaker bị tách thành nhiều nhãn khác nhau.
 \end{itemize}
 
-Các phân tích này được sử dụng như công cụ chẩn đoán nhằm cải thiện pipeline, không phải là chỉ số định lượng độc lập.
+Các phân tích này được sử dụng như công cụ hỗ trợ đánh giá hành vi của hệ thống và xác định nguyên nhân lỗi trong quá trình diarization, thay vì đóng vai trò như các chỉ số định lượng độc lập.
 
 \textbf{Speaker-Aware Coverage (SAC):}
 
-SAC là chỉ số bổ sung nhằm đo lường khả năng bảo toàn nội dung gắn với đúng speaker.
+Speaker-Aware Coverage (SAC) là chỉ số được sử dụng để đánh giá đồng thời khả năng bảo toàn nội dung hội thoại và độ chính xác của speaker attribution trong transcript đầu ra. Khác với DER chủ yếu đánh giá lỗi diarization theo góc nhìn timeline và speaker segmentation, SAC tập trung vào chất lượng của transcript cuối cùng ở mức nội dung và ngữ nghĩa.
+
+SAC được xây dựng từ hai thành phần chính gồm Coverage và Speaker Correctness.
 
 \begin{itemize}
-    \item \textbf{Coverage:} tỷ lệ các từ/cụm từ có nghĩa trong Ground Truth xuất hiện trong output
-    \item \textbf{Speaker Correctness:} tỷ lệ các từ được gán đúng speaker
+    \item \textbf{Coverage:} tỷ lệ các từ hoặc cụm từ mang ý nghĩa trong Ground Truth vẫn xuất hiện trong transcript đầu ra sau quá trình xử lý.
+    
+    \item \textbf{Speaker Correctness:} tỷ lệ nội dung được gán đúng speaker tương ứng.
 \end{itemize}
 
-SAC giúp đánh giá tác động của lỗi diarization lên các bước downstream, đặc biệt là truy xuất và tổng hợp thông tin.
+Chỉ số SAC chỉ đạt giá trị cao khi hệ thống vừa giữ lại được nội dung hội thoại, vừa duy trì đúng mối liên hệ giữa nội dung và speaker metadata. Nếu transcript vẫn giữ được phần lớn nội dung nhưng speaker labels bị gán sai, hoặc ngược lại, SAC sẽ giảm đáng kể.
+
+Điểm khác biệt quan trọng giữa DER và SAC nằm ở mục tiêu đánh giá. DER phản ánh lỗi diarization theo trục thời gian của audio, trong khi SAC phản ánh mức độ mà transcript cuối cùng vẫn bảo toàn đúng nội dung gắn với đúng speaker. Vì vậy, SAC phản ánh trực tiếp hơn tác động của lỗi diarization đối với các tác vụ downstream như retrieval theo participant, meeting summarization hoặc phân tích đóng góp của từng người tham gia trong cuộc họp.
 
 \subsubsection{Summarization Metrics}
 
 \textbf{Vai trò:}
-Đánh giá khả năng của hệ thống trong việc rút gọn dữ liệu hội thoại dài thành biểu diễn cô đọng, đồng thời vẫn giữ được thông tin quan trọng phục vụ truy xuất.
 
-\begin{itemize}
-    \item \textbf{Coverage:} 
-    Tỷ lệ các điểm thông tin quan trọng được giữ lại trong bản tóm tắt. 
-    Ngưỡng yêu cầu tối thiểu là 70\%.
+Các chỉ số summarization được sử dụng để đánh giá khả năng của hệ thống trong việc rút gọn dữ liệu hội thoại dài thành biểu diễn cô đọng hơn nhưng vẫn giữ được các thông tin quan trọng phục vụ cho retrieval và indexing. Trong bối cảnh hệ thống tóm tắt đa tầng, việc đánh giá không chỉ tập trung vào độ ngắn gọn của bản tóm tắt mà còn cần xem xét khả năng bảo toàn nội dung và mức độ bám sát transcript gốc.
 
-    \item \textbf{Compression Ratio:} 
-    Tỷ lệ giữa độ dài văn bản tóm tắt và văn bản gốc, được kiểm soát trong khoảng 20\%–40\%.
+\textbf{Information Coverage Score (ICS):}
 
-    \item \textbf{Faithfulness:} 
-    Đảm bảo nội dung tóm tắt không chứa thông tin không xuất hiện trong ngữ cảnh đầu vào (không hallucination).
-\end{itemize}
+Information Coverage Score (ICS) được sử dụng để đo lường mức độ bảo toàn thông tin của hệ thống tóm tắt. Chỉ số này đánh giá xem các ý chính, quyết định, yêu cầu hoặc thông tin quan trọng trong ground truth có còn xuất hiện trong bản tóm tắt sinh ra hay không.
+
+Quá trình đánh giá được thực hiện bằng cách phân tách nội dung thành các information units nhỏ, sau đó thực hiện semantic matching giữa ground truth và bản tóm tắt sinh ra thông qua embedding similarity. Hệ thống đồng thời kết hợp lexical overlap nhằm tăng độ ổn định của quá trình đánh giá coverage.
+
+ICS phản ánh khả năng duy trì thông tin ở nhiều tầng summarization khác nhau như participant-level, topic-level và meeting-level. Giá trị ICS càng cao cho thấy bản tóm tắt càng giữ lại được nhiều nội dung quan trọng của cuộc họp.
+
+\textbf{Compression Ratio (CR):}
+
+Compression Ratio (CR) được sử dụng để đánh giá khả năng nén thông tin của hệ thống tóm tắt.
+
+\[
+CR = \frac{Summary\ Length}{Original\ Transcript\ Length}
+\]
+
+Chỉ số này phản ánh tỷ lệ giữa độ dài của bản tóm tắt đầu ra và transcript gốc. Giá trị CR thấp cho thấy hệ thống có khả năng rút gọn đáng kể kích thước dữ liệu cần lưu trữ và xử lý, đồng thời vẫn duy trì được lượng thông tin cần thiết phục vụ retrieval.
+
+Trong bối cảnh hệ thống quản lý nhiều cuộc họp, khả năng giảm kích thước dữ liệu nhưng vẫn giữ được coverage là yếu tố quan trọng giúp giảm chi phí indexing và tăng tốc quá trình retrieval.
+
+\textbf{Hallucination Rate (HR):}
+
+Hallucination Rate (HR) được sử dụng để đánh giá mức độ xuất hiện của các thông tin không tồn tại trong transcript gốc.
+
+Trong quá trình đánh giá, mỗi phát biểu trong bản tóm tắt sẽ được đối chiếu với transcript thông qua semantic similarity và lexical overlap. Nếu một phát biểu không đạt đủ mức tương đồng với nội dung gốc thì sẽ được xem là hallucination.
+
+HR thấp cho thấy nội dung tóm tắt vẫn bám sát transcript ban đầu và hạn chế việc sinh ra các thông tin sai lệch hoặc không có thật. Điều này đặc biệt quan trọng khi bản tóm tắt được sử dụng như lớp trung gian phục vụ retrieval và indexing trong các hệ thống quản lý cuộc họp đa tài liệu.
 
 \subsubsection{Retrieval Metrics}
 

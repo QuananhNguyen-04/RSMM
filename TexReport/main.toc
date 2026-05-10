@@ -42,55 +42,55 @@
 \contentsline {section}{\numberline {3.9}Số liệu đánh giá}{19}{section.3.9}%
 \contentsline {subsection}{\numberline {3.9.1}Các chỉ số đánh giá (Evaluation Metrics)}{19}{subsection.3.9.1}%
 \contentsline {subsubsection}{Diarization Metrics}{20}{subsubsection*.15}%
-\contentsline {subsubsection}{Summarization Metrics}{21}{subsubsection*.16}%
-\contentsline {subsubsection}{Retrieval Metrics}{21}{subsubsection*.17}%
-\contentsline {subsubsection}{Metadata Impact}{22}{subsubsection*.18}%
-\contentsline {chapter}{\numberline {4}Thiết Kế \& Hiện Thực Hệ Thống}{23}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Tổng quan kiến trúc hệ thống}{23}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Mô hình kiến trúc tổng thể}{23}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Luồng dữ liệu trong hệ thống}{24}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Các nguyên lý thiết kế cốt lõi}{24}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Mô hình Xử lý tiếng nói (Speech Processing Module)}{25}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Định danh người nói}{26}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Mô hình Tự động Nhận diện Giọng nói}{27}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Mô hình Truy xuất và Tạo sinh tri thức (RAG Module)}{28}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Xây dựng và Đánh chỉ mục dữ liệu (Indexing)}{31}{subsection.4.3.1}%
-\contentsline {subsubsection}{Tiền xử lý và Chuẩn hóa dữ liệu đầu vào}{31}{subsubsection*.20}%
-\contentsline {subsubsection}{Cấu hình Cơ sở dữ liệu Vector (Qdrant)}{32}{subsubsection*.21}%
-\contentsline {paragraph}{Cấu hình Index (HNSW Configuration):}{32}{paragraph*.22}%
-\contentsline {paragraph}{Mã hóa và Lưu trữ (Vectorization \& Upsert):}{32}{paragraph*.23}%
-\contentsline {subsection}{\numberline {4.3.2}Quy trình Truy xuất đa tầng (Multi-stage Retrieval)}{33}{subsection.4.3.2}%
-\contentsline {subsubsection}{Chiến lược thiết kế}{33}{subsubsection*.24}%
-\contentsline {subsubsection}{Chi tiết hiện thực kỹ thuật}{34}{subsubsection*.26}%
-\contentsline {paragraph}{Bước 1: Tìm kiếm Vector (Candidate Generation):}{34}{paragraph*.27}%
-\contentsline {paragraph}{Bước 2: Đánh giá ngữ nghĩa chéo (Cross-Encoder Scoring):}{35}{paragraph*.28}%
-\contentsline {paragraph}{Bước 3: Chọn lọc kết quả (Final Selection):}{36}{paragraph*.29}%
-\contentsline {paragraph}{Bước 4: Mở rộng ngữ cảnh (Context Augmentation):}{36}{paragraph*.30}%
-\contentsline {subsection}{\numberline {4.3.3}Tích hợp Mô hình ngôn ngữ và Tạo sinh (Generation)}{37}{subsection.4.3.3}%
-\contentsline {subsubsection}{Lựa chọn Mô hình (Model Selection)}{38}{subsubsection*.31}%
-\contentsline {subsubsection}{Kỹ thuật Viết lại câu hỏi (Query Rewriting)}{38}{subsubsection*.32}%
-\contentsline {subsubsection}{Chiến lược Prompting và Thiết kế Câu lệnh}{38}{subsubsection*.33}%
-\contentsline {subsubsection}{Hiện thực kỹ thuật}{39}{subsubsection*.34}%
-\contentsline {chapter}{\numberline {5}Đánh Giá}{41}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Đánh giá Hệ thống}{41}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Dữ liệu đánh giá (Evaluation Dataset)}{41}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Đánh giá Định danh người nói}{42}{subsection.5.1.2}%
-\contentsline {subsubsection}{Kịch bản 1: So sánh giữa ECAPA-TDNN và TitaNet-large}{42}{subsubsection*.35}%
-\contentsline {subsubsection}{Kịch bản 2: So sánh giữa Spectral Clustering và AHC}{43}{subsubsection*.37}%
-\contentsline {subsubsection}{Kịch bản 3: So sánh 1 lớp phân tích và 2 lớp phân tích}{44}{subsubsection*.38}%
-\contentsline {subsection}{\numberline {5.1.3}Đánh giá Mô-đun Truy xuất và Tạo sinh (RAG)}{45}{subsection.5.1.3}%
-\contentsline {subsubsection}{Dữ liệu kiểm thử (Evaluation Dataset)}{45}{subsubsection*.39}%
-\contentsline {subsubsection}{Kết quả đánh giá theo kịch bản (Case Studies)}{45}{subsubsection*.40}%
-\contentsline {paragraph}{Kịch bản 1: Truy xuất sự kiện và Số liệu (Fact Retrieval)}{45}{paragraph*.41}%
-\contentsline {paragraph}{Kịch bản 2: Xử lý nhiễu ASR và Từ đồng nghĩa}{46}{paragraph*.42}%
-\contentsline {paragraph}{Kịch bản 3: Tổng hợp thông tin đa mốc thời gian}{46}{paragraph*.43}%
-\contentsline {subsection}{\numberline {5.1.4}Thảo luận và Hạn chế}{47}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Đánh giá tổng quan pipeline chuyển đổi âm thanh thành văn bản}{48}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Đánh giá tóm tắt đa tầng}{49}{subsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.1.7}So sánh hiệu năng tìm kiếm}{49}{subsection.5.1.7}%
-\contentsline {subsection}{\numberline {5.1.8}Đánh giá hiệu quả của metadata}{50}{subsection.5.1.8}%
-\contentsline {subsection}{\numberline {5.1.9}Đánh giá khả năng tự sửa lỗi của hệ thống RAG}{51}{subsection.5.1.9}%
-\contentsline {chapter}{\numberline {6}Kết Luận}{52}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Kết luận}{52}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Những hạn chế}{53}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Định hướng phát triển}{54}{subsection.6.1.2}%
+\contentsline {subsubsection}{Summarization Metrics}{22}{subsubsection*.16}%
+\contentsline {subsubsection}{Retrieval Metrics}{23}{subsubsection*.17}%
+\contentsline {subsubsection}{Metadata Impact}{24}{subsubsection*.18}%
+\contentsline {chapter}{\numberline {4}Thiết Kế \& Hiện Thực Hệ Thống}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Tổng quan kiến trúc hệ thống}{25}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Mô hình kiến trúc tổng thể}{25}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Luồng dữ liệu trong hệ thống}{26}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Các nguyên lý thiết kế cốt lõi}{26}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Mô hình Xử lý tiếng nói (Speech Processing Module)}{27}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Định danh người nói}{28}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Mô hình Tự động Nhận diện Giọng nói}{29}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Mô hình Truy xuất và Tạo sinh tri thức (RAG Module)}{30}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Xây dựng và Đánh chỉ mục dữ liệu (Indexing)}{33}{subsection.4.3.1}%
+\contentsline {subsubsection}{Tiền xử lý và Chuẩn hóa dữ liệu đầu vào}{33}{subsubsection*.20}%
+\contentsline {subsubsection}{Cấu hình Cơ sở dữ liệu Vector (Qdrant)}{34}{subsubsection*.21}%
+\contentsline {paragraph}{Cấu hình Index (HNSW Configuration):}{34}{paragraph*.22}%
+\contentsline {paragraph}{Mã hóa và Lưu trữ (Vectorization \& Upsert):}{34}{paragraph*.23}%
+\contentsline {subsection}{\numberline {4.3.2}Quy trình Truy xuất đa tầng (Multi-stage Retrieval)}{35}{subsection.4.3.2}%
+\contentsline {subsubsection}{Chiến lược thiết kế}{35}{subsubsection*.24}%
+\contentsline {subsubsection}{Chi tiết hiện thực kỹ thuật}{36}{subsubsection*.26}%
+\contentsline {paragraph}{Bước 1: Tìm kiếm Vector (Candidate Generation):}{36}{paragraph*.27}%
+\contentsline {paragraph}{Bước 2: Đánh giá ngữ nghĩa chéo (Cross-Encoder Scoring):}{37}{paragraph*.28}%
+\contentsline {paragraph}{Bước 3: Chọn lọc kết quả (Final Selection):}{38}{paragraph*.29}%
+\contentsline {paragraph}{Bước 4: Mở rộng ngữ cảnh (Context Augmentation):}{38}{paragraph*.30}%
+\contentsline {subsection}{\numberline {4.3.3}Tích hợp Mô hình ngôn ngữ và Tạo sinh (Generation)}{39}{subsection.4.3.3}%
+\contentsline {subsubsection}{Lựa chọn Mô hình (Model Selection)}{40}{subsubsection*.31}%
+\contentsline {subsubsection}{Kỹ thuật Viết lại câu hỏi (Query Rewriting)}{40}{subsubsection*.32}%
+\contentsline {subsubsection}{Chiến lược Prompting và Thiết kế Câu lệnh}{40}{subsubsection*.33}%
+\contentsline {subsubsection}{Hiện thực kỹ thuật}{41}{subsubsection*.34}%
+\contentsline {chapter}{\numberline {5}Đánh Giá}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Đánh giá Hệ thống}{43}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Dữ liệu đánh giá (Evaluation Dataset)}{43}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Đánh giá Định danh người nói}{44}{subsection.5.1.2}%
+\contentsline {subsubsection}{Kịch bản 1: So sánh giữa ECAPA-TDNN và TitaNet-large}{44}{subsubsection*.35}%
+\contentsline {subsubsection}{Kịch bản 2: So sánh giữa Spectral Clustering và AHC}{45}{subsubsection*.37}%
+\contentsline {subsubsection}{Kịch bản 3: So sánh 1 lớp phân tích và 2 lớp phân tích}{46}{subsubsection*.38}%
+\contentsline {subsection}{\numberline {5.1.3}Đánh giá Mô-đun Truy xuất và Tạo sinh (RAG)}{47}{subsection.5.1.3}%
+\contentsline {subsubsection}{Dữ liệu kiểm thử (Evaluation Dataset)}{47}{subsubsection*.39}%
+\contentsline {subsubsection}{Kết quả đánh giá theo kịch bản (Case Studies)}{47}{subsubsection*.40}%
+\contentsline {paragraph}{Kịch bản 1: Truy xuất sự kiện và Số liệu (Fact Retrieval)}{47}{paragraph*.41}%
+\contentsline {paragraph}{Kịch bản 2: Xử lý nhiễu ASR và Từ đồng nghĩa}{48}{paragraph*.42}%
+\contentsline {paragraph}{Kịch bản 3: Tổng hợp thông tin đa mốc thời gian}{48}{paragraph*.43}%
+\contentsline {subsection}{\numberline {5.1.4}Thảo luận và Hạn chế}{49}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Đánh giá tổng quan pipeline chuyển đổi âm thanh thành văn bản}{50}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Đánh giá tóm tắt đa tầng}{52}{subsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.1.7}So sánh hiệu năng tìm kiếm}{55}{subsection.5.1.7}%
+\contentsline {subsection}{\numberline {5.1.8}Đánh giá hiệu quả của metadata}{55}{subsection.5.1.8}%
+\contentsline {subsection}{\numberline {5.1.9}Đánh giá khả năng tự sửa lỗi của hệ thống RAG}{56}{subsection.5.1.9}%
+\contentsline {chapter}{\numberline {6}Kết Luận}{58}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Kết luận}{58}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Những hạn chế}{59}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Định hướng phát triển}{60}{subsection.6.1.2}%

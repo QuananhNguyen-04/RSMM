@@ -1,0 +1,190 @@
+[
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "The user interface concept has three controller concepts: Google controller, fancy controller, and intelligent controller.",
+        "start": 0.00145,
+        "end": 0.00314
+      },
+      {
+        "text": "The Google controller aims to be easy to use with sophisticated functions, combining ease of use and advanced features.",
+        "start": 0.00145,
+        "end": 0.00314
+      },
+      {
+        "text": "The fancy controller focuses on being attractive and easily recognizable among other products, with a cute and appealing user interface.",
+        "start": 0.00145,
+        "end": 0.00314
+      },
+      {
+        "text": "The intelligent controller aims to be smart, using technologies like speech recognition and gesture recognition to attract users.",
+        "start": 0.00321,
+        "end": 0.00405
+      },
+      {
+        "text": "Speech recognition and gesture recognition require cooperation with research institutes for advanced features.",
+        "start": 0.00321,
+        "end": 0.00405
+      },
+      {
+        "text": "A voice interface and gesture interface can be convenient, such as using voice commands when the controller is lost.",
+        "start": 0.00445,
+        "end": 0.00501
+      },
+      {
+        "text": "For limited vocabulary, speech recognition and gesture recognition are reliable.",
+        "start": 0.00515,
+        "end": 0.00523
+      },
+      {
+        "text": "The intelligent controller's advantage is its flexibility, allowing users to switch between voice, gesture, and button controls.",
+        "start": 0.00559,
+        "end": 0.00615
+      },
+      {
+        "text": "A switching mode could be implemented to transition between voice and other control methods.",
+        "start": 0.00559,
+        "end": 0.00615
+      },
+      {
+        "text": "The controller's design should consider materials, such as wood or plastic, and components like buttons or touchscreens.",
+        "start": 0.01621,
+        "end": 0.01835
+      },
+      {
+        "text": "The controller could have both solar energy and battery power options for flexibility.",
+        "start": 0.01855,
+        "end": 0.01913
+      },
+      {
+        "text": "The use of LCD lighted buttons or touchscreens could enhance the user experience.",
+        "start": 0.02026,
+        "end": 0.0205
+      }
+    ],
+    "summary": "The user interface concept has three controllers: Google, fancy, and intelligent. The intelligent controller uses speech and gesture recognition for advanced features, requiring cooperation with research institutes. It offers flexibility with voice, gesture, and button controls."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "The meeting will cover three presentations and a decision on the remote control concept.",
+        "start": 0.0,
+        "end": 1.14
+      },
+      {
+        "text": "The user interface and designers, Mr. David Jordan, will speak first.",
+        "start": 1.19,
+        "end": 1.4
+      },
+      {
+        "text": "A question was raised about the use of gestures for channel zapping, citing potential for injuries or boredom.",
+        "start": 4.05,
+        "end": 5.05
+      },
+      {
+        "text": "Concerns were raised about the use of voice recognition and gesture recognition in a family setting.",
+        "start": 5.23,
+        "end": 5.47
+      },
+      {
+        "text": "The need for international compatibility of the remote control was discussed.",
+        "start": 7.1,
+        "end": 8.35
+      },
+      {
+        "text": "A suggestion was made to use a black box to recognize gestures and voice.",
+        "start": 9.47,
+        "end": 9.55
+      },
+      {
+        "text": "The preference for a remote control that is easy to use, sophisticated, and fancy was expressed.",
+        "start": 11.13,
+        "end": 11.17
+      },
+      {
+        "text": "The industrial designer suggested using solar energy and materials like wood.",
+        "start": 18.35,
+        "end": 19.42
+      },
+      {
+        "text": "The need for a low-level chip and LCD buttons was discussed.",
+        "start": 20.11,
+        "end": 20.25
+      },
+      {
+        "text": "The team agreed to work on a remote control with solar energy, batteries, and a wooden case.",
+        "start": 24.34,
+        "end": 27.46
+      },
+      {
+        "text": "The next meeting will require a prototype and modeling clay remote control.",
+        "start": 29.44,
+        "end": 30.35
+      }
+    ],
+    "summary": "The meeting covered remote control concept presentations and decisions. Key concerns included user safety, international compatibility, and ease of use. The team agreed on a remote control with solar energy, batteries, and a wooden case."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "How risky is it to trust like speak recognition or gesture recognition?",
+        "start": 0.00509,
+        "end": 0.00515
+      },
+      {
+        "text": "You need a new remote controller then.",
+        "start": 0.0122,
+        "end": 0.01223
+      },
+      {
+        "text": "The user is not only interested in having speech or gesture recognition, if he has something that works fine and is really fancy, looks nice, and not enough motivation for them to replace their old controller with a new one.",
+        "start": 0.01403,
+        "end": 0.0142
+      },
+      {
+        "text": "Users really, really want a fancy look and feel. They're not so interested in a functional look and feel.",
+        "start": 0.02139,
+        "end": 0.0241
+      },
+      {
+        "text": "Users want it to be technologically innovative and easy to use.",
+        "start": 0.02139,
+        "end": 0.0241
+      },
+      {
+        "text": "Everything from clothes to shoes and furniture is inspired by fruits and vegetables.",
+        "start": 0.02139,
+        "end": 0.0241
+      },
+      {
+        "text": "People want to have a spongy touch.",
+        "start": 0.02139,
+        "end": 0.0241
+      },
+      {
+        "text": "It's changing how the remote control is going to be built because then you need... I mean, this doesn't have the power to do recognition, for example. You have also the language problem.",
+        "start": 0.00652,
+        "end": 0.00707
+      },
+      {
+        "text": "If it doubles, no one would be interested.",
+        "start": 0.01052,
+        "end": 0.01104
+      },
+      {
+        "text": "Maybe not no wood, but I mean, maybe not the part you're touching.",
+        "start": 0.02522,
+        "end": 0.0253
+      },
+      {
+        "text": "We could maybe have both part of wood and some rubber for the buttons.",
+        "start": 0.02596,
+        "end": 0.02601
+      }
+    ],
+    "summary": "Users prioritize a fancy look and feel in a remote controller, seeking technological innovation and ease of use. They desire a spongy touch, possibly with materials like wood and rubber. Functionality, such as speech or gesture recognition, is secondary to aesthetics."
+  }
+]

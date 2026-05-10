@@ -1,0 +1,235 @@
+[
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "The project aims to create a remote control with a new design, prioritizing aesthetics over functionality.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The design will use standard off-the-shelf components, an advanced chip, and an LCD display.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The team had to make concessions due to budget constraints, exceeding the budget by 4 euros.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The LCD display and advanced chip accounted for a significant portion of the cost.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The team considered using plastic instead of rubber to reduce costs.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "A single-curved design was chosen to allow for articulation and reduce costs.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The team evaluated the project based on four criteria: satisfaction, teamwork, leadership, and room for creativity.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The project received a score of 3 out of 5 in terms of satisfaction.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The team was satisfied with the teamwork and leadership but felt limited by the budget.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The team proposed a final product with a plastic solid case, LCD display, and single-curved design.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ],
+    "summary": "The project aims to create a remote control prioritizing aesthetics over functionality, using standard off-the-shelf components, an advanced chip, and an LCD display. Due to budget constraints, which were exceeded by 4 euros, concessions were made, such as considering the use of plastic instead of rubber. A single-curved design was chosen to allow for articulation and reduce costs. The project was evaluated based on satisfaction, teamwork, leadership, and room for creativity, scoring 3 out of 5 in satisfaction. The team was satisfied with teamwork and leadership but felt limited by the budget. The proposed final product features a plastic solid case, LCD display, and single-curved design."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "doing the prototype gave us a bit more insight into the ergonomics of the design",
+        "start": 0.0,
+        "end": 0.34
+      },
+      {
+        "text": "the only point at which it needs to be articulated for handedness is down here for the LED",
+        "start": 0.17,
+        "end": 0.34
+      },
+      {
+        "text": "the whole thing transfers from the right to left hand fairly well",
+        "start": 0.51,
+        "end": 0.68
+      },
+      {
+        "text": "it might be an idea to be able to adjust the position of the base of the joystick just a little bit",
+        "start": 0.69,
+        "end": 1.04
+      },
+      {
+        "text": "have a slightly ovoid-shaped joystick",
+        "start": 1.05,
+        "end": 1.22
+      },
+      {
+        "text": "the LCD is nowhere useful",
+        "start": 1.23,
+        "end": 1.35
+      },
+      {
+        "text": "this design could be done with plastic casing",
+        "start": 1.65,
+        "end": 1.76
+      },
+      {
+        "text": "have maybe just a rubber grip over that which will allow for a slightly more sort of biomorphic form and a bit more ergonomic",
+        "start": 1.93,
+        "end": 2.35
+      },
+      {
+        "text": "the curve that's most needed is the underside so that the joystick rests over the edge of the hand",
+        "start": 2.36,
+        "end": 2.63
+      },
+      {
+        "text": "with the rubber design, it could pretty much mold very much to the user's hand",
+        "start": 3.25,
+        "end": 3.45
+      },
+      {
+        "text": "have the rubber extend beyond the rigid sub-structure, so it has a visor tail that you just drape over your wrist",
+        "start": 3.46,
+        "end": 4.01
+      },
+      {
+        "text": "I think if we remove the LCD display, then there was absolutely no point to any of these meetings",
+        "start": 10.27,
+        "end": 10.45
+      },
+      {
+        "text": "how much extra would it be to keep the articulation",
+        "start": 10.58,
+        "end": 10.68
+      },
+      {
+        "text": "it didn't require it to be double-curved",
+        "start": 10.81,
+        "end": 10.92
+      },
+      {
+        "text": "the curve that's really needed is up here to keep the joystick in a good ergonomic position",
+        "start": 11.05,
+        "end": 11.35
+      },
+      {
+        "text": "the special color doesn't, would I think make a difference",
+        "start": 13.02,
+        "end": 13.16
+      },
+      {
+        "text": "we're down to two buttons, is it? Two buttons and a joystick",
+        "start": 13.17,
+        "end": 13.28
+      },
+      {
+        "text": "give us a selection of colors",
+        "start": 15.34,
+        "end": 15.45
+      },
+      {
+        "text": "are people really going to shell out 25 euros for something that's only marginally good",
+        "start": 16.47,
+        "end": 17.01
+      },
+      {
+        "text": "produce mock-ups of both versions and see just how much of a difference the going over budget would make to sales",
+        "start": 20.32,
+        "end": 20.53
+      }
+    ],
+    "summary": "Doing the prototype provided insight into the design's ergonomics. The design transfers well from right to left hand, but may benefit from adjusting the joystick base position and having an ovoid-shaped joystick. A curve on the underside would help the joystick rest on the hand's edge. A rubber grip over a plastic casing could provide a biomorphic form and improved ergonomics. The LCD display seems unnecessary. The design could be produced with or without articulation, and color options could be offered. The question remains whether the added cost of certain features would be worth it for sales."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "The prototype will be bulkier than expected due to its flat design and LCD screen.",
+        "start": 0.0,
+        "end": 0.24
+      },
+      {
+        "text": "Evaluation criteria include user requirements, goals, policies, marketing strategies, and reactions.",
+        "start": 0.054,
+        "end": 0.071
+      },
+      {
+        "text": "The prototype scores well on stopping remotes from being lost and finding them once lost.",
+        "start": 0.074,
+        "end": 0.098
+      },
+      {
+        "text": "The product's design and LCD screen are key selling points.",
+        "start": 0.163,
+        "end": 0.181
+      },
+      {
+        "text": "Royal Reactions emphasizes fashion inspiration in their products.",
+        "start": 0.09,
+        "end": 0.106
+      },
+      {
+        "text": "The product's cost and pricing strategy are crucial considerations.",
+        "start": 0.17,
+        "end": 0.193
+      },
+      {
+        "text": "The team evaluates the product's design, interface, and features.",
+        "start": 0.23,
+        "end": 0.282
+      },
+      {
+        "text": "The product scores an average of 3 out of 5 in the evaluation.",
+        "start": 0.28,
+        "end": 0.299
+      },
+      {
+        "text": "The target audience's preferences and needs are considered.",
+        "start": 0.301,
+        "end": 0.327
+      },
+      {
+        "text": "The product's radical design may be a barrier for some users.",
+        "start": 0.31,
+        "end": 0.335
+      },
+      {
+        "text": "The team reflects on the design process and potential improvements.",
+        "start": 0.338,
+        "end": 0.355
+      },
+      {
+        "text": "The motor biomorphic form and articulation could impact sales and profit.",
+        "start": 0.343,
+        "end": 0.361
+      },
+      {
+        "text": "The team discusses the budget and potential cost savings.",
+        "start": 0.36,
+        "end": 0.375
+      }
+    ],
+    "summary": "The prototype's bulkier design and LCD screen are notable due to its flat design. Evaluation criteria include user requirements, goals, policies, marketing strategies, and reactions. The product scores well on preventing remote loss and finding them once lost. Key selling points are its design and LCD screen. The product's cost and pricing are crucial. It scores an average of 3 out of 5 in evaluation. The radical design may deter some users. The team considers target audience preferences, budget, and potential cost savings. The motor biomorphic form and articulation could impact sales and profit."
+  }
+]

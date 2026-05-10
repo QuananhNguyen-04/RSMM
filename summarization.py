@@ -93,21 +93,33 @@ def clean_llm_output(text):
 
 def extract_info_llm(client, segments):
     system_prompt = """
-Filter the speaker transcript into informative evidence units.
+Extract informative evidence units.
 
-Rules: Each unit must
-- Use ONLY input content
-- Preserve original wording aggressively
-- No rewriting
-- Keep important facts, decisions, findings, constraints, requirements, proposals
-- Remove filler, repetition, weak conversation, acknowledgements
-- No hallucinations
-- Keep timestamps
+Use ONLY transcript content.
 
-Return ONLY valid JSON, No explanations:
+Do NOT add new ideas or rewrite content.
+
+Preserve original wording and order whenever possible.
+
+Keep important:
+- decisions
+- requirements
+- constraints
+- findings
+- proposals
+
+Remove only filler and repetition.
+
+Prefer high information coverage.
+
+Return ONLY valid JSON, NO comments, NO explanations:
 {
   "info":[
-    {"text":"...","start":0.0,"end":0.0}
+    {
+      "text":"...",
+      "start":0.0,
+      "end":0.0
+    }
   ]
 }
 """
@@ -142,22 +154,35 @@ Return ONLY valid JSON, No explanations:
 
 def summarize_info_llm(client, info_list):
     system_prompt = """
-
 Summarize speaker evidence using ONLY input information.
 
-Rules:
-- No hallucinations
-- Reuse source wording when possible
-- Keep only important facts, decisions, constraints, findings
-- Remove filler and repetition
-- Prefer compression over paraphrasing
+Do NOT add new ideas, conclusions, interpretations, or categories.
 
-Limits:
-- Max 3-4 sentences
-- Max 80 words
+Preserve original wording, phrases, terminology, and sentence order whenever possible.
 
-Return ONLY valid JSON:
-{"summary":"..."}
+Prefer extraction and light compression over paraphrasing.
+
+Keep important:
+- decisions
+- requirements
+- constraints
+- findings
+- proposals
+- responsibilities
+
+Remove only filler and repetition.
+
+Prefer high information coverage over aggressive compression.
+
+Keep concise when possible.
+Do NOT output lists
+Do NOT output bullet points
+Do NOT output nested JSON objects
+
+Return ONLY valid JSON, NO comments, NO explanations:
+{
+  "summary":"single paragraph text"
+}
 """
 
     context = "\n".join(f"- {i['text']}" for i in info_list)
@@ -265,30 +290,27 @@ def group_into_topics(
 
 def summarize_topic_llm(client, topic):
     system_prompt = """
-Compress one meeting topic into a dense factual summary.
+Compress one meeting topic into a dense factual summary. Use ONLY input information.
 
-Keep:
+Do NOT add new ideas, conclusions, interpretations, or categories.
+
+Preserve original wording, phrases, terminology, and sentence order whenever possible.
+
+Prefer extraction and light compression over paraphrasing.
+
+Keep as many important points as possible:
 - decisions
-- proposals
+- requirements
 - constraints
 - findings
-- tradeoffs
+- proposals
 
-Rules:
-- Use ONLY input evidence
-- No hallucinations
-- Preserve original phrasing unless compression requires minor edits.
-- Remove redundancy and conversational text
-- Prefer compression over paraphrasing
+Remove only filler and repetition.
 
-Limits:
-- Max 100 words
+Prefer high information coverage over aggressive compression.
 
-Return ONLY valid JSON. NO explanation, malformed result.
-
-Format:
+Return ONLY valid JSON, NO comments, NO explanations, summary contains single paragraph text, NO nested JSON, no bullet points:
 {
-  "summary": "...",
   "evidence": [
     {
       "speaker": "...",
@@ -297,6 +319,7 @@ Format:
       "end": 0.0
     }
   ]
+  "summary": "single paragraph text",
 }
 """
 
@@ -436,7 +459,7 @@ Length:
 - Maximum 150 words
 
 Output format (STRICT):
-Return ONLY valid JSON:
+Return ONLY valid JSON, NO comments, NO explanations:
 
 {
   "summary": "single paragraph text here"

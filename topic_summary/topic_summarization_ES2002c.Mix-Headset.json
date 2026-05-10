@@ -1,0 +1,62 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The product targets 15-35 year olds, using battery power with possible kinetic backup. It groups audio, visual, and other functions, ignoring tele-text. Design incorporates corporate yellow color and slogan. The remote control could have a curvy, comfortable shape with plastic and rubber materials, and features like a jog dial, LCD display, and kinetic power generation.",
+    "evidence": [
+      {
+        "speaker": "Speaker 3",
+        "text": "The target group for the product is 15 to 35 years old.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "The product will use normally chargeable battery power.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "The product could have kinetic power generation as a backup to battery power.",
+        "start": 0.003251,
+        "end": 0.003316
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "The product will group audio, visual, and other functions into categories.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "The product must ignore tele-text and only respond to TV commands.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ]
+  },
+  {
+    "topic_id": 1,
+    "summary": "A larger bit needs to be held in one's hand. A design idea proposes adding a third grip, folding up the existing two grips. The design could feature a background yellow color with bold colored buttons.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "So a larger bit sits in your hand, and then you've got to be another and bubble it up for just any other funky you need.",
+        "start": 27.466667,
+        "end": 27.6
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "You've got two grips there. Maybe you could fold up and you get a third grip inside.",
+        "start": 28.166667,
+        "end": 28.316667
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "I think it would look quite nice if I just add this around here. They start background yellow. And then have a nice bold color for the buttons.",
+        "start": 28.7,
+        "end": 28.816667
+      }
+    ]
+  }
+]
