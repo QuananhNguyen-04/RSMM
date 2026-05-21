@@ -1,0 +1,342 @@
+[
+  {
+    "id": "Speaker 4",
+    "info": [
+      {
+        "text": "Thank you. Today.",
+        "start": 48,
+        "end": 69
+      },
+      {
+        "text": "Okay, that's okay.",
+        "start": 1591,
+        "end": 1592
+      }
+    ],
+    "summary": "The speaker expressed gratitude and received an acknowledgment in response."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "So I will have our functional design meeting. So I will play the role of the secretary as also program manager. So we will have the three presentations from the industrial designer, user interface designer and marketing expert. And after that we will have the new project requirements, the decision on the remote control functions and we will close the meetings after. So I suppose the first to do the presentation will be the user interface designer.",
+        "start": 69,
+        "end": 122
+      },
+      {
+        "text": "So you proposed you to have the remote control, which will be powerful? It's a basic function. So powerful? Yeah, powerful. Many functions, and very easy to use.",
+        "start": 244,
+        "end": 271
+      },
+      {
+        "text": "For example, I don't know here. Escape, you know, you have escape in computers. You have, so if you see escape, you know that it should, okay, yeah, the user should know. The user, there, for example, the ball of button, it is something really international. You know that, yeah, and such as maybe go on, go back. And the question is how to merge, you know, the Google system to the system. Yeah, that's gonna be the trick. That's my job. It's not easy. So you will propose as something which is yeah, so powerful and easy to use. Yeah, powerful and easy to use. So that's the point.",
+        "start": 336,
+        "end": 446
+      },
+      {
+        "text": "So just think of the usability. Just think of the problem if when you have a wireless remote control and if you lose it, I think it would be easier to have a link between the remote control.",
+        "start": 738,
+        "end": 764
+      },
+      {
+        "text": "And just to have an idea, do you think you as the user interface designer, would it be possible to have less buttons and still have the same functionality and to have a powerful remote control? Do you think it's possible?",
+        "start": 931,
+        "end": 960
+      },
+      {
+        "text": "Yeah, but I think it will increase the price of the production of the remote control. Yeah, yeah, maybe, yeah. If you need to have special colors for... you need to have special colors for remote controls, it will cost more. Yeah, personalize color, it will cost a little bit more.",
+        "start": 1056,
+        "end": 1091
+      },
+      {
+        "text": "So I had some new information about the project requirements. So you will have to take care of it in your thinking, in your designing of the remote control. So the first one is that for the designing of the remote control, we don't really want to use the teletext anymore, as it's something that is lame. Because now everybody has internet at home, so it's better to use internet than teletext. So you will have to think about it in the design of your remote control. And also the remote control will only be used for television. So for your designing, you won't have buttons to just many... to just manipulate, yeah, to control the recorder or maybe the garage door or things like that. Because if we want to do remote control, which will be used for the television, for the recorder, for the camcorder and all the others, it will become too complex and it will increase the price and we can't do that. We really want to focus on the remote control for the television. But there's a balance between function and cost.",
+        "start": 1378,
+        "end": 1639
+      },
+      {
+        "text": "Okay. But the image of the society has to be recolonized. Okay. Yeah. So you have to be completely yellow. But just, yeah, just to be a fashion and really be on the image of the society. Okay. Just when you enter, I say, oh, oh, it's a real reaction. Think it's a real reaction. Okay. Remote control. So and also, it has to be attractive, of course, because if you want to sell the remote control, okay.",
+        "start": 1735,
+        "end": 1805
+      }
+    ],
+    "summary": "The speaker is leading a functional design meeting for a remote control, focusing on a television remote. The remote should be powerful, easy to use, and have a balance between function and cost. The design should not include buttons for controlling multiple devices, such as recorders or garage doors, and should consider usability and international design standards. The remote control's image and attractiveness are also important for sales."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "No, no, no.",
+        "start": 7,
+        "end": 8
+      },
+      {
+        "text": "In one, so... Yeah.",
+        "start": 21,
+        "end": 23
+      },
+      {
+        "text": "So you didn't save it, maybe?",
+        "start": 33,
+        "end": 34
+      },
+      {
+        "text": "So. David Jordan? Yeah.",
+        "start": 40,
+        "end": 43
+      },
+      {
+        "text": "No, no. This one doesn't want to be moved. She will play it for you, maybe.",
+        "start": 53,
+        "end": 58
+      },
+      {
+        "text": "So it's maybe difficult to have both. I mean, the one on the right doesn't look so simple.",
+        "start": 54,
+        "end": 62
+      },
+      {
+        "text": "Maybe you have some international standards where if you can use one, it's almost the same, so the sign.",
+        "start": 82,
+        "end": 90
+      },
+      {
+        "text": "For example, I don't know here.",
+        "start": 94,
+        "end": 96
+      },
+      {
+        "text": "Okay. So you can move to the next slide. As you all know, my job is to design, to give an initial design of the remote control. So basically, the remote control will be infrared control. So the point is how to relate the remote control device, like for example, this one I am holding in my hand and the TV. So this one is laser-based. But I propose an infrared base. So for me, I think that it is better to control TV. So it will be cheaper and it is less technology than for the cheap price we have.",
+        "start": 350,
+        "end": 405
+      },
+      {
+        "text": "I think it's cheaper than laser.",
+        "start": 409,
+        "end": 411
+      },
+      {
+        "text": "Yeah, I think for the cost you want, for the cost you want, it's better to have, yeah, you can move to the next slide. So the different, the findings, you know, what you will find inside the system here inside, it is just, you know, a bulb and an infrared bulb. So here, for example, the infrared bulb will be here, and the bulb will be somewhere inside. That manages. You can go to the next slide, I have some kind of pictures, you know, here. You have the bulb, it is the blue, the blue stuff here, and the infrared, and the infrared bulb, it is the right stuff here, and so, and you have the other subcomponent that are not really here, so important.",
+        "start": 419,
+        "end": 489
+      },
+      {
+        "text": "This is, in fact, some other components that are in between the electronic device. But here, what I wanted to emphasize is just, you know, the weld band. So, and the next slide is the last one. So it's, I think it should be, why less than remote control? Because, you know, it's easier to manage and, you know, because if the battery problem can hold, will you use a battery or a wire to connect it to you? Or maybe some kind of thing that you can have both. But, you know, I myself prefer a wireless. Okay. If you have some questions, I didn't answer.",
+        "start": 493,
+        "end": 535
+      },
+      {
+        "text": "The average prices, I think that this technology will cost, I don't know, around eight euros. So, only, you know, there. Only you know So what the wireless remote control there's the wire Yes It's the point is you have to decide how how how you will you know put some energy inside?",
+        "start": 541,
+        "end": 567
+      },
+      {
+        "text": "I don't think it will be Could you answer me? I have to think about the question, you know, because I think that, you know, you can always, you know, I think with the wireless, it's cheaper, but, you know, the wireless, it's more practical, so.",
+        "start": 617,
+        "end": 646
+      },
+      {
+        "text": "Yeah, but it should be an agreement, you know, because even if you can't think of the wireless, it is the job of the graphical user designer, but, you know, if it is a lot cheaper and if you want to reach, for example, some of the money we have if you want to use it. So it can be good to have wireless.",
+        "start": 651,
+        "end": 685
+      },
+      {
+        "text": "You mean the look at the outside?",
+        "start": 698,
+        "end": 701
+      },
+      {
+        "text": "This is a question that should be asked to the area.",
+        "start": 920,
+        "end": 922
+      },
+      {
+        "text": "If you ask the people, maybe the market people about fancy.",
+        "start": 924,
+        "end": 930
+      },
+      {
+        "text": "So I think the solution is to have many colors instead of having one gray standard.",
+        "start": 940,
+        "end": 946
+      },
+      {
+        "text": "I don't think it's popular. That's the problem. If you are designing remote control for the global usage, if people don't have the technology.",
+        "start": 948,
+        "end": 959
+      },
+      {
+        "text": "Yeah. Do you think that people like the color yellow?",
+        "start": 972,
+        "end": 975
+      },
+      {
+        "text": "I think if you have, you know, like a yellow ribbon here. It's the double. It has to be fashion. Yeah.",
+        "start": 976,
+        "end": 992
+      },
+      {
+        "text": "It's okay. Regarding the first line, what? So we're just expecting no more use of the teletext. Yeah. And that's it. I don't know what he's up to. I don't know why.",
+        "start": 1009,
+        "end": 1028
+      }
+    ],
+    "summary": "The speaker is designing a remote control and proposes an infrared-based system as a cheaper alternative to laser-based technology. The infrared system will have a bulb and infrared bulb, and the speaker suggests it will be easier to manage and more practical. The estimated cost of the technology is around 8 euros, and the speaker discusses the pros and cons of wireless versus wired remote controls. The speaker also touches on the topic of design, suggesting that having multiple color options is better than a standard gray remote control."
+  },
+  {
+    "id": "Speaker 3",
+    "info": [
+      {
+        "text": "I'm a foul.",
+        "start": 134,
+        "end": 135
+      },
+      {
+        "text": "I'm not sure.",
+        "start": 168,
+        "end": 168
+      },
+      {
+        "text": "Yeah, it's my. Oh, it's David Jordan. David Jordan, of course.",
+        "start": 215,
+        "end": 239
+      },
+      {
+        "text": "OK, so first I will present the technique function design for user interface for our remote TV control. I will focus on user interface design. So move to the next slide. As we know, remote TV control has very sophisticated functions, as we show from this picture. There's a lot of functions over, I think, over 12 of. 12 or 20 functions of a remote TV control. So how can we design a user interface with so many sophisticated functions? Let's move to the next slide. So we want to design an elegant, easy-to-use interface. A very good example is Google, as we know. Google is very successful because it's a powerful function, but it's very easy to use using the interface. So move to next slice. My job is to design a Google TV controller, which I want to have sophisticated functions, while it's very easy to use the interface. So that's the end of the presentation.",
+        "start": 358,
+        "end": 640
+      },
+      {
+        "text": "But if we have a very good user interface, it takes less time for users to learn how to use it.",
+        "start": 793,
+        "end": 841
+      },
+      {
+        "text": "It is a question. Okay, right.",
+        "start": 935,
+        "end": 958
+      },
+      {
+        "text": "Yeah, I think it's possible, because we can mix several functions in one button, so that you have less buttons. So then you have less buttons.",
+        "start": 1047,
+        "end": 1120
+      },
+      {
+        "text": "Remember, the user is not happy to read the manual. I think that you can have a switch menu. So you can.",
+        "start": 1130,
+        "end": 1182
+      },
+      {
+        "text": "Yeah, I think so. For example, you can categorize the functions into several classes. Then you can have a switch menu. So you put the switch menu to this kind of category of functions. OK, but you put the switch button, then it's switched to another category of functions. For example, if you have a remote control, you can control your TV. And also you can control your TV, and also you can control your recorder. So there are different functions, but if there's a button you can switch between control TV and control your recorder. So you can have less buttons. But I'm not sure it's about how to make the remote control look fancy, not fancy.",
+        "start": 1192,
+        "end": 1639
+      },
+      {
+        "text": "Different people have different opinions about fancy.",
+        "start": 1642,
+        "end": 1664
+      },
+      {
+        "text": "Yeah, this is something which... Maybe a colorful is fancy for some people, but maybe simple and... But this was first step then... Uniform color is fancy for some other people.",
+        "start": 1670,
+        "end": 1761
+      },
+      {
+        "text": "Because maybe some people prefer a red or a blue color, some people prefer a black.",
+        "start": 1762,
+        "end": 1797
+      },
+      {
+        "text": "We can have several options, so the user can select which color they prefer.",
+        "start": 1800,
+        "end": 1836
+      },
+      {
+        "text": "But it's not so popular now.",
+        "start": 2083,
+        "end": 2096
+      },
+      {
+        "text": "What do you think?",
+        "start": 2123,
+        "end": 2134
+      },
+      {
+        "text": "The mood control. Maybe you can change the color.",
+        "start": 2144,
+        "end": 2176
+      },
+      {
+        "text": "Okay. Okay, good. That was a funny one.",
+        "start": 2652,
+        "end": 2672
+      }
+    ],
+    "summary": "The speaker, David Jordan, presents a technique function design for a user interface for a remote TV control. He aims to design an elegant and easy-to-use interface despite the remote having many sophisticated functions. The speaker suggests ways to achieve this, such as mixing functions into one button, using a switch menu to categorize functions, and offering options for customization like color preferences. He emphasizes that a good user interface can reduce the time it takes for users to learn how to use it."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "That's actually one of the points, yeah. True. This you will see in my presentation then.",
+        "start": 12.54,
+        "end": 12.58
+      },
+      {
+        "text": "We have 100 subjects. We observe their remote control use in a lab. And then after all the experiments, they had to fill up a questionnaire and see what was OK or not for them.",
+        "start": 13.03,
+        "end": 13.58
+      },
+      {
+        "text": "Actually, 75% of the users find the most remote controls ugly.",
+        "start": 13.03,
+        "end": 15.38
+      },
+      {
+        "text": "Then 80% of users would spend more money. Actually, if the remote controls were not so ugly, so this is where we could have a good market, I guess, if people are ready to pay more.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "text": "10% of the buttons are actually used in a remote control, and this is one of the main points for me, but I'll come back to it later.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "text": "So we should change this as well. And users are actually zapping a lot, so they are using the device intensively.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "text": "It takes too much time to learn how to use the remote control for 35% of the people. And remote controls are really bad for RSI problems for 26% of the users.",
+        "start": 14.01,
+        "end": 15.38
+      },
+      {
+        "text": "RSI is like when you're doing the same movement several times, then you get injured.",
+        "start": 15.4,
+        "end": 16.28
+      },
+      {
+        "text": "My personal preference for this problem is we have to meet the user needs. If we can make it look fancy, then we might sell more than our concurrent.",
+        "start": 15.4,
+        "end": 16.28
+      },
+      {
+        "text": "If you could have less buttons, still maybe the same number of functions, but less buttons, this would definitely be a good way of selling more.",
+        "start": 15.4,
+        "end": 16.28
+      },
+      {
+        "text": "Yeah, if we could remember like not too many buttons and make it look fancy. I think it would make it.",
+        "start": 19.07,
+        "end": 20.21
+      },
+      {
+        "text": "So what would he change for? I think it would be simpler.",
+        "start": 25.29,
+        "end": 25.32
+      }
+    ],
+    "summary": "The speaker conducted a study with 100 subjects on remote control use. They found that 75% of users find most remote controls ugly and 80% would pay more for a more aesthetically pleasing one. Additionally, 10% of buttons are used, 35% of people find it takes too long to learn to use a remote control, and 26% experience RSI problems. The speaker suggests redesigning remote controls to be simpler, with fewer buttons, and more visually appealing."
+  }
+]

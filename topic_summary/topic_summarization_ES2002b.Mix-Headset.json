@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The company will design a remote control targeting 15-35 year olds, focusing on TV control only. It will have a unique, fashionable design with corporate color and slogan 'Putting the fashion in electronics'. Basic functions include volume, channel, and skip. Speech recognition is considered but has limitations. The design aims to be easy to use and high-tech.",
+    "evidence": [
+      {
+        "speaker": "Speaker 2",
+        "text": "The company has decided to exclude tele-text from the remote control's functionality due to the internet's popularity.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The remote control will only be used to control the television, not the VCR, DVD, or other devices.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The company wants the corporate color and slogan to be implemented in the new design.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "Users dislike the look and feel of current remote controls. They find them ugly.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The corporate slogan is 'Putting the fashion in electronics'.",
+        "start": 0.02,
+        "end": 0.03
+      }
+    ]
+  }
+]

@@ -4,6 +4,7 @@ import json
 import math
 from collections import defaultdict
 
+import numpy as np
 from rouge_score import rouge_scorer
 from sentence_transformers import SentenceTransformer, util
 
@@ -247,35 +248,77 @@ def compute_layer_ics(
         )
 
         for gt_chunk in gt_chunks:
-            gt_emb = embedder.encode(gt_chunk,convert_to_tensor=True)
-            sims = util.cos_sim(gt_emb,pred_embs)[0]
 
-            k = min(3, len(pred_chunks))
+            gt_emb = embedder.encode(
+                gt_chunk,
+                convert_to_tensor=True
+            )
 
-            top_idxs = sims.argsort(descending=True)[:k]
-            top_vals = sims[top_idxs]
-            top_scores = []
-            top_pred_chunks = []
+            overlaps = []
 
-            for sim_val, idx_tensor in zip(top_vals, top_idxs):
-                idx = idx_tensor.item()
-                pred_chunk = pred_chunks[idx]
-                sim_score = sim_val.item()
+            # ---------------------------------
+            # compute lexical overlaps first
+            # ---------------------------------
+
+            for pred_chunk in pred_chunks:
+
                 overlap = compute_overlap(
                     gt_chunk,
                     pred_chunk
                 )
 
+                overlaps.append(overlap)
+
+            overlaps = np.array(overlaps)
+
+            # ---------------------------------
+            # retrieve top-k by overlap
+            # ---------------------------------
+
+            k = min(3, len(pred_chunks))
+
+            top_idxs = overlaps.argsort()[::-1][:k]
+
+            top_scores = []
+
+            top_pred_chunks = []
+
+            # ---------------------------------
+            # refine using semantic similarity
+            # ---------------------------------
+
+            for idx in top_idxs:
+
+                pred_chunk = pred_chunks[idx]
+
+                pred_emb = pred_embs[idx]
+
+                sim_score = util.cos_sim(
+                    gt_emb,
+                    pred_emb
+                ).item()
+
+                overlap = overlaps[idx]
+
+                # -----------------------------
+                # overlap-first scoring
+                # -----------------------------
+
                 combined = (
-                    0.7 * sim_score
-                    + 0.3 * overlap
+                    0.7 * overlap
+                    + 0.3 * sim_score
                 )
 
                 top_scores.append(combined)
 
                 top_pred_chunks.append(pred_chunk)
 
+            # ---------------------------------
+            # weighted top-k coverage
+            # ---------------------------------
+
             weights = [0.5, 0.3, 0.2]
+
             coverage = 0.0
 
             for i in range(len(top_scores)):
@@ -748,16 +791,16 @@ def evaluate_all(
 
         "TokenStats": cr,
 
-        "ICS_Details": {
-            "participant":
-                ics_results["participant_details"],
+        # "ICS_Details": {
+        #     "participant":
+        #         ics_results["participant_details"],
 
-            "topic":
-                ics_results["topic_details"],
+        #     "topic":
+        #         ics_results["topic_details"],
 
-            "meeting":
-                ics_results["meeting_details"]
-        },
+        #     "meeting":
+        #         ics_results["meeting_details"]
+        # },
         # "HR_Details": hr_details
     }
 

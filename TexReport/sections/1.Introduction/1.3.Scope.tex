@@ -4,7 +4,7 @@
 
 Trong khuôn khổ đồ án tốt nghiệp, hệ thống tập trung giải quyết bài toán truy xuất và tổng hợp thông tin từ dữ liệu âm thanh cuộc họp nhiều người. Thay vì đi sâu vào nghiên cứu các thuật toán xử lý tín hiệu số, đồ án giới hạn phạm vi nghiên cứu trọng tâm vào tầng xử lý ngôn ngữ tự nhiên (NLP) với các định hướng cụ thể sau:
 
-\begin{itemize}
+\begin{itemize}[label={}]
     \item \textbf{Dữ liệu đầu vào và Ngôn ngữ:} Đầu vào của hệ thống là các bản ghi âm hội thoại (chủ yếu bằng tiếng Anh và hỗ trợ tiếng Việt) có thời lượng dài, được thu thập trong môi trường thực tế (có chứa nhiễu nền và hiện tượng nói chồng lấp). Hệ thống chấp nhận và hướng tới việc xử lý các bản ghi văn bản (transcript) đầu ra từ mô hình nhận dạng có chứa sai số.
     
     \item \textbf{Tiền xử lý âm thanh:} Đồ án kế thừa và sử dụng các mô hình tiền huấn luyện (pre-trained models) mã nguồn mở cho các tác vụ Phát hiện giọng nói (VAD), Định danh người nói (Speaker Diarization) và Nhận dạng tiếng nói (ASR) như những mô-đun độc lập. Hệ thống không thực hiện huấn luyện lại (retrain) hay can thiệp sâu vào kiến trúc của các mô hình xử lý tín hiệu này.
@@ -22,7 +22,7 @@ Trong khuôn khổ đồ án tốt nghiệp, hệ thống tập trung giải quy
 
 Bên cạnh những mục tiêu đạt được, đồ án xác định rõ các ranh giới nghiên cứu dựa trên các kết quả thực nghiệm và định hướng phát triển hệ thống như sau:
 
-\begin{itemize}
+\begin{itemize}[label={}]
     \item \textbf{Tính kế thừa và đóng gói từ giai đoạn nghiên cứu tiền đề:} Hệ thống kế thừa các cấu hình tối ưu về Phân đoạn người nói và Nhận dạng tiếng nói (ASR) đã được kiểm thử và đánh giá chi tiết trong giai đoạn nghiên cứu trước đó. Đồ án thực hiện đóng gói các kết quả này thành các mô-đun tiền xử lý ổn định để làm nền tảng dữ liệu cho hệ thống tổng thể, thay vì tiếp tục tập trung tối ưu hóa cục bộ ở tầng tín hiệu vốn đã tiệm cận ngưỡng giới hạn về hiệu năng trước các dữ liệu nhiễu thực tế.
     
     \item \textbf{Tập trung vào khả năng phục hồi tri thức:} Nhận diện được các sai số không thể tránh khỏi của tầng nhận dạng âm thanh trong môi trường thực tế, đồ án tập trung nguồn lực vào việc xây dựng cơ chế tự sửa lỗi ở tầng hậu xử lý. Trọng tâm nghiên cứu được đặt vào việc ứng dụng LLM để hiệu chỉnh ngữ nghĩa (LLM Correction) và tối ưu hóa quy trình RAG nhằm đảm bảo tính xác thực của thông tin ngay cả khi dữ liệu đầu vào có sai lệch.

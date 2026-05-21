@@ -14,6 +14,18 @@ Hệ thống tiếp nhận đầu vào là các tệp JSON được sinh ra từ
 \end{itemize}
 
 \begin{lstlisting}[language=Python, caption={Logic tiền xử lý dữ liệu hội thoại}, label={lst:preprocessing_logic}]
+    def _chunk_text(self, text, chunk_size=40, overlap=10):
+        """Chia văn bản dài thành các đoạn ngắn hơn dựa trên số từ."""
+        words = text.split()
+        # Nếu câu ngắn hơn chunk_size, giữ nguyên
+        if len(words) <= chunk_size:
+            return [text]
+        
+        chunks = []
+        for i in range(0, len(words), chunk_size - overlap):
+            chunk_str = " ".join(words[i:i + chunk_size])
+            chunks.append(chunk_str)
+        return chunks
     def _load_memory_kb(self):
         # ... (Code for file reading omitted)
         for i, utt in enumerate(data):

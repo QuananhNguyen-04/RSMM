@@ -1,0 +1,26 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The remote control concept will combine ease of use and advanced features. Three controller concepts were discussed: Google controller (easy to use with sophisticated functions), fancy controller (attractive and recognizable), and intelligent controller (smart with speech and gesture recognition). The team agreed to work on a remote control with solar energy, batteries, and a wooden case.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "The user interface concept has three controller concepts: Google controller, fancy controller, and intelligent controller.",
+        "start": 0.00145,
+        "end": 0.00314
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The Google controller aims to be easy to use with sophisticated functions, combining ease of use and advanced features.",
+        "start": 0.00145,
+        "end": 0.00314
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The team agreed to work on a remote control with solar energy, batteries, and a wooden case.",
+        "start": 24.34,
+        "end": 27.46
+      }
+    ]
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "Just put it on the desktop, all I see is desktop.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Project documents, yeah. Yeah, that's it. If you dump it in there. What's the username? The username. What's the username and password?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Functional requirement by me, Ebenezer.",
+        "start": 3.06,
+        "end": 3.1
+      },
+      {
+        "text": "It's just the way I figure 12.5 euros per unit. We have to sell at least like three million or something like that. Not to account for the money we waste on remotes that no one buys.",
+        "start": 25.43,
+        "end": 26.11
+      },
+      {
+        "text": "We have a frequency of how what people use the remote control for most, power is used like once per hour, channel selection is used 168 per hour, that's by far the biggest one. And then tele-text is still here, that's 14, and volume selection.",
+        "start": 28.27,
+        "end": 28.5
+      },
+      {
+        "text": "I think because it's so small, it might be... I mean, if we only have like two or three buttons, it might be essential to have that. To locate it again?",
+        "start": 30.21,
+        "end": 30.32
+      },
+      {
+        "text": "Well, I can give you the frequency, what options people use most often. I guess that's going to be important in defining the softest side of the interface, right?",
+        "start": 32.0,
+        "end": 32.1
+      }
+    ],
+    "summary": "The speaker discusses various aspects of a project, including document storage, functional requirements, and remote control usage. The username and password for project documents are requested. A calculation of 12.5 euros per unit is mentioned, with a requirement to sell at least three million units. The frequency of remote control usage is broken down, with channel selection being used 168 times per hour, power once per hour, tele-text 14 times, and volume selection. The speaker also considers the importance of button location on a potentially small remote control, and the need for interface definition based on usage frequency."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "Project documents link is available on the desktop.",
+        "start": 0.0,
+        "end": 0.11
+      },
+      {
+        "text": "The functional design meeting aims to flesh out ideas from the last meeting.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Topics discussed in the last meeting include a macro facility, TV interaction, barcode, joystick, and remote control ergonomics.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Teletext is outdated due to internet popularity.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The remote control should only be used for the TV due to cost and market issues.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The corporate image should stay recognizable with the company's color and slogan.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The macro facility may not be required if only used for the TV.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The marketing expert's input is needed to gain an idea of the project's direction.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "Ideas for the remote control include a joystick for basic functions and a small LCD screen.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "A feature to locate the remote control via a beeping noise or a transmitter was discussed.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The design should be minimalist with a few key buttons.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The user interface should be easy to use and consider the company's slogan.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The feasibility of a small transmitter and LCD screen should be considered.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The idea of a minimalist approach with a joystick and LCD screen should be evaluated.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ],
+    "summary": "The functional design meeting aims to discuss ideas from the last meeting. Topics include a macro facility, TV interaction, barcode, joystick, and remote control ergonomics. The remote control should only be used for the TV due to cost and market issues. Ideas for the remote control include a joystick for basic functions and a small LCD screen. A feature to locate the remote control via a beeping noise or a transmitter was discussed. The design should be minimalist with a few key buttons and consider the company's color and slogan. The macro facility may not be required if only used for the TV. The marketing expert's input is needed to gain an idea of the project's direction. The feasibility of a small transmitter and LCD screen should be considered. Teletext is outdated due to internet popularity."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "Maybe then our market should be TV manufacturers rather than the public. Try and sell it to them to supply with.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "two function buttons, they were now using the menus button and an okay button",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "people are very much used to using a remote control one-handedly. So we need to make sure that even with the joystick, something that can just sit comfortably in the palm of the hand and have the joystick just controlled by the thumb",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "the transmitter could actually be built into the television",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "If we get a major television manufacturer to say, oh yeah, we'll have that, save us the boiler, then that's vast amounts of sales, quite quickly",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "possibly two hours to signify the company rather than real reaction I thought the double arc or perhaps be the ender button sounds good",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ],
+    "summary": "The market target may be TV manufacturers rather than the public, by selling the product to them for supply. The device should be one-handedly operable, with a joystick controlled by the thumb. The transmitter could be built into the TV. Partnering with a major TV manufacturer could lead to vast sales quickly. The device has two function buttons, currently using the menu and okay buttons. A double arc or ender button was proposed as a possible design element."
+  }
+]

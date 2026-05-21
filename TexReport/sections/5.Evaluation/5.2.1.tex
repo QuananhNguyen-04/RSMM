@@ -1,23 +1,44 @@
 \subsection{Đánh giá tổng quan pipeline chuyển đổi âm thanh thành văn bản}
 
-\textbf{Vai trò:}
-Pipeline chuyển đổi âm thanh thành văn bản là thành phần đầu vào của toàn bộ hệ thống. Chất lượng của bước này ảnh hưởng trực tiếp đến các mô-đun phía sau như truy xuất và tạo sinh. Do đó, việc đánh giá tổng thể pipeline nhằm xác định mức độ bảo toàn thông tin từ tín hiệu âm thanh sang biểu diễn văn bản có cấu trúc.
-
-\textbf{Tiêu chuẩn đánh giá:}
+\textbf{Vai trò:} Pipeline chuyển đổi âm thanh thành văn bản là thành phần đầu vào của toàn bộ hệ thống. Chất lượng của bước này ảnh hưởng trực tiếp đến các mô-đun phía sau như summarization, retrieval và question answering. Nếu transcript bị mất nội dung hoặc gán sai speaker, các lỗi này sẽ tiếp tục lan truyền sang các tầng xử lý downstream và làm giảm chất lượng của toàn bộ hệ thống. Vì vậy, quá trình đánh giá pipeline tập trung vào khả năng bảo toàn thông tin hội thoại cũng như độ chính xác của speaker metadata trong transcript đầu ra.
+\textbf{Tiêu chuẩn đánh giá:} Quá trình đánh giá được thực hiện dựa trên ba tiêu chí chính gồm khả năng bảo toàn nội dung hội thoại, độ chính xác của speaker attribution và tính nhất quán của transcript theo thời gian.
 \begin{itemize}
-    \item \textbf{Tính toàn vẹn nội dung:} Nội dung hội thoại không bị mất trong quá trình xử lý.
-    \item \textbf{Độ chính xác định danh người nói:} Các lượt lời được gán đúng speaker.
-    \item \textbf{Tính nhất quán theo thời gian:} Thứ tự và mốc thời gian của các phát biểu được bảo toàn.
+    \item \textbf{Tính toàn vẹn nội dung:} nội dung hội thoại không bị mất trong quá trình speech recognition và diarization.
+    \item \textbf{Độ chính xác định danh người nói:} các lượt phát biểu được gán đúng speaker tương ứng.
+    \item \textbf{Tính nhất quán theo thời gian:} thứ tự và mốc thời gian của các phát biểu được duy trì ổn định trong transcript đầu ra.
 \end{itemize}
 
-\textbf{Chỉ số đo lường:}
+\textbf{Chỉ số đo lường:} Hệ thống sử dụng kết hợp DER và SAC để đánh giá chất lượng tổng thể của pipeline chuyển đổi âm thanh thành văn bản.
 \begin{itemize}
-    \item \textbf{DER:} tập trung vào hai thành phần Miss và Confusion.
-    \item \textbf{SAC:} đo mức độ bảo toàn nội dung có gắn với đúng speaker.
+    \item \textbf{DER:} đánh giá lỗi diarization theo timeline của audio, tập trung chủ yếu vào hai thành phần Miss và Confusion.
+    \item \textbf{SAC:} đánh giá đồng thời khả năng bảo toàn nội dung và độ chính xác của speaker attribution trong transcript cuối cùng.
 \end{itemize}
 
-\textbf{Kết quả:}
-Kết quả thực nghiệm cho thấy pipeline đạt giá trị DER ở mức \textit{[điền số]}, trong đó Miss chiếm \textit{[x\%]} và Confusion chiếm \textit{[y\%]}. Chỉ số SAC đạt \textit{[điền số]}, phản ánh khả năng bảo toàn nội dung gắn với metadata người nói ở mức \textit{[tốt / trung bình]}.
+Khác với DER chỉ phản ánh mức độ sai lệch của speaker segmentation theo thời gian, SAC phản ánh trực tiếp hơn chất lượng của transcript ở mức nội dung và ngữ nghĩa. Điều này đặc biệt quan trọng đối với các tác vụ downstream như retrieval theo participant hoặc meeting summarization.
+
+\textbf{Kết quả:} Kết quả thực nghiệm trên tập dữ liệu AMI cho thấy pipeline đạt khả năng bảo toàn nội dung tương đối ổn định trên nhiều cuộc họp có thời lượng và số lượng speaker khác nhau.
+Chỉ số Coverage đạt trung bình khoảng $\mathbf{0.8456 \pm 0.0764}$, cho thấy phần lớn nội dung hội thoại đã được giữ lại sau quá trình xử lý audio và diarization. Trong khi đó, Speaker Correctness đạt trung bình khoảng $\mathbf{0.7552 \pm 0.0726}$, phản ánh khả năng duy trì tương đối tốt mối liên hệ giữa nội dung phát biểu và speaker metadata.
+Từ hai thành phần trên, hệ thống đạt giá trị SAC trung bình khoảng $\mathbf{0.6434 \pm 0.1080}$. Kết quả này cho thấy transcript đầu ra vẫn duy trì được phần lớn nội dung hội thoại đồng thời giữ được mức độ chính xác tương đối đối với speaker attribution. Tuy nhiên, chất lượng speaker assignment vẫn giảm trong các cuộc họp có nhiều người tham gia hoặc có hiện tượng chồng lấn lời nói.
+
+\textbf{Thống kê thực nghiệm:}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Chỉ số} & \textbf{Trung bình} \\
+\hline
+Coverage & $0.8456 \pm 0.0764$ \\
+\hline
+Speaker Correctness & $0.7552 \pm 0.0726$ \\
+\hline
+SAC & $0.6434 \pm 0.1080$ \\
+\hline
+\end{tabular}
+\caption{Kết quả đánh giá pipeline chuyển đổi âm thanh thành văn bản}
+\end{table}
 
 \textbf{Nhận xét:}
-Lỗi Confusion có ảnh hưởng lớn hơn so với Miss trong bối cảnh hệ thống downstream, do việc gán sai speaker có thể làm sai lệch truy vấn và kết quả tổng hợp. Điều này cho thấy yêu cầu tối ưu diarization không chỉ dừng ở giảm DER tổng thể mà cần tập trung vào giảm Confusion.
+
+Kết quả thực nghiệm cho thấy pipeline có khả năng duy trì phần lớn nội dung hội thoại trong quá trình chuyển đổi từ audio sang transcript. Giá trị Coverage ở mức cao cho thấy hệ thống hạn chế được việc mất thông tin quan trọng trong quá trình speech recognition và diarization.
+Tuy nhiên, Speaker Correctness thấp hơn Coverage cho thấy việc gán đúng nội dung cho đúng speaker vẫn là một bài toán khó, đặc biệt trong các cuộc họp có nhiều speaker hoặc xuất hiện hiện tượng chuyển lượt lời liên tục. Điều này phản ánh rằng dù transcript vẫn giữ được nội dung hội thoại tương đối đầy đủ, các lỗi speaker attribution vẫn có thể làm giảm chất lượng của các tác vụ downstream.
+So với Miss, lỗi Confusion có ảnh hưởng nghiêm trọng hơn đối với hệ thống retrieval và summarization đa tầng. Việc gán sai speaker có thể làm sai lệch quá trình truy xuất theo participant, phân tích đóng góp cá nhân hoặc tổng hợp thông tin cuộc họp. Điều này cho thấy việc tối ưu diarization không chỉ dừng ở giảm DER tổng thể mà cần tập trung nhiều hơn vào việc duy trì tính nhất quán giữa nội dung phát biểu và speaker metadata trong transcript cuối cùng.

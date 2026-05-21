@@ -1,0 +1,36 @@
+[
+    {
+        "id": "Speaker 0",
+        "info": [
+            "agenda. We have an opening and closing. Maybe I can sit down and take some notes.",
+            "Our project method is there are three phases we're going through. First is functional design in virtual work meetings. After the functional design, then conceptual design and the detailed design.",
+            "Our profit aim is 50 million euros, and that's the least we have to get from our remote controls. So we have to work together to reach our aims.",
+            "Our production cost can be maximum 12.5 euros. So that's also a point we have to keep in mind.",
+            "We want to make remote controls with small televisions inside and stuff like that.",
+            "Standard price 25, profit aim 50 million. market we're trying to focus on, and production costs maximum 12 and a half euros."
+        ],
+        "summary": "The project has three phases: functional design, conceptual design, and detailed design. The goal is to reach a profit of at least 50 million euros from remote controls, with a maximum production cost of 12.5 euros. The target price is 25 euros. The project aims to create remote controls with integrated small televisions."
+    },
+    {
+        "id": "Speaker 2",
+        "info": [
+            "We've got a marketing expert for the trendy and user-friendly. That's also user-friendly and original and we've got our user interface designer the new remote control.",
+            "In the whiteboard here, there's a little tool bar on this side.",
+            "it says to be adult.",
+            "It's a hit.",
+            "that's all in the later stadium."
+        ],
+        "summary": "The speaker mentions having a marketing expert and a user interface designer working on a new remote control. They also reference a tool bar on a whiteboard and a product that is a hit, but note that some details are for a later stage."
+    },
+    {
+        "id": "Speaker 1",
+        "info": [
+            "So just on a side note, why is it my laptop is only giving me a black screen?",
+            "TV at home and a DVD player so they got like a lot of remote controls one for the TV, one for the video recorder, one for the DVD player and I it's it would be best to just make one remote control",
+            "third second floor that's pretty handy when you have a video recorder or DVD player downstairs you've got a link to your TV on the second floor so that's a pretty handy thing",
+            "and other functions but that would be really good if we could do that. for remote control. I think it has to be shockproof, because remote control tends to fall off.",
+            "Yeah, one other little thing. I thought it might be handy to put a battery status display on it, so also really drag up the production costs, so I think we'll have to see about that, too."
+        ],
+        "summary": "The speaker shares a personal issue with their laptop screen. They then discuss the idea of a single remote control for multiple devices, citing their own experience with multiple remotes at home. A remote control with additional features, such as a battery status display and shockproof design, is considered."
+    }
+]

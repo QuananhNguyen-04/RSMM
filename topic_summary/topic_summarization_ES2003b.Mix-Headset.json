@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The functional design meeting aims to discuss ideas from the last meeting. Topics include a macro facility, TV interaction, barcode, joystick, and remote control ergonomics. Teletext is considered outdated. The remote control should only be used for the TV. A marketing expert's input is needed. Ideas for the remote control include a joystick and LCD screen. A feature to locate the remote control via beeping or transmitter was discussed. The design should be minimalist. The user interface should be easy to use. The corporate image should stay recognizable. The feasibility of a small transmitter and LCD screen should be considered. The target market may be TV manufacturers. A possible approach is a joystick with two function buttons. The transmitter could be built into the TV. Sales projections are 3 million units at 12.5 euros per unit. Usage frequency: channel selection 168 per hour, power once per hour, tele-text 14, and volume selection.",
+    "evidence": [
+      {
+        "speaker": "Speaker 1",
+        "text": "Just put it on the desktop, all I see is desktop.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "Project documents, yeah. Yeah, that's it. If you dump it in there. What's the username? The username. What's the username and password?",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "Project documents link is available on the desktop.",
+        "start": 0.0,
+        "end": 0.11
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The functional design meeting aims to flesh out ideas from the last meeting.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "Topics discussed in the last meeting include a macro facility, TV interaction, barcode, joystick, and remote control ergonomics.",
+        "start": 0.0,
+        "end": 0.0
+      }
+    ]
+  }
+]

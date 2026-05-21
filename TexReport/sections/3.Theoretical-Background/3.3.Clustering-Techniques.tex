@@ -3,7 +3,7 @@
 Trong bài toán phân cụm người nói, mục tiêu của clustering là nhóm đoạn biểu diễn đặc trưng giọng nói, sao cho các đoạn cùng thuộc một người nói được gán vào cùng một cụm trong khi số lượng người nói thường không được biết trước. Do chất lượng phân cụm phụ thuộc vào chất lượng biễu diễn đặc trưng, việc đánh giá trong đồ án này sẽ là một phần thuộc pipeline tổng thể. 
 
 Hai hướng tiếp cận clustering phổ biến được sử dụng trong speaker diarization là Agglomerative Hierarchical Clustering (AHC) và Spectral Clustering. 
-\begin{itemize}
+\begin{itemize}[label={}]
     \item AHC là phương pháp phân cụm bottom-up, trong đó mỗi đoạn giọng nói ban đầu được xem như một cụm riêng biệt, và các cụm được hợp nhất dần dựa trên độ tương đồng trong không gian embedding. Quá trình hợp nhất tiếp diễn cho tới khi đạt một ngưỡng dừng nhất định, thường được xác định thông qua một ngưỡng khoảng cách hoặc độ tương đồng.
     \item Spectral Clustering phân cụm thông qua biểu diễn đồ thị, trong đó các đoạn giọng nói được xem như các đỉnh và độ tương đồng giữa các embedding được mã hóa thành các cạnh của đồ thị. Bằng cách chiếu dữ liệu sang không gian riêng (eigenspace) có chiều thấp hơn, spectral clustering cho phép tách các cụm dựa trên cấu trúc toàn cục của dữ liệu thay vì chỉ dựa trên khoảng cách cục bộ.
 

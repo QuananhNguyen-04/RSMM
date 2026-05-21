@@ -3,7 +3,7 @@
 Khi xử lý cuộc hội thoại, trích xuất đặc trưng được sử dụng để phân biệt giọng nói giữa nhiều người. Các kiến trúc được xem xét trong phần này là ECAPA-TDNN, TitaNet, WavLM; mỗi kiến trúc có ưu và nhược điểm riêng, và ảnh hưởng đến khả năng phân biệt và chất lượng embedding trong bài toán phân cụm. 
 
 Trong bối cảnh sử dụng trích xuất đặc trưng để tiến hành phân cụm, vai trò của mô hình Embeddings tập trung vào khoảng cách giữa các nhóm trong không gian đặc trưng.
-\begin{itemize}
+\begin{itemize}[label={}]
     \item ECAPA-TDNN là  kiến trúc mở rộng của kiến trúc Time Delay Neural Network (TDNN), với cơ chế attention và multi-scale temporal context.  
     \item TitaNet là một kiến trúc neural sử dụng các convolution 1-chiều kết hợp với channel attention và global context pooling, được thiết kế để trích xuất biểu diễn speaker (t-vector) với khả năng mở rộng về kích thước mô hình.
 \end{itemize}

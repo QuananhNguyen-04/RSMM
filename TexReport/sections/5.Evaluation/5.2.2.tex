@@ -1,24 +1,66 @@
 \subsection{Đánh giá tóm tắt đa tầng}
 
-\textbf{Vai trò:}
-Mô-đun tóm tắt đa tầng đóng vai trò giảm kích thước dữ liệu đầu vào và hỗ trợ truy xuất hiệu quả trên các đoạn hội thoại dài. Việc đánh giá nhằm kiểm tra khả năng giữ lại thông tin quan trọng trong khi vẫn đảm bảo tính cô đọng của văn bản.
+\textbf{Vai trò:} Mô-đun tóm tắt đa tầng đóng vai trò giảm kích thước dữ liệu hội thoại đầu vào đồng thời hỗ trợ quá trình retrieval trên các transcript dài và nhiều chủ đề. Thay vì truy xuất trực tiếp trên toàn bộ nội dung cuộc họp, hệ thống sử dụng các tầng tóm tắt trung gian để biểu diễn thông tin ở nhiều mức độ ngữ nghĩa khác nhau như participant-level, topic-level và meeting-level.
 
-\textbf{Tiêu chuẩn đánh giá:}
+Việc đánh giá mô-đun này tập trung vào khả năng duy trì các thông tin quan trọng của cuộc họp trong khi vẫn đảm bảo mức độ cô đọng phù hợp cho indexing và retrieval. Ngoài ra, hệ thống cũng cần hạn chế việc sinh ra các thông tin không tồn tại trong transcript gốc nhằm đảm bảo độ tin cậy của dữ liệu tóm tắt.
+
+\textbf{Tiêu chuẩn đánh giá:} Quá trình đánh giá được thực hiện dựa trên ba tiêu chí chính gồm khả năng bảo toàn thông tin, khả năng nén dữ liệu và mức độ bám sát transcript gốc.
+
 \begin{itemize}
-    \item \textbf{Tính đầy đủ (Coverage):} Kết quả tóm tắt phải giữ lại tối thiểu 70\% các điểm thông tin quan trọng.
-    \item \textbf{Độ súc tích (Compression):} Tỷ lệ nén văn bản được kiểm soát trong khoảng hợp lý.
-    \item \textbf{Tính xác thực (Faithfulness):} Không sinh thông tin ngoài ngữ cảnh.
+    \item \textbf{Tính đầy đủ thông tin (Coverage):} bản tóm tắt cần giữ lại phần lớn các information units quan trọng của cuộc họp.
+    
+    \item \textbf{Độ súc tích (Compression):} hệ thống cần giảm đáng kể kích thước dữ liệu đầu vào nhưng vẫn duy trì được khả năng biểu diễn nội dung chính.
+    
+    \item \textbf{Tính xác thực (Faithfulness):} nội dung tóm tắt không được sinh thêm các thông tin ngoài ngữ cảnh transcript ban đầu.
 \end{itemize}
 
 \textbf{Chỉ số đo lường:}
+
+Hệ thống sử dụng ba chỉ số chính gồm Information Coverage Score (ICS), Compression Ratio (CR) và Hallucination Rate (HR) để đánh giá chất lượng của mô-đun summarization đa tầng.
+
 \begin{itemize}
-    \item Tỷ lệ coverage dựa trên so khớp các điểm thông tin chính.
-    \item Compression ratio giữa văn bản đầu vào và tóm tắt.
-    \item Đánh giá thủ công mức độ hallucination.
+    \item \textbf{Information Coverage Score (ICS):} đo mức độ bảo toàn thông tin quan trọng giữa ground truth và bản tóm tắt sinh ra thông qua semantic similarity và lexical overlap.
+    
+    \item \textbf{Compression Ratio (CR):} phản ánh tỷ lệ giữa độ dài của bản tóm tắt và transcript gốc.
+    
+    \item \textbf{Hallucination Rate (HR):} đo mức độ xuất hiện của các thông tin không tồn tại trong transcript đầu vào.
 \end{itemize}
 
+Khác với các phương pháp chỉ đánh giá độ tương đồng bề mặt giữa văn bản gốc và bản tóm tắt, các chỉ số trên tập trung nhiều hơn vào khả năng bảo toàn information units phục vụ retrieval và indexing ở nhiều tầng ngữ nghĩa khác nhau.
+
 \textbf{Kết quả:}
-Kết quả cho thấy coverage đạt khoảng \textit{[điền số]} (>70\%), trong khi compression ratio nằm trong khoảng \textit{[điền số]}. Không ghi nhận hiện tượng sinh thông tin ngoài ngữ cảnh ở mức đáng kể.
+Kết quả thực nghiệm cho thấy hệ thống tóm tắt đa tầng có khả năng duy trì tương đối tốt các nội dung quan trọng của cuộc họp trong khi vẫn giảm mạnh kích thước dữ liệu cần xử lý.
+
+Chỉ số Information Coverage Score đạt trung bình khoảng $\mathbf{0.3310 \pm 0.0425}$, phản ánh khả năng giữ lại các information units quan trọng ở nhiều tầng summarization khác nhau. Mặc dù giá trị coverage không quá cao, kết quả này phù hợp với đặc thù của bài toán abstractive summarization đa tầng, nơi nội dung thường được rút gọn và diễn đạt lại thay vì giữ nguyên cấu trúc văn bản ban đầu.
+
+Compression Ratio đạt khoảng $\mathbf{0.0653 \pm 0.0287}$, cho thấy hệ thống đã giảm đáng kể kích thước transcript đầu vào. Điều này giúp giảm chi phí indexing và cải thiện tốc độ retrieval trên tập dữ liệu nhiều cuộc họp.
+
+Hallucination Rate được duy trì ở mức thấp khoảng $\mathbf{0.0910 \pm 0.0879}$, cho thấy phần lớn nội dung sinh ra vẫn bám sát transcript gốc và ít xuất hiện các thông tin ngoài ngữ cảnh.
+
+\textbf{Thống kê thực nghiệm:}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Chỉ số} & \textbf{Trung bình} \\
+\hline
+ICS & $0.3510 \pm 0.0625$ \\
+\hline
+CR & $0.0653 \pm 0.0287$ \\
+\hline
+HR & $0.0910 \pm 0.0879$ \\
+\hline
+\end{tabular}
+\caption{Kết quả đánh giá hệ thống tóm tắt đa tầng}
+\end{table}
 
 \textbf{Nhận xét:}
-Tóm tắt đa tầng giúp giảm đáng kể độ dài văn bản đầu vào cho mô-đun truy xuất, đồng thời vẫn giữ được các thông tin chính. Tuy nhiên, việc nén quá mức có thể làm mất các chi tiết quan trọng, đặc biệt trong các truy vấn yêu cầu số liệu chính xác.
+
+Kết quả thực nghiệm cho thấy hệ thống tóm tắt đa tầng có khả năng giảm mạnh kích thước dữ liệu hội thoại trong khi vẫn duy trì được phần lớn các nội dung quan trọng phục vụ retrieval. Compression Ratio thấp cho thấy transcript đã được rút gọn đáng kể, từ đó giúp giảm chi phí indexing và tăng tốc độ truy xuất trên tập dữ liệu lớn.
+
+Bên cạnh đó, Hallucination Rate được duy trì ở mức thấp chứng tỏ phần lớn nội dung sinh ra vẫn bám sát transcript gốc và có độ tin cậy phù hợp để sử dụng như lớp biểu diễn trung gian trong hệ thống retrieval đa tầng.
+
+Tuy nhiên, giá trị ICS chưa quá cao cho thấy quá trình nén thông tin vẫn làm mất một phần information units, đặc biệt đối với các chi tiết nhỏ, nội dung mang tính định lượng hoặc các thông tin phụ xuất hiện rải rác trong cuộc họp. Điều này phản ánh sự đánh đổi giữa khả năng giảm kích thước dữ liệu và mức độ bảo toàn thông tin trong bài toán summarization đa tầng.
+
+Ngoài ra, kết quả đo lường ICS cũng bị ảnh hưởng một phần bởi đặc điểm của bộ ground truth. Các ground truth summaries trong AMI được xây dựng từ nhiều đoạn hội thoại và annotation khác nhau, nên nội dung thường chưa hoàn toàn cô đọng và vẫn tồn tại một lượng nhiễu nhất định. Một số information units mang tính lặp lại, rời rạc hoặc ít giá trị ngữ nghĩa vẫn xuất hiện trong dữ liệu tham chiếu. Trong phạm vi nghiên cứu, hệ thống chưa áp dụng các cơ chế lọc nhiễu hoặc chuẩn hóa information units ở mức sâu trước khi đánh giá, do đó kết quả coverage có thể bị giảm trong một số trường hợp dù nội dung tóm tắt sinh ra vẫn giữ được các ý chính quan trọng của cuộc họp.

@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The remote control design features a unique shape, colors, and technological innovations. Key features include voice recognition, tactile buttons, circle channel selection, solar receptor, and microphone. The design is inspired by fruits and vegetables, resembling a pineapple. The price is estimated to be between 12 and 50 euros, with a proposed price of 25 euros. The product has a wooden base and plastic body.",
+    "evidence": [
+      {
+        "speaker": "Speaker 0",
+        "text": "This is our product prototype made by Clint. It features a yellow and red color scheme, with yellow being our company color and red being more attractive.",
+        "start": 0.0,
+        "end": 0.03
+      },
+      {
+        "speaker": "Speaker 0",
+        "text": "The prototype design includes two basic shapes: a cycle and a triangle space, referred to as a mushroom design.",
+        "start": 0.0,
+        "end": 0.03
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The design is inspired by fruits and vegetables, with a lemon-like shape.",
+        "start": 0.067,
+        "end": 0.135
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The remote control design resembles a pineapple.",
+        "start": 0.08,
+        "end": 0.08
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The remote control has voice recognition technology.",
+        "start": 0.1,
+        "end": 0.1
+      }
+    ]
+  }
+]

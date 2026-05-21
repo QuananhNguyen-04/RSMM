@@ -1,7 +1,7 @@
 \subsection{Quy trình Truy xuất và Suy luận đa bước (Multi-step Retrieval and Reasoning)}
 \label{subsec:multistep}
 
-Để giải quyết các truy vấn phức tạp đòi hỏi sự kết nối thông tin từ nhiều đoạn hội thoại khác nhau hoặc yêu cầu khả năng suy luận logic qua nhiều mốc thời gian, hệ thống được nâng cấp với quy trình truy xuất đa bước dựa trên tư tưởng của phương pháp IRCoT (Interleaving Retrieval with Chain-of-Thought) \cite{17}. Điểm cốt lõi của quy trình này là sự tách biệt giữa luồng xử lý đơn giản và phức tạp thông qua một bộ định tuyến thông minh (\textit{Query Router}).
+Để giải quyết các truy vấn phức tạp đòi hỏi sự kết nối thông tin từ nhiều đoạn hội thoại khác nhau hoặc yêu cầu khả năng suy luận logic qua nhiều mốc thời gian, hệ thống được nâng cấp với quy trình truy xuất đa bước dựa trên tư tưởng của phương pháp IRCoT (Interleaving Retrieval with Chain-of-Thought) \cite{trivedi2023interleaving}. Điểm cốt lõi của quy trình này là sự tách biệt giữa luồng xử lý đơn giản và phức tạp thông qua một bộ định tuyến thông minh (\textit{Query Router}).
 
 \subsubsection{Cơ chế định tuyến truy vấn (Query Routing)}
 Thay vì áp dụng một quy trình cố định cho mọi loại câu hỏi, hệ thống sử dụng lớp định tuyến (\textit{Router Layer}) dựa trên kiến trúc đóng gói sẵn \texttt{RouterQueryEngine} (LlamaIndex). 
@@ -13,7 +13,7 @@ LLM đóng vai trò là bộ chọn (\textit{Selector}), phân tích đặc đi�
 \end{itemize}
 
 \subsubsection{Vòng lặp suy luận và truy xuất tương tác}
-Dựa trên triết lý lồng ghép của IRCoT \cite{17}, quy trình đa bước được thực hiện thông qua một chuỗi các bước lặp, trong đó mỗi bước bao gồm:
+Dựa trên triết lý lồng ghép của IRCoT \cite{trivedi2023interleaving}, quy trình đa bước được thực hiện thông qua một chuỗi các bước lặp, trong đó mỗi bước bao gồm:
 
 \begin{enumerate}
     \item \textbf{Phân rã bài toán (Decomposition):} LLM phân tích câu hỏi phức tạp và xác định các thông tin thiếu hụt, từ đó tạo ra bước suy luận đầu tiên (\textit{Thought}) và các câu hỏi phụ (\textit{Sub-queries}).

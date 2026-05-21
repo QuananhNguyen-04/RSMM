@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The project aims to design a remote control with a minimal design, using a small joystick, LCD, and a few buttons for navigation. The remote control will have a novelty feature to locate it via a small transmitter. The design will be adventurous in terms of physical shape due to the minimal design. The meeting is a conceptual design phase to discuss materials, outsourcing, and construction of the remote control. The case could be made of plastic, rubber, titanium, or wood, but plastic is the probable choice. Possible battery options include conventional batteries, hand dynamo, kinetic type batteries, and solid-powered batteries. The design should be ergonomic for both left and right-handed people. The remote control will have a joystick, two function buttons, and an LCD. The design will have two points of articulation, one below and one above the main grip. The remote control will have a cable to connect it to a computer for programming, a customizable menu structure, and on-board memory. The design will be made of rubber for a soft touch and organic feel. The target audience for the remote control is people under the age of 60. Conventional batteries and plastic or rubber as casing materials were considered a good way forward.",
+    "evidence": [
+      {
+        "speaker": "Speaker 2",
+        "text": "The project aims to design a remote control with a minimal design, using a small joystick, LCD, and a few buttons for navigation.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The remote control will have a novelty feature to locate it via a small transmitter.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The design will be adventurous in terms of physical shape due to the minimal design.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The meeting is a conceptual design phase to discuss materials, outsourcing, and construction of the remote control.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "The case could be made of plastic, rubber, titanium, or wood, but plastic is the probable choice.",
+        "start": 0.0,
+        "end": 0.31
+      }
+    ]
+  }
+]

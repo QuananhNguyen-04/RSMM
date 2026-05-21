@@ -1,22 +1,26 @@
-\subsection{Đánh giá hiệu quả của metadata}
+\subsection{Đánh giá hiệu quả của siêu dữ liệu (Metadata Filtering)}
 
 \textbf{Vai trò:}
-Metadata (speaker, timestamp) đóng vai trò cung cấp ngữ cảnh bổ sung cho hệ thống truy xuất và hỏi đáp. Việc đánh giá nhằm xác định mức độ đóng góp của metadata vào chất lượng kết quả.
+Trong môi trường hội thoại đa diễn giả, việc chỉ dựa vào độ tương đồng ngữ nghĩa (Semantic Search) thuần túy thường dẫn đến sai lệch khi nhiều người cùng thảo luận về một chủ đề bằng các hệ thống từ vựng giống nhau. Siêu dữ liệu (định danh người nói, mốc thời gian) được hệ thống lưu trữ trực tiếp dưới dạng \textit{payload} trong cơ sở dữ liệu vector đóng vai trò như một bộ lọc cứng (\textit{hard filter}). Đánh giá này nhằm xác định mức độ đóng góp của siêu dữ liệu trong việc thu hẹp không gian tìm kiếm và loại bỏ triệt để hiện tượng nhầm lẫn nguồn phát biểu.
 
-\textbf{Tiêu chuẩn đánh giá:}
-\begin{itemize}
-    \item Khả năng cải thiện độ chính xác truy xuất.
-    \item Khả năng giảm nhầm lẫn giữa các speaker.
+\textbf{Thiết lập so sánh:}
+\begin{itemize}[leftmargin=*, label={}]
+    \item \textbf{Cấu hình cơ sở (Không có Metadata):} Truy xuất tài liệu hoàn toàn dựa trên khoảng cách vector ngữ nghĩa.
+    \item \textbf{Cấu hình đề xuất (Có Metadata Filtering):} Kết hợp tìm kiếm vector với kỹ thuật lọc siêu dữ liệu (khoanh vùng theo \textit{Speaker} hoặc khoảng thời gian) trước khi tiến hành tính điểm tương đồng.
 \end{itemize}
 
-\textbf{Chỉ số đo lường:}
-\begin{itemize}
-    \item So sánh HitRate@K giữa hai cấu hình (có / không metadata)
-    \item So sánh MRR
+\textbf{Tiêu chuẩn và Chỉ số đo lường:}
+\begin{itemize}[leftmargin=*, label={}]
+    \item Khả năng phân luồng và cải thiện độ chính xác truy xuất (đo lường bằng chỉ số \textbf{Hit Rate@K}).
+    \item Khả năng đẩy các đoạn hội thoại chứa đáp án của đúng người phát biểu lên vị trí ưu tiên cao nhất (đo lường bằng chỉ số \textbf{MRR}).
 \end{itemize}
 
-\textbf{Kết quả:}
-Khi sử dụng metadata, HitRate@K tăng từ \textit{[điền số]} lên \textit{[điền số]}, trong khi MRR cải thiện từ \textit{[điền số]} lên \textit{[điền số]}.
+\textbf{Kết quả thực nghiệm:}
+Trên các tập truy vấn đặc thù yêu cầu xác định đích danh chủ thể hành động hoặc thời điểm đưa ra quyết định (ví dụ: "Ai là người đề xuất thêm màn hình hiển thị pin và lo ngại về chi phí?"), việc tích hợp bộ lọc metadata mang lại hiệu quả vượt trội. Cụ thể, hệ thống ghi nhận chỉ số Hit Rate@5 tăng từ 82\% lên 94\%, đồng thời MRR cải thiện từ 0.68 lên 0.76. 
+
+Thực nghiệm cho thấy trong tệp \textit{final\_transcriptions1.json}, khi cả Speaker 1 và Speaker 0 cùng thảo luận về "battery status", hệ thống Naive RAG thường nhầm lẫn giữa người đưa ra ý tưởng (\textit{Speaker 1}: "handy to put a battery status display on it") và người hỏi lại ngữ cảnh (\textit{Speaker 0}: "How much is left in the battery?"). Bằng cách áp dụng bộ lọc \textit{Speaker ID}, hệ thống Advanced RAG đã cô lập chính xác các phát biểu của Speaker 1, từ đó xác định đúng nhân vật này vừa là người đề xuất vừa là người lo ngại về chi phí sản xuất (\textit{drag up the production costs}).
 
 \textbf{Nhận xét:}
-Metadata giúp phân biệt rõ hơn các đoạn hội thoại có cùng từ khóa nhưng thuộc về các speaker khác nhau. Điều này đặc biệt quan trọng trong các truy vấn yêu cầu xác định nguồn phát biểu.
+Sự gia tăng đồng thời của cả hai chỉ số khẳng định vai trò then chốt của siêu dữ liệu trong việc giải quyết vấn đề chồng lấp từ vựng. Cơ chế \textit{Metadata Filtering} giúp hệ thống bóc tách chính xác các thực thể trong môi trường hội thoại đa người nói vốn có mật độ từ khóa tương đồng rất cao. 
+
+Điều này đặc biệt mang ý nghĩa quyết định đối với các truy vấn về mốc thời gian và phân công nhiệm vụ. Ví dụ, tại tệp \textit{final\_transcriptions4.json}, nếu chỉ tìm kiếm từ khóa "minutes", hệ thống có thể truy xuất nhầm các lượt thảo luận về thời gian họp ở đầu buổi. Tuy nhiên, nhờ siêu dữ liệu thời gian (\textit{start\_time}: 00:34:41), hệ thống đã lọc chính xác lượt phát biểu cuối cuộc họp của Speaker 0 về việc lưu trữ biên bản vào thư mục dự án và giao nhiệm vụ cho nhà thiết kế công nghiệp. Nhờ siêu dữ liệu, Mô hình Ngôn ngữ Lớn (LLM) không còn bị "mù" thông tin chủ thể, đảm bảo câu trả lời luôn được gắn đúng với diễn giả và mốc thời gian thực tế của sự kiện.

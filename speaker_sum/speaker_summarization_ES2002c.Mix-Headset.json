@@ -1,0 +1,271 @@
+[
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "The main factors that will have an impact on the remote control are cost, complexity, and size.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The available components for the remote control are buttons, a wheel (like a mouse scroll wheel), and an LCD display.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The case of the remote control can be either flat or curved, and can be made of different materials such as plastic, rubber, wood, or titanium.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "There are restrictions on combining certain materials, such as rubber and titanium, and on using certain materials with certain power sources.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The power options for the remote control are a standard battery, a wind-up crank, a solar power cell, and a kinetic power source.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The kinetic power source could be used as a gimmick, such as a shake-to-power feature.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "From a production point of view, the less components used and the simpler the components, the lower the cost and the faster the time to market.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The user interface restrictions mean that more complicated features require more complicated logic.",
+        "start": 0.15,
+        "end": 0.18
+      },
+      {
+        "text": "The LCD panel requires power and could be used to provide feedback to the user.",
+        "start": 0.22,
+        "end": 0.23
+      },
+      {
+        "text": "The kinetic power source could be used to trigger a light or other feature.",
+        "start": 0.23,
+        "end": 0.24
+      },
+      {
+        "text": "The shape and design of the remote control will have an impact on the user experience and the technical feasibility.",
+        "start": 0.26,
+        "end": 0.3
+      },
+      {
+        "text": "The use of an LCD display or a speaker to provide feedback to the user is a design decision that needs to be made.",
+        "start": 0.3,
+        "end": 0.31
+      },
+      {
+        "text": "The placement of the buttons and other components will have an impact on the usability and design of the remote control.",
+        "start": 0.31,
+        "end": 0.32
+      }
+    ],
+    "summary": "The remote control design is impacted by cost, complexity, and size. Available components include buttons, wheel, and LCD display. Power options are standard battery, wind-up crank, solar power cell, and kinetic power source. Design decisions must balance user experience, technical feasibility, and production considerations."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "It kind of does make sense, doesn't it, because when we get into the end of meeting we're kind of talking about action and design as opposed to background. Everything I have is kind of background.",
+        "start": 0.0,
+        "end": 0.14
+      },
+      {
+        "text": "Can we get a strong enough battery to power a light?",
+        "start": 0.22,
+        "end": 0.12
+      },
+      {
+        "text": "Okay. So that maybe one of the things we can just try and include is a really good battery.",
+        "start": 0.22,
+        "end": 0.23
+      },
+      {
+        "text": "We're gonna need to put in a really good battery so people don't have to charge their remote control every few days.",
+        "start": 0.23,
+        "end": 0.17
+      },
+      {
+        "text": "I reckon we'll go for a very, maybe not a fruit shape, but a very curvy type of shape. You can have it seem to have a texture. Then you can have the same sort of texture and color as software.",
+        "start": 0.24,
+        "end": 0.38
+      },
+      {
+        "text": "Probably something that could sit in your hand comfortably.",
+        "start": 0.24,
+        "end": 0.48
+      },
+      {
+        "text": "Well, I mean, I'm thinking that what we need to do is have something that kind of unifies a lot of the different concepts. And if we think that what we are, our number one marketing motive is... motive is the look and feel.",
+        "start": 0.25,
+        "end": 0.17
+      },
+      {
+        "text": "It's more, more just that we, we think about like what it is we're trying to achieve and then we have one, one sort of theme that we stick with.",
+        "start": 0.27,
+        "end": 0.21
+      },
+      {
+        "text": "When you mentioned LCD, I was thinking, I wonder what that would be about? And the thing I could see it helping with would be if it was somehow connected with listings.",
+        "start": 0.29,
+        "end": 0.02
+      },
+      {
+        "text": "Is that what you're thinking? I think the advanced ones, the ones you don't usually use, can be hidden inside.",
+        "start": 0.31,
+        "end": 0.13
+      },
+      {
+        "text": "I mean, what does anything like that? I've had kinetic things before. And the one issue we need to keep in mind with them is that you're committing the user to moving it.",
+        "start": 0.32,
+        "end": 0.15
+      },
+      {
+        "text": "Just a port for it. I mean, it's just worth pointing out because I've known people to have kinetic watches that they wear all the time.",
+        "start": 0.32,
+        "end": 0.51
+      },
+      {
+        "text": "And this size here, I'd suggest this be small.",
+        "start": 0.33,
+        "end": 0.2
+      },
+      {
+        "text": "Just a lot of, I mean, one of the things running through my mind right now, I realize we're being efficient to wrap up the meeting and have lots of decisions made, but we are leaning quite a bit to the side of being low-tech rubber buttons, plastic frame, it's almost like we're reproducing the same old remote control that's out there.",
+        "start": 0.33,
+        "end": 0.45
+      },
+      {
+        "text": "And so I'm thinking, maybe should we try and think about having something like some kind of an innovative concept about how the volume and the channels are controlled, because that's the main thing people would want to do.",
+        "start": 0.34,
+        "end": 0.06
+      },
+      {
+        "text": "Yeah. Jog dials are much easier than that.",
+        "start": 0.36,
+        "end": 0.11
+      },
+      {
+        "text": "Yeah, like, I mean, if we, if we keep coming back to this board here, I wouldn't be surprised if we could take this idea.",
+        "start": 0.36,
+        "end": 0.4
+      },
+      {
+        "text": "And materials we sort of said we do plastic and rubber didn't we?",
+        "start": 0.38,
+        "end": 0.42
+      },
+      {
+        "text": "They feel kind of like, you get paints now and then, you'd think that they were rubber, but they're not. They're actually just plastic that's textured.",
+        "start": 0.38,
+        "end": 0.51
+      }
+    ],
+    "summary": "The discussion focused on remote control design and functionality. A strong battery and comfortable, curvy shape were prioritized. Unifying concepts under a single theme, likely emphasizing look and feel, was also considered. Innovative control concepts, such as jog dials, were suggested to differentiate the product from traditional remote controls."
+  },
+  {
+    "id": "Speaker 3",
+    "info": [
+      {
+        "text": "The target group for the product is 15 to 35 years old.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The product will use normally chargeable battery power.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The product will group audio, visual, and other functions into categories.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The product must ignore tele-text and only respond to TV commands.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The product should incorporate the corporate color and slogan.",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "The final objective of the meeting is to reach a decision on the concepts of the product.",
+        "start": 0.00148,
+        "end": 0.0021
+      },
+      {
+        "text": "The product may incorporate speech recognition, but no decision has been made.",
+        "start": 0.00148,
+        "end": 0.0021
+      },
+      {
+        "text": "The product's materials could include plastic and rubber.",
+        "start": 0.001815,
+        "end": 0.001817
+      },
+      {
+        "text": "The product's shape could be curvy and comfortable to hold.",
+        "start": 0.0024,
+        "end": 0.00246
+      },
+      {
+        "text": "The corporate color is yellow, and it could be used for the product's color.",
+        "start": 0.0024,
+        "end": 0.00246
+      },
+      {
+        "text": "The product could have a snowman-like shape.",
+        "start": 0.002737,
+        "end": 0.002743
+      },
+      {
+        "text": "The slogan could be incorporated into the product's design, possibly through speech.",
+        "start": 0.002849,
+        "end": 0.002938
+      },
+      {
+        "text": "A jog dial could be included in the product's design.",
+        "start": 0.003612,
+        "end": 0.003632
+      },
+      {
+        "text": "The product could have kinetic power generation as a backup to battery power.",
+        "start": 0.003251,
+        "end": 0.003316
+      }
+    ],
+    "summary": "The product targets 15-35 year olds. It will use battery power, categorize audio and visual functions, and ignore tele-text. The design may include yellow, a jog dial, and a curvy shape. The product could incorporate speech recognition and the corporate slogan."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "So a larger bit sits in your hand, and then you've got to be another and bubble it up for just any other funky you need.",
+        "start": 27.466667,
+        "end": 27.6
+      },
+      {
+        "text": "You've got two grips there. Maybe you could fold up and you get a third grip inside.",
+        "start": 28.166667,
+        "end": 28.316667
+      },
+      {
+        "text": "I think it would look quite nice if I just add this around here. They start background yellow. And then have a nice bold color for the buttons.",
+        "start": 28.7,
+        "end": 28.816667
+      }
+    ],
+    "summary": "A larger bit is held in one's hand. The design features two grips, potentially a third grip inside. The proposed design includes a background yellow color and bold button colors."
+  }
+]

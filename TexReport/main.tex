@@ -1,4 +1,4 @@
-% !TEX program = xelatex % (can also use "lualatex") 
+
 \documentclass[12pt]{report}
 \usepackage[fontsize=13pt]{scrextend}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=2cm]{geometry}
@@ -7,7 +7,7 @@
 \usepackage{fontspec}
 \usepackage{biblatex}
 \usepackage{url}
-
+\usepackage{enumitem}
 \addbibresource{sections/ref.bib}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, positioning, shapes.geometric}
@@ -99,7 +99,6 @@
 
 \input{sections/abstract}
 
-\input{sections/table-of-glossary}
 
 \input{sections/list-of-abbreviations}
 
@@ -146,7 +145,8 @@
 \input{sections/3.Theoretical-Background/3.7.Vector-Database}
 \input{sections/3.Theoretical-Background/3.9.RAG}
 \input{sections/3.Theoretical-Background/3.10.Multihop.tex}
-\input{sections/3.Theoretical-Background/3.11.Metrics}
+\input{sections/3.Theoretical-Background/3.11.Multilayer-Summary.tex}
+\input{sections/3.Theoretical-Background/3.12.Metrics.tex}
 
 \chapter{Thiết Kế \& Hiện Thực Hệ Thống}
 % 1. Tổng quan (Chung)
@@ -158,6 +158,8 @@
 \input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.2.Retrival}
 \input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.3.Multihop}
 \input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.4_generation}
+\input{sections/4.System-Design-&-Implementation/RAG pipline/4.3.5_summarization.tex}
+
 \chapter{Đánh Giá}
 \input{sections/5.Evaluation/5.0.Tong-quan-danh-gia.tex}
 \input{sections/5.Evaluation/5.1.Du-lieu-danh-gia.tex}

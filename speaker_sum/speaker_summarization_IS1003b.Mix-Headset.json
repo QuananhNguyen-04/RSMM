@@ -1,0 +1,221 @@
+[
+  {
+    "id": "Speaker 4",
+    "info": [],
+    "summary": "No input provided."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "The functional design meeting will include presentations from the industrial designer, user interface designer, and marketing expert.",
+        "start": 0.0,
+        "end": 0.02
+      },
+      {
+        "text": "The remote control should be powerful, with many functions, and easy to use.",
+        "start": 0.04,
+        "end": 0.11
+      },
+      {
+        "text": "The user interface designer is tasked with making the remote control intuitive and easy to use.",
+        "start": 0.16,
+        "end": 0.21
+      },
+      {
+        "text": "The industrial designer is asked about the feasibility of having a link between the remote control and the TV.",
+        "start": 0.1,
+        "end": 0.13
+      },
+      {
+        "text": "The remote control should have a balance between function and cost.",
+        "start": 0.19,
+        "end": 0.23
+      },
+      {
+        "text": "New project requirements include: no teletext, remote control only for TV, and a focus on being fashionable, powerful, and easy to use.",
+        "start": 0.2,
+        "end": 0.26
+      },
+      {
+        "text": "The remote control should be yellow and recognizable as a 'real reaction' product.",
+        "start": 0.24,
+        "end": 0.25
+      },
+      {
+        "text": "The team will have 30 minutes of individual work to initialize their designs.",
+        "start": 0.25,
+        "end": 0.26
+      }
+    ],
+    "summary": "The remote control should be powerful, easy to use, and fashionable. It will be yellow and have a balance between function and cost. The design team will meet to discuss and initialize their designs."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "The remote control will be infrared control.",
+        "start": 0.067,
+        "end": 0.074
+      },
+      {
+        "text": "I propose an infrared base. So for me, I think that it is better to control TV. So it will be cheaper and it is less technology than for the cheap price we have.",
+        "start": 0.067,
+        "end": 0.074
+      },
+      {
+        "text": "I think it's cheaper than laser.",
+        "start": 0.079,
+        "end": 0.081
+      },
+      {
+        "text": "The different findings, you know, what you will find inside the system here inside, it is just, you know, a bulb and an infrared bulb.",
+        "start": 0.099,
+        "end": 0.112
+      },
+      {
+        "text": "This is, in fact, some other components that are in between the electronic device.",
+        "start": 0.143,
+        "end": 0.154
+      },
+      {
+        "text": "I think it should be, why less than remote control? Because, you know, it's easier to manage and, you know, because if the battery problem can hold, will you use a battery or a wire to connect it to you?",
+        "start": 0.158,
+        "end": 0.182
+      },
+      {
+        "text": "The average prices, I think that this technology will cost, I don't know, around eight euros.",
+        "start": 0.204,
+        "end": 0.213
+      },
+      {
+        "text": "I think with the wireless, it's cheaper, but, you know, the wireless, it's more practical, so.",
+        "start": 0.278,
+        "end": 0.295
+      },
+      {
+        "text": "Yeah, but it should be an agreement, you know, because even if you can't think of the wireless, it is the job of the graphical user designer, but, you know, if it is a lot cheaper and if you want to reach, for example, some of the money we have if you want to use it.",
+        "start": 0.308,
+        "end": 0.335
+      },
+      {
+        "text": "So I think the solution is to have many colors instead of having one gray standard.",
+        "start": 0.424,
+        "end": 0.436
+      },
+      {
+        "text": "I don't think it's popular. That's the problem. If you are designing remote control for the global usage, if people don't have the technology.",
+        "start": 0.463,
+        "end": 0.479
+      }
+    ],
+    "summary": "The proposed remote control will use infrared technology, which is considered cheaper than laser. The estimated cost of this technology is around eight euros. Infrared is preferred for its practicality and cost-effectiveness, especially for global usage."
+  },
+  {
+    "id": "Speaker 3",
+    "info": [
+      {
+        "text": "remote TV control has very sophisticated functions, over 12 or 20 functions",
+        "start": 0.00258,
+        "end": 0.0044
+      },
+      {
+        "text": "design an elegant, easy-to-use interface, like Google",
+        "start": 0.00258,
+        "end": 0.0044
+      },
+      {
+        "text": "My job is to design a Google TV controller with sophisticated functions, yet easy to use",
+        "start": 0.00258,
+        "end": 0.0044
+      },
+      {
+        "text": "a good user interface takes less time for users to learn how to use it",
+        "start": 0.00513,
+        "end": 0.00521
+      },
+      {
+        "text": "it's possible to mix several functions in one button to have less buttons",
+        "start": 0.01647,
+        "end": 0.017
+      },
+      {
+        "text": "users are not happy to read the manual",
+        "start": 0.0171,
+        "end": 0.01718
+      },
+      {
+        "text": "categorize functions into classes and use a switch menu to reduce buttons",
+        "start": 0.01722,
+        "end": 0.01819
+      },
+      {
+        "text": "different people have different opinions about what is fancy",
+        "start": 0.01822,
+        "end": 0.01824
+      },
+      {
+        "text": "offer several design options, such as color, for users to select",
+        "start": 0.01901,
+        "end": 0.01916
+      }
+    ],
+    "summary": "Design an elegant Google TV controller with 12+ sophisticated functions. Categorize functions into classes and use a switch menu to minimize buttons. Offer design options like color to users, ensuring an easy-to-use interface that requires less learning time."
+  },
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "75% of users find most remote controls ugly.",
+        "start": 0.1401,
+        "end": 0.1401
+      },
+      {
+        "text": "80% of users would spend more money if remote controls were not so ugly.",
+        "start": 0.1401,
+        "end": 0.1538
+      },
+      {
+        "text": "Remote controls often have too many buttons.",
+        "start": 0.1401,
+        "end": 0.1538
+      },
+      {
+        "text": "Users are using remote controls intensively.",
+        "start": 0.1401,
+        "end": 0.1538
+      },
+      {
+        "text": "Only 10% of buttons on a remote control are actually used.",
+        "start": 0.1401,
+        "end": 0.1538
+      },
+      {
+        "text": "Remote controls are often lost in the room.",
+        "start": 0.1538,
+        "end": 0.1538
+      },
+      {
+        "text": "35% of people find it takes too much time to learn how to use a remote control.",
+        "start": 0.1538,
+        "end": 0.1538
+      },
+      {
+        "text": "26% of users experience RSI problems with remote controls.",
+        "start": 0.154,
+        "end": 0.1628
+      },
+      {
+        "text": "RSI is an injury caused by repetitive movements.",
+        "start": 0.154,
+        "end": 0.1628
+      },
+      {
+        "text": "A potential solution is to make remote controls look fancy and have fewer buttons.",
+        "start": 0.1628,
+        "end": 0.191
+      }
+    ],
+    "summary": "75% of users find remote controls ugly. 80% would pay more for a better design. A potential solution is to make remotes look fancy with fewer buttons, addressing issues like 35% of users struggling to learn usage and 26% experiencing RSI problems."
+  }
+]

@@ -1,42 +1,40 @@
 \section{Kết luận}
 
-Đồ án này đã nghiên cứu và đề xuất giải pháp toàn diện cho bài toán khai phá tri thức từ dữ liệu hội thoại đa người nói, đáp ứng nhu cầu cấp thiết về quản trị thông tin trong doanh nghiệp. Bằng việc kết hợp các kỹ thuật tiên tiến trong Xử lý Tiếng nói (Speech Processing) và Xử lý Ngôn ngữ Tự nhiên (NLP), nghiên cứu đã đạt được những đóng góp chính sau:
+Đồ án này đã nghiên cứu và đề xuất giải pháp toàn diện cho bài toán khai phá tri thức từ dữ liệu hội thoại đa người nói. Nhận thức rõ những giới hạn công nghệ hiện tại của các mô hình nhận dạng âm thanh, nghiên cứu đặt trọng tâm vào việc phát triển hệ thống truy xuất thông tin nâng cao (Advanced RAG) và ứng dụng Mô hình Ngôn ngữ Lớn (LLM) để hậu xử lý, qua đó đạt được những đóng góp chính sau:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*, label={}]
+    \item \textbf{Thiết lập pipeline xử lý tiếng nói cơ sở:} 
+    Đồ án đã tích hợp thành công các mô hình Phân đoạn người nói (Speaker Diarization) và Nhận dạng tiếng nói (ASR) tạo thành một đường ống tiền xử lý đầu cuối. Mặc dù đóng vai trò nền tảng trong việc số hóa dữ liệu, các mô-đun này thực tế đã chạm ngưỡng giới hạn hiệu năng khi đối mặt với dữ liệu hội thoại mang nhiều nhiễu, chồng lấn lời nói và không thể đảm bảo tính toàn vẹn tuyệt đối về định danh hay thời gian. Sự thiếu hoàn hảo này chính là tiền đề thiết yếu để hệ thống phát triển các cơ chế dung lỗi ở tầng NLP phía sau.
 
-    \item \textbf{Đánh giá và hoàn thiện pipeline xử lý tiếng nói cho hội thoại đa người nói:} 
-    Đồ án đã tiến hành phân tích và đánh giá có hệ thống các cấu hình xử lý tiếng nói trong bài toán hội thoại đa người nói, bao gồm lựa chọn mô hình embedding (ECAPA-TDNN, TitaNet-Large), thuật toán phân cụm (Spectral Clustering, AHC) và chiến lược phân tích một lớp và hai lớp. Kết quả thực nghiệm cho thấy Spectral Clustering kết hợp embedding dựa trên ECAPA/TitaNet đạt hiệu năng ổn định, với chỉ số Confusion giảm và Quality cao, đồng thời DER nằm trong mức cạnh tranh so với các hệ thống diarization hiện đại được báo cáo trong các benchmark gần đây. Việc mở rộng sang cấu hình hai lớp phân tích giúp cải thiện rõ rệt Quality và giảm Confusion, đặc biệt tại các ranh giới hội thoại phức tạp, qua đó nâng cao độ tin cậy của pipeline diarization phục vụ trực tiếp cho ASR ở các bước xử lý tiếp theo.
+    \item \textbf{Phát triển kiến trúc Advanced RAG chịu lỗi và LLM Correction:} 
+    Để khắc phục triệt để sai số tích lũy từ mô-đun ASR và Diarization, đồ án đã thiết kế kiến trúc RAG nâng cao kết hợp cơ chế hiệu chỉnh ngữ nghĩa của LLM (LLM Correction). Bằng cách tối ưu hóa kỹ thuật phân mảnh văn bản (\textit{chunking}) và chiến lược tái xếp hạng (\textit{Re-ranking}), hệ thống có khả năng dung lỗi (\textit{fault tolerance}) cao, tự động phục hồi và chuẩn hóa thông tin từ khóa thay vì phụ thuộc vào một bản ghi (transcript) hoàn hảo.
 
-    \item \textbf{Thiết lập quy trình xử lý tiếng nói tích hợp (Integrated Speech Pipeline):} 
-    Nghiên cứu đã xây dựng thành công kiến trúc đường ống kết hợp chặt chẽ giữa mô-đun Phân đoạn người nói (Speaker Diarization) dựa trên thuật toán Phân cụm phổ (Spectral Clustering) và mô hình nhận dạng tiếng nói tự động (ASR). Kết quả thực nghiệm cho thấy hệ thống có khả năng chuyển đổi hiệu quả dữ liệu âm thanh phi cấu trúc thành văn bản có cấu trúc, bảo toàn tính toàn vẹn về định danh người nói và tham chiếu thời gian.
+    \item \textbf{Hiện thực hóa cơ chế Truy xuất và Suy luận đa bước (Multi-step Reasoning):} 
+    Vượt qua giới hạn của hệ thống hỏi đáp thông thường, đồ án đã xây dựng khung giải pháp tích hợp vòng lặp truy xuất - suy luận tương tác. Cơ chế này cho phép hệ thống tự động bóc tách các câu hỏi phức tạp (multi-hop queries), truy vết chuỗi sự kiện bị phân mảnh qua nhiều mốc thời gian và cung cấp đáp án chính xác kèm dẫn chứng minh bạch.
 
-    \item \textbf{Tối ưu hóa kiến trúc RAG cho dữ liệu hội thoại:} 
-    Đồ án đã triển khai thành công mô hình \textit{Retrieval-Augmented Generation} (RAG) chuyên biệt hóa, tận dụng sức mạnh của cơ sở dữ liệu vector Qdrant và chiến lược Tái xếp hạng (Re-ranking). Phương pháp này đã giải quyết triệt để vấn đề "ảo giác" (hallucination) của các Mô hình Ngôn ngữ Lớn (LLM), đảm bảo thông tin đầu ra có tính xác thực cao và được neo giữ (\textit{grounded}) chặt chẽ vào ngữ cảnh biên bản gốc.
+    \item \textbf{Xây dựng chiến lược Tóm tắt đa tầng (Multi-level Summarization):} 
+    Hệ thống phát triển năng lực tổng hợp tri thức theo cấu trúc phân cấp linh hoạt: từ tóm tắt tổng quan toàn bộ cuộc họp, đến tóm tắt chi tiết theo chủ đề thảo luận và tóm tắt theo từng cá nhân tham gia. Phương pháp này giúp nén giảm đáng kể khối lượng dữ liệu dư thừa nhưng vẫn bảo toàn trọn vẹn các đơn vị thông tin quan trọng (\textit{information units}) phục vụ tìm kiếm.
 
-    \item \textbf{Chứng minh tính bền vững trên dữ liệu nhiễu (Robustness on Noisy Data):} 
-    Thông qua kiểm thử thực nghiệm trên tập dữ liệu chuyên ngành cấp thoát nước (BIWASE), hệ thống thể hiện khả năng vượt trội trong việc trích xuất chính xác các thực thể quan trọng (số liệu tài chính, mốc thời gian) ngay cả khi dữ liệu đầu vào chịu ảnh hưởng bởi nhiễu sai số từ mô hình ASR. Điều này khẳng định khả năng hiểu ngữ nghĩa (Semantic Understanding) của hệ thống thay vì chỉ so khớp từ khóa đơn thuần.
-
-    \item \textbf{Nâng cao trải nghiệm tương tác ngữ cảnh (Context-Aware Interaction):} 
-    Hệ thống đã tích hợp thành công cơ chế quản lý trạng thái hội thoại và viết lại câu truy vấn (Query Rewriting). Tính năng này cho phép duy trì mạch hội thoại đa lượt một cách tự nhiên, hỗ trợ người dùng truy xuất thông tin phức tạp thông qua giao diện hỏi đáp trực quan, thay thế phương thức tìm kiếm từ khóa truyền thống.
+    \item \textbf{Tối ưu hóa không gian tìm kiếm với Siêu dữ liệu (Metadata Filtering):} 
+    Đồ án đã lưu trữ trực tiếp các siêu dữ liệu (định danh người nói, mốc thời gian) dưới dạng \textit{payload} vào cơ sở dữ liệu vector. Việc kết hợp song song giữa tìm kiếm ngữ nghĩa và bộ lọc metadata đã thu hẹp hiệu quả không gian truy xuất, loại bỏ hiện tượng nhầm lẫn thông tin giữa các diễn giả trong môi trường họp nhiều người.
 \end{itemize}
 
 \subsection{Những hạn chế}
-Mặc dù hệ thống đạt được hiệu năng ổn định trong các kịch bản thực nghiệm, nghiên cứu vẫn tồn tại một số hạn chế. Thứ nhất, pipeline xử lý tiếng nói phụ thuộc mạnh vào chất lượng của ASR; các lỗi nhận dạng từ vựng và ranh giới câu có thể lan truyền sang các bước gán nhãn và truy xuất. Thứ hai, quá trình đánh giá diarization chủ yếu dựa trên các chỉ số tổng hợp như DER, Miss và Confusion, trong khi chưa có đánh giá định lượng trực tiếp về tác động của từng loại lỗi lên chất lượng truy xuất cuối cùng. Thứ ba, việc sử dụng mô hình ngôn ngữ lớn để hiệu chỉnh cấu trúc hội thoại hiện mới dừng ở mức thực nghiệm, chưa có cơ chế đánh giá tự động và chưa đảm bảo tính ổn định trong mọi ngữ cảnh. Cuối cùng, phạm vi thí nghiệm còn giới hạn về ngôn ngữ, môi trường âm thanh và quy mô phần cứng, do đó kết quả chưa thể khái quát cho các kịch bản hội thoại đa miền hoặc triển khai ở quy mô lớn.
-
-Bên cạnh những kết quả khả quan bước đầu, mô-đun RAG hiện tại vẫn tồn tại một số hạn chế cần được khắc phục trong các nghiên cứu tiếp theo. Thứ nhất, chiến lược phân đoạn dữ liệu (\textit{chunking}) dựa trên từng câu thoại đơn lẻ kết hợp với cơ chế mở rộng ngữ cảnh cố định (lấy $\pm 1$ câu lân cận) đôi khi chưa bao quát trọn vẹn ý nghĩa trong các luồng thảo luận dài và phức tạp, dẫn đến rủi ro đứt gãy ngữ nghĩa. Thứ hai, quá trình đánh giá hiện mới chỉ dừng lại ở phương pháp định tính thông qua các kịch bản kiểm thử (\textit{Case Studies}) do thiếu bộ dữ liệu nhãn chuẩn (\textit{Ground Truth}) để đo lường cụ thể các chỉ số hiệu năng như độ chính xác ngữ cảnh (\textit{Context Precision}) hay độ phủ thông tin (\textit{Recall}). Cuối cùng, hệ thống vẫn chịu ảnh hưởng bởi sự lan truyền lỗi từ đầu vào ASR và độ trễ xử lý còn khá cao do quy trình thực thi tuần tự qua nhiều bước (viết lại câu hỏi, tìm kiếm vector và tái xếp hạng) chưa được tối ưu hóa cho các ứng dụng thời gian thực.
-
+Mặc dù đạt được những đột phá trong khâu xử lý ngôn ngữ, hệ thống vẫn tồn tại một số hạn chế nhất định. Thứ nhất, việc ứng dụng quy trình truy xuất đa bước lặp đi lặp lại và mô hình Cross-Encoder đòi hỏi chi phí tính toán cao, dẫn đến độ trễ phản hồi (\textit{latency}) chưa thực sự tối ưu cho các tác vụ đòi hỏi thời gian thực. Thứ hai, quá trình đánh giá các mô-đun sinh văn bản hiện mới chỉ dừng lại ở phương pháp định tính thông qua kịch bản kiểm thử (\textit{Case Studies}) do sự thiếu hụt của các bộ dữ liệu nhãn chuẩn (\textit{Ground Truth}) đặc thù. Cuối cùng, đối với những trường hợp nhiễu ASR quá nghiêm trọng làm biến dạng hoàn toàn các chỉ dấu logic cốt lõi (ví dụ: nhầm lẫn phủ định thành khẳng định), cơ chế tự sửa lỗi của LLM vẫn có xác suất sinh ra những diễn giải sai lệch.
 
 \subsection{Định hướng phát triển}
+Từ những hạn chế trên, việc tối ưu hóa và tổ chức \textbf{metadata} cùng cấu trúc truy xuất sẽ là định hướng mở rộng then chốt của hệ thống trong tương lai:
 
-Trong các hướng mở rộng của hệ thống, việc khai thác và tổ chức \textbf{metadata} đóng vai trò then chốt nhằm nâng cao hiệu quả truy xuất và tổng hợp thông tin. Cụ thể, hệ thống có thể được mở rộng theo các hướng sau:
+\begin{itemize}[leftmargin=*, label={}]
+    \item \textbf{Chỉ mục phân cấp (Hierarchical Indexing):} 
+    Thay vì lưu trữ các đoạn hội thoại đồng cấp, xây dựng cấu trúc chỉ mục đồ thị theo chiều dọc (cuộc họp $\rightarrow$ chủ đề $\rightarrow$ người nói $\rightarrow$ đoạn hội thoại) nhằm tăng tốc độ truy vết cho các câu hỏi logic đan chéo.
+    
+    \item \textbf{Tích hợp Framework đánh giá RAG tự động:} 
+    Sử dụng các công cụ đo lường chuyên biệt (như RAGAS hay TruLens) để lượng hóa các chỉ số hiệu năng cụ thể bao gồm độ phủ thông tin (\textit{Context Recall}), độ chính xác ngữ cảnh (\textit{Context Precision}) và tính xác thực (\textit{Faithfulness}).
 
-\begin{itemize}
-    \item \textbf{Bổ sung metadata giàu ngữ cảnh:}
-    Mỗi đoạn hội thoại được gắn thêm các trường chỉ mục như tên tệp âm thanh, ngày–giờ cuộc họp, chủ đề ước lượng, tóm tắt ngắn theo đoạn hoặc theo cụm người nói. Các metadata này cho phép kết hợp truy vấn ngữ nghĩa với lọc điều kiện (metadata filtering), giúp thu hẹp không gian tìm kiếm một cách hiệu quả.
-    \item \textbf{Chỉ mục phân cấp (Hierarchical Indexing):} Thay vì lưu trữ các đoạn hội thoại độc lập, hệ thống có thể xây dựng chỉ mục theo nhiều mức: cuộc họp $\rightarrow$ người nói $\rightarrow$ đoạn hội thoại. Cấu trúc này hỗ trợ tốt hơn cho các truy vấn dạng “ai nói gì, ở cuộc họp nào, vào thời điểm nào”.
-    \item \textbf{Tối ưu embedding cho truy xuất:}
-    Việc sử dụng các mô hình embedding nhẹ hơn (ví dụ MiniLM) cho các trường metadata và tóm tắt giúp giảm chi phí lưu trữ và tăng tốc độ truy vấn, trong khi vẫn giữ các embedding giàu ngữ nghĩa cho nội dung hội thoại chính.
+    \item \textbf{Tối ưu embedding cho truy xuất hỗn hợp:}
+    Sử dụng các mô hình embedding nhẹ cho các trường metadata để tăng tốc độ lọc sơ bộ, trong khi vẫn duy trì các embedding kích thước lớn, giàu ngữ nghĩa cho việc đánh giá độ tương đồng của nội dung hội thoại chính.
 
-    \item \textbf{Mở rộng chiến lược lưu trữ vector:}
-    Cơ sở dữ liệu vector có thể được cấu hình để tách riêng embedding nội dung và embedding metadata, kết hợp với cơ chế re-ranking dựa trên metadata nhằm cải thiện độ chính xác của kết quả truy xuất trong các tập dữ liệu lớn.
+    \item \textbf{Nghiên cứu cơ chế Streaming RAG:}
+    Tối ưu hóa luồng dữ liệu để hệ thống có thể xử lý, phân mảnh và đánh chỉ mục song song ngay trong lúc cuộc họp đang diễn ra (\textit{real-time indexing}), hướng tới việc xây dựng trợ lý ảo hỗ trợ trực tiếp (\textit{live assistant}).
 \end{itemize}

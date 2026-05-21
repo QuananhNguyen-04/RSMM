@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": 0,
+    "summary": "The remote TV control should be powerful, easy to use, and fashionable. It will have infrared control, a balance between function and cost, and a simple interface with fewer buttons. Design proposals include categorizing functions into classes, using a switch menu, and offering design options like color. The team aims for a low cost, around 8 euros, and a recognizable design.",
+    "evidence": [
+      {
+        "speaker": "Speaker 1",
+        "text": "The remote control should be powerful, with many functions, and easy to use.",
+        "start": 0.04,
+        "end": 0.11
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "I propose an infrared base. So for me, I think that it is better to control TV. So it will be cheaper and it is less technology than for the cheap price we have.",
+        "start": 0.067,
+        "end": 0.074
+      },
+      {
+        "speaker": "Speaker 3",
+        "text": "categorize functions into classes and use a switch menu to reduce buttons",
+        "start": 0.01722,
+        "end": 0.01819
+      },
+      {
+        "speaker": "Speaker 2",
+        "text": "The average prices, I think that this technology will cost, I don't know, around eight euros.",
+        "start": 0.204,
+        "end": 0.213
+      },
+      {
+        "speaker": "Speaker 1",
+        "text": "The remote control should have a balance between function and cost.",
+        "start": 0.19,
+        "end": 0.23
+      }
+    ]
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "id": "Speaker 0",
+    "info": [
+      {
+        "text": "The project aims to design a new remote control that is original, trendy, and user-friendly.",
+        "start": 0.00132,
+        "end": 0.00211
+      },
+      {
+        "text": "The project has three different stages to the design, involving individual work and meetings.",
+        "start": 0.00132,
+        "end": 0.00211
+      },
+      {
+        "text": "The remote control should be sold for 25 euros, with a production cost not exceeding 12.50 euros.",
+        "start": 0.00745,
+        "end": 0.00814
+      },
+      {
+        "text": "The project aims to make 50 million euros in sales on an international scale.",
+        "start": 0.00745,
+        "end": 0.00814
+      },
+      {
+        "text": "The design should consider the wealth of the country and how much people have to spend on things.",
+        "start": 0.01008,
+        "end": 0.01023
+      },
+      {
+        "text": "The remote control should have extra functionalities, such as controlling satellite and regular TV, and VCR.",
+        "start": 0.01331,
+        "end": 0.01412
+      },
+      {
+        "text": "The next meeting is in 30 minutes, and the tasks are to work on the design, user interface, technical functions, and marketing requirements.",
+        "start": 0.01616,
+        "end": 0.01723
+      },
+      {
+        "text": "The project involves a functional design stage, and the team members will receive instructions via email.",
+        "start": 0.01616,
+        "end": 0.01723
+      },
+      {
+        "text": "A unique selling point for the remote control is desired.",
+        "start": 0.01753,
+        "end": 0.01804
+      }
+    ],
+    "summary": "The project aims to design an original, trendy, and user-friendly remote control. It targets 50 million euros in international sales, priced at 25 euros with a 12.50 euro production cost. The design must consider affordability and include extra functionalities like controlling TV and VCR. A unique selling point is desired."
+  },
+  {
+    "id": "Speaker 1",
+    "info": [
+      {
+        "text": "My favorite animal is a beagle, which is a family pet. I like that they are willing to take a lot of physical affection and have lots of personality and are fit and in robust good health.",
+        "start": 0.0,
+        "end": 0.033
+      },
+      {
+        "text": "The favorite characteristics of my favorite animal, a beagle, are that they are willing to take a lot of physical affection from their family, have lots of personality, and are fit and in robust good health.",
+        "start": 0.03,
+        "end": 0.045
+      },
+      {
+        "text": "I also mentioned a monkey as a favorite animal due to their small, cute, and furry nature.",
+        "start": 0.045,
+        "end": 0.057
+      },
+      {
+        "text": "The discussion then shifted to an Impressionist-style drawing of a whale.",
+        "start": 0.05,
+        "end": 0.057
+      },
+      {
+        "text": "A drawing of a rooster was also identified.",
+        "start": 0.06,
+        "end": 0.065
+      },
+      {
+        "text": "The conversation turned to a dog chasing its own tail, with a possible explanation that it was conditioned to do so from a young age.",
+        "start": 0.07,
+        "end": 0.1
+      },
+      {
+        "text": "The discussion then turned to pricing, specifically 12.50, and whether that was a wholesale or retail price.",
+        "start": 0.08,
+        "end": 0.1
+      },
+      {
+        "text": "There was a consideration of regional pricing and product positioning for a remote control, with a price of 25 euros potentially being a premium product.",
+        "start": 0.09,
+        "end": 0.13
+      },
+      {
+        "text": "The remote control market was discussed, with the idea that people may not consciously assess remote controls when making purchasing decisions.",
+        "start": 0.12,
+        "end": 0.15
+      },
+      {
+        "text": "An example of a successful technology, Palm Pilots, was brought up, which have evolved to combine multiple functions.",
+        "start": 0.13,
+        "end": 0.16
+      },
+      {
+        "text": "The idea of combining multiple functions into a remote control, such as controlling lighting, was proposed.",
+        "start": 0.14,
+        "end": 0.17
+      },
+      {
+        "text": "The evolution of remote controls was discussed, from early models with cables to modern designs, with a consideration of how they could be made more streamlined and chic.",
+        "start": 0.15,
+        "end": 0.19
+      },
+      {
+        "text": "The question was raised as to whether the remote control should have features beyond television control or be designed specifically for television features.",
+        "start": 0.17,
+        "end": 0.19
+      }
+    ],
+    "summary": "The speaker's favorite animal is a beagle, which is affectionate, has lots of personality, and is robustly healthy. They also mentioned a monkey as a favorite due to its cute nature. Other topics discussed include drawings of a whale and rooster, dog behavior, and remote controls, covering their evolution, design, and potential multi-functionality."
+  },
+  {
+    "id": "Speaker 3",
+    "info": [],
+    "summary": "No input provided."
+  },
+  {
+    "id": "Speaker 2",
+    "info": [
+      {
+        "text": "designing a new remote control",
+        "start": 0.0,
+        "end": 0.0
+      },
+      {
+        "text": "I'm allergic to most animals. Fish was a natural choice.",
+        "start": 0.0837,
+        "end": 0.095
+      },
+      {
+        "text": "They come in and go; everything inside. They're quite harmless and mild and interesting.",
+        "start": 0.095,
+        "end": 0.116
+      },
+      {
+        "text": "if you have more complicated characters like European languages, then you need more buttons",
+        "start": 0.16,
+        "end": 0.166
+      },
+      {
+        "text": "You keep losing them. You get those ones where you can, if you whistle or make a really high pitched noise, they beep.",
+        "start": 0.25,
+        "end": 0.283
+      },
+      {
+        "text": "I know a factor would be production cost. OK. Yeah. There's a cap there, so it depends on how much you can cram into that price.",
+        "start": 0.3,
+        "end": 0.333
+      }
+    ],
+    "summary": "The new remote control design considers a simple interface. Complicated character sets like European languages require more buttons. Design is also limited by production cost. A simple design is preferred to avoid lost remotes."
+  }
+]
